@@ -571,45 +571,71 @@ nav {
 }
 
 
-/* Hormone section: gray-blue gradient + right-side image */
+/* Hormone section: gray-blue gradient + centered couple spotlight */
 #hormones.hormone-grayblue{ position: relative; overflow: hidden; }
+
+/* uniform top→bottom transition (lighter top, deeper gray bottom) */
 #hormones.hormone-grayblue .cond-bg-fill{
   background: linear-gradient(180deg,
-    #EFF4FA 0%,
-    #DEE8F2 40%,
-    #C8D6E6 75%,
-    #B8C9DB 100%
+    #E7EEF6 0%,
+    #D3DCE7 38%,
+    #A3AAB6 72%,
+    #6E747F 100%
   ) !important;
   opacity: 1 !important;
 }
+
+/* keep existing content above visuals */
 #hormones.hormone-grayblue .cond-text,
 #hormones.hormone-grayblue .cond-cards,
-#hormones.hormone-grayblue .cond-path{ position: relative; z-index: 3; }
+#hormones.hormone-grayblue .cond-path{ position: relative; z-index: 4; }
 
+/* full-bleed visual layer */
 #hormones.hormone-grayblue .hormone-img-wrap{
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
 }
+
+/* centered radiant focus behind the couple */
+#hormones.hormone-grayblue .hormone-img-wrap::before{
+  content: "";
+  position: absolute;
+  left: 62%;
+  top: 52%;
+  transform: translate(-50%,-50%);
+  width: min(920px, 78vw);
+  height: min(620px, 62vw);
+  background: radial-gradient(circle at 50% 50%,
+    rgba(255,255,255,0.55) 0%,
+    rgba(255,255,255,0.22) 22%,
+    rgba(255,255,255,0.10) 40%,
+    rgba(255,255,255,0.00) 68%
+  );
+  filter: blur(2px);
+  opacity: 0.95;
+}
+
+/* make couple larger + more centered (without crushing headline) */
 #hormones.hormone-grayblue .hormone-people-img{
   position: absolute;
-  right: clamp(18px, 3.5vw, 56px);
-  bottom: -8px;
-  width: min(560px, 46vw);
+  left: 62%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: min(820px, 72vw);
   height: auto;
   display: block;
-  filter: drop-shadow(0 18px 35px rgba(10,16,26,0.18));
-  opacity: 0.96;
+  filter: drop-shadow(0 22px 44px rgba(10,16,26,0.24));
+  opacity: 0.98;
 }
 
 @media (max-width: 900px){
-  #hormones.hormone-grayblue .hormone-people-img{
-    left: 50%; right: auto;
-    transform: translateX(-50%);
-    width: min(520px, 92vw);
-    opacity: 0.35; /* keep copy readable on mobile */
-  }
+  /* on mobile, keep readability + keep spotlight centered */
+  #hormones.hormone-grayblue .hormone-img-wrap::before{ left: 50%; top: 58%; width: 92vw; height: 70vw; opacity: 0.55; }
+  #hormones.hormone-grayblue .hormone-people-img{ left: 50%; width: 92vw; opacity: 0.30; }
+}
+
 }
 </style>
 </head>
