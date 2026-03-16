@@ -438,6 +438,21 @@ nav {
 }
 .hims-btn-ghost:hover { background: rgba(255,255,255,0.90); }
 
+/* CTA row: sit tight just above cards (Hims-style) */
+.hims-cta-row{
+  position: relative;
+  z-index: 6;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+  padding: 0 var(--g);
+  margin-top: auto;      /* pushes CTAs + cards to bottom */
+  margin-bottom: 10px;   /* tight spacing above cards */
+  flex-wrap: wrap;
+}
+
+
 /* Person — sharp cutout, fills center, NO blend mode */
 .hims-person-wrap {
   position: absolute;
@@ -463,8 +478,8 @@ nav {
   position: relative;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 12px; width: 100%;
-  padding: 16px var(--g) 20px;
-  margin-top: auto;
+  padding: 6px var(--g) 20px;
+  margin-top: 0;
 }
 .himscard {
   background: rgba(255,255,255,0.78);
@@ -488,19 +503,6 @@ nav {
   text-align: center; padding: 0 var(--g) 24px; line-height: 1.5;
 }
 @media(max-width:640px) { .hims-cards { grid-template-columns: 1fr; } .hims-person-wrap { width: 90%; } }
-
-
-/* === HERO: tighten CTA row above cards (Hims-style) === */
-.hims-bottom{position:relative; width:100%; margin-top:auto; padding-bottom:10px;}
-.hims-cta-row{display:flex; justify-content:center; gap:12px; padding:0 var(--g); margin: 0 0 10px; flex-wrap:wrap;}
-
-/* override earlier cards spacing so it hugs the CTA row */
-.hims-cards{margin-top:0 !important; padding-top: 10px; padding-bottom: 18px;}
-
-@media (max-width: 720px){
-  .hims-cta-row{margin-bottom:8px;}
-  .hims-cards{padding-top: 8px;}
-}
 </style>
 </head>
 <body>
@@ -615,25 +617,23 @@ nav {
     <img src="assets/hero.png" alt="Fit couple" class="hims-person-img" />
   </div>
 
-  <div class="hims-bottom" style="z-index:6">
-    <div class="hims-cta-row">
-      <button class="hims-btn-solid">Get started</button>
-      <button class="hims-btn-ghost">How much could I lose? →</button>
+  <div class="hims-cta-row">
+    <button class="hims-btn-solid">Get started</button>
+    <button class="hims-btn-ghost">How much could I lose? →</button>
+  </div>
+  <div class="hims-cards" style="z-index:5">
+    <div class="himscard reveal">
+      <div class="himscard-title">GLP-1 Rx</div>
+      <div class="himscard-sub">to lose weight your way</div>
+      <div class="himscard-vis">💊</div>
+      <button class="himscard-btn">Learn more</button>
     </div>
-      <div class="hims-cards">
-        <div class="himscard reveal">
-          <div class="himscard-title">GLP-1 Rx</div>
-          <div class="himscard-sub">to lose weight your way</div>
-          <div class="himscard-vis">💊</div>
-          <button class="himscard-btn">Learn more</button>
-        </div>
-        <div class="himscard reveal d1">
-          <div class="himscard-title">Metabolic labs</div>
-          <div class="himscard-sub">to track your progress</div>
-          <div class="himscard-vis">🧬</div>
-          <button class="himscard-btn">Start testing</button>
-        </div>
-      </div>
+    <div class="himscard reveal d1">
+      <div class="himscard-title">Metabolic labs</div>
+      <div class="himscard-sub">to track your progress</div>
+      <div class="himscard-vis">🧬</div>
+      <button class="himscard-btn">Start testing</button>
+    </div>
   </div>
   <div class="hims-disc" style="position:relative;z-index:5">Compounded products are not approved nor evaluated for safety, effectiveness, or quality by the FDA.</div>
 </section>
