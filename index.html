@@ -525,7 +525,7 @@ nav {
 
 
 /* --- Subtle dotted-line traveler dots (move, stop, radiate) --- */
-.hero-dots{position:absolute;inset:0;z-index:1;pointer-events:none;}
+\.hero-dots{position:absolute;inset:0;z-index:3;pointer-events:none;}
 
 /* Muted color, slow motion so it stays background */
 .hero-dot{
@@ -538,6 +538,8 @@ nav {
   /* follow the SAME curve as the SVG line */
   offset-path: path('M0 480 Q300 280 600 340 T1100 200 T1600 180');
   offset-rotate: 0deg;
+  -webkit-offset-path: path('M0 480 Q300 280 600 340 T1100 200 T1600 180');
+  -webkit-offset-rotate: 0deg;
 
   /* One-time: move up, then stop */
   animation: heroDotMove 18s ease-out forwards;
@@ -579,7 +581,10 @@ nav {
 
 /* Prefer reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .hero-dot, .hero-dot::after{animation:none; opacity:0;}
+  /* Keep the accent visible, but stop motion */
+  .hero-dot{animation:none; opacity:0.20; offset-distance:70%; -webkit-offset-distance:70%;}
+  .hero-dot::after{animation:none; opacity:0;}
+}
 }
 
 @media (max-width:720px){
