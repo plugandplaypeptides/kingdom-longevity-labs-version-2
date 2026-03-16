@@ -69,7 +69,7 @@ nav {
 .pc-b { background: radial-gradient(ellipse at center, #E8C470 0%, #D4A840 40%, #B88820 70%, #9A7010 100%); }
 .pc::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.04) 50%, transparent 75%); pointer-events: none; z-index: 1; }
 .pc-person { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; z-index: 2; overflow: hidden; }
-.pc-person img { width: auto; height: 115%; object-fit: contain; object-position: bottom center; mix-blend-mode: multiply; transform: translateY(8%); }
+.pc-person img { width: auto; height: 115%; object-fit: contain; object-position: bottom center; transform: translateY(8%); }
 .pc-overlay { position: absolute; inset: 0; z-index: 3; display: flex; align-items: flex-end; justify-content: space-between; padding: 24px 26px; }
 .pc-text { display: flex; flex-direction: column; gap: 3px; }
 .pc-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
@@ -80,7 +80,7 @@ nav {
 .pc:hover .pc-arrow { background: rgba(255,255,255,0.28); transform: translate(2px,-2px); }
 .pc-arrow svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Hero sub cards — 4 equal cards matching Hims layout */
+/* Hero sub cards */
 .hero-sub-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -105,80 +105,25 @@ nav {
   transform: translateY(-2px);
   border-color: rgba(11,31,58,0.18);
 }
-.hsc-text {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-.hsc-label {
-  font-size: 13px;
-  color: var(--body);
-  font-weight: 400;
-  line-height: 1.2;
-}
-.hsc-name {
-  font-size: 14px;
-  color: var(--navy);
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-.hsc-name em {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--gold);
-  font-size: 16px;
-}
-.hsc-right {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
-}
-.hsc-icon {
-  font-size: 28px;
-  line-height: 1;
-}
-.hsc-arrow {
-  width: 16px; height: 16px;
-  stroke: var(--navy); fill: none;
-  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-  opacity: 0.5;
-  transition: opacity 0.2s, transform 0.2s;
-}
+.hsc-text { display: flex; flex-direction: column; gap: 1px; }
+.hsc-label { font-size: 13px; color: var(--body); font-weight: 400; line-height: 1.2; }
+.hsc-name { font-size: 14px; color: var(--navy); font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; }
+.hsc-name em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: var(--gold); font-size: 16px; }
+.hsc-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.hsc-icon { font-size: 28px; line-height: 1; }
+.hsc-arrow { width: 16px; height: 16px; stroke: var(--navy); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.5; transition: opacity 0.2s, transform 0.2s; }
 .hsc:hover .hsc-arrow { opacity: 1; transform: translateX(2px); }
-
-/* Last card — "Start here" variant */
-.hsc-start {
-  background: var(--navy);
-  border-color: var(--navy);
-}
+.hsc-start { background: var(--navy); border-color: var(--navy); }
 .hsc-start .hsc-label { color: rgba(255,255,255,0.55); }
 .hsc-start .hsc-name { color: #fff; }
 .hsc-start .hsc-name em { color: var(--gold-light); }
 .hsc-start:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
-.hsc-plus {
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.18);
-  border: 1.5px solid rgba(255,255,255,0.35);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; color: #fff; font-weight: 300;
-  flex-shrink: 0;
-  transition: all 0.2s;
-}
+.hsc-plus { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.35); display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; font-weight: 300; flex-shrink: 0; transition: all 0.2s; }
 .hsc-start:hover .hsc-plus { background: rgba(255,255,255,0.28); }
 
-@media(max-width:640px) {
-  .hero-sub-cards { grid-template-columns: repeat(2, 1fr); }
-}
+@media(max-width:640px) { .hero-sub-cards { grid-template-columns: repeat(2, 1fr); } }
 
-
-
-/* ═══════════════════════════════════════════
-   CONDITION SECTIONS — Full viewport, photo BG
-   ═══════════════════════════════════════════ */
+/* CONDITION SECTIONS */
 .cond {
   position: relative;
   width: calc(100% - 24px);
@@ -190,77 +135,35 @@ nav {
   flex-direction: column;
   justify-content: space-between;
 }
-
-/* The background — gradient stands in until real photo added */
-.cond-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background-size: cover; background-position: center top;
-}
-/* Dark gradient overlay from bottom-left so LEFT text is always readable */
+.cond-bg { position: absolute; inset: 0; z-index: 0; background-size: cover; background-position: center top; }
 .cond-bg::after {
   content: ''; position: absolute; inset: 0;
   background:
     linear-gradient(to right, rgba(5,15,35,0.75) 0%, rgba(5,15,35,0.45) 50%, rgba(5,15,35,0.10) 100%),
     linear-gradient(to top, rgba(5,15,35,0.60) 0%, transparent 60%);
 }
-
-/* Placeholder gradient when no photo */
 .bg-blue  .cond-bg-fill { position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, #88C0E0 0%, #4490C8 40%, #1C5EA0 70%, #0A2E60 100%); }
 .bg-gold  .cond-bg-fill { position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, #F5D870 0%, #D4A820 40%, #9A7800 70%, #5A4000 100%); }
 .bg-sage  .cond-bg-fill { position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, #90D890 0%, #3A9A3A 40%, #186018 70%, #082808 100%); }
 .bg-warm  .cond-bg-fill { position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 40%, #F8C090 0%, #D06840 40%, #883018 70%, #401008 100%); }
-
-/* Dotted path — sits over BG, under text */
 .cond-path { position: absolute; z-index: 1; left: 0; right: 0; top: 50%; transform: translateY(-50%); height: 120px; pointer-events: none; opacity: 0.4; }
 .cond-path svg { width: 100%; height: 100%; }
-
-/* Pill dots on path */
 .path-dot { position: absolute; width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.4); top: 50%; transform: translateY(-50%); }
 .path-dot:nth-child(1) { left: 15%; }
 .path-dot:nth-child(2) { left: 38%; }
 .path-dot:nth-child(3) { left: 62%; }
 .path-dot:nth-child(4) { left: 82%; }
-
-/* Text sits top-left */
-.cond-text {
-  position: relative; z-index: 3;
-  padding: clamp(48px,6vw,80px) var(--g) 0;
-  max-width: 640px;
-}
+.cond-text { position: relative; z-index: 3; padding: clamp(48px,6vw,80px) var(--g) 0; max-width: 640px; }
 .c-eyebrow { font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 16px; }
-.c-headline {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(56px, 8.5vw, 112px);
-  font-weight: 400; color: #fff;
-  letter-spacing: -0.025em; line-height: 0.92;
-  margin-bottom: 32px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-}
+.c-headline { font-family: 'Cormorant Garamond', serif; font-size: clamp(56px, 8.5vw, 112px); font-weight: 400; color: #fff; letter-spacing: -0.025em; line-height: 0.92; margin-bottom: 32px; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
 .c-headline em { font-style: italic; color: var(--gold-light); }
 .c-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 .btn-w { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; padding: 14px 36px; border-radius: var(--r-pill); background: #fff; border: none; color: var(--navy); cursor: pointer; transition: all 0.25s; }
 .btn-w:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
 .btn-o { font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 14px 32px; border-radius: var(--r-pill); background: transparent; border: 2px solid rgba(255,255,255,0.55); color: #fff; cursor: pointer; transition: all 0.25s; font-weight: 400; }
 .btn-o:hover { border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.10); }
-
-/* Product cards — bottom of section, frosted glass */
-.cond-cards {
-  position: relative; z-index: 3;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 0 var(--g) clamp(32px,5vw,56px);
-  margin-top: auto;
-}
-.cc {
-  background: rgba(255,255,255,0.16);
-  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border: 1.5px solid rgba(255,255,255,0.30);
-  border-radius: var(--r-card);
-  padding: 22px 24px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  display: flex; flex-direction: column; gap: 6px;
-}
+.cond-cards { position: relative; z-index: 3; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 var(--g) clamp(32px,5vw,56px); margin-top: auto; }
+.cc { background: rgba(255,255,255,0.16); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1.5px solid rgba(255,255,255,0.30); border-radius: var(--r-card); padding: 22px 24px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; gap: 6px; }
 .cc:hover { background: rgba(255,255,255,0.26); transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
 .cc-title { font-size: 16px; font-weight: 600; color: #fff; letter-spacing: -0.01em; line-height: 1.2; text-shadow: 0 1px 4px rgba(0,0,0,0.2); }
 .cc-title em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold-light); font-weight: 400; font-size: 17px; }
@@ -269,9 +172,7 @@ nav {
 .cc:hover .cc-cta { gap: 10px; color: #fff; }
 .cc-cta svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
-
-
-/* ═══ DOCTORS ═══ */
+/* DOCTORS */
 #doctors { padding: clamp(64px,8vw,100px) var(--g); }
 .sec-wrap { max-width: var(--max-w); margin: 0 auto; }
 .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
@@ -287,7 +188,7 @@ nav {
 .doc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .doc-tag { font-size: 10px; padding: 3px 9px; border-radius: var(--r-pill); background: var(--sky); color: var(--navy-mid); border: 1px solid rgba(11,31,58,0.08); }
 
-/* ═══ TESTIMONIALS ═══ */
+/* TESTIMONIALS */
 #testimonials {
   width: calc(100% - 24px); margin: 0 12px;
   border-radius: var(--r-section); overflow: hidden;
@@ -312,7 +213,7 @@ nav {
 .tc-name { font-size: 13px; font-weight: 500; color: var(--navy); }
 .tc-detail { font-size: 11px; color: var(--muted); margin-top: 1px; }
 
-/* ═══ LEAD CTA ═══ */
+/* LEAD CTA */
 #lead {
   width: calc(100% - 24px); margin: 16px 12px 0;
   border-radius: var(--r-section); overflow: hidden;
@@ -333,7 +234,7 @@ nav {
 .btn-gold:hover { background: #D4B483; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.35); }
 .lead-disc { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.5; }
 
-/* ═══ FOOTER ═══ */
+/* FOOTER */
 #footer {
   width: calc(100% - 24px); margin: 16px 12px 16px;
   border-radius: var(--r-section); overflow: hidden;
@@ -362,24 +263,7 @@ nav {
 .reveal.on { opacity: 1; transform: none; }
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* RESPONSIVE */
-@media(max-width:900px){.doc-grid{grid-template-columns:repeat(3,1fr)}.lead-wrap{grid-template-columns:1fr;gap:32px}}
-@media(max-width:640px){
-  .nav-links{display:none}
-  .hero-cards{grid-template-columns:1fr}
-  .pills{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}
-  .pills::-webkit-scrollbar{display:none}
-  .cond{width:calc(100% - 16px);margin-left:8px;margin-right:8px}
-  .cond-cards{grid-template-columns:1fr}
-  .c-headline{font-size:clamp(44px,12vw,72px)}
-  .doc-grid{grid-template-columns:repeat(2,1fr)}
-  .ft-grid{grid-template-columns:1fr}
-  .ft-bot{flex-direction:column;gap:12px;text-align:center}
-  .ft-disc{text-align:center;max-width:100%}
-}
-@media(prefers-reduced-motion:reduce){.rotating,.reveal{opacity:1;transform:none;transition:none}}
-
-/* ═══ HIMS-STYLE SECTION ═══ */
+/* HIMS-STYLE SECTION */
 .hims-section {
   position: relative;
   width: calc(100% - 24px);
@@ -395,99 +279,44 @@ nav {
   position: absolute; inset: 0; z-index: 0;
   background: radial-gradient(ellipse at 50% 30%, #F8F4D8 0%, #EEDE90 35%, #D8C860 65%, #C0B040 100%);
 }
-.hims-path {
-  position: absolute; inset: 0;
-  pointer-events: none;
-}
-.hims-pdot {
-  position: absolute; width: 18px; height: 18px; border-radius: 50%;
-  border: 2px solid rgba(140,120,20,0.50);
-  background: rgba(180,160,40,0.22);
-  transform: translate(-50%,-50%);
-}
+.hims-path { position: absolute; inset: 0; pointer-events: none; }
+.hims-pdot { position: absolute; width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(140,120,20,0.50); background: rgba(180,160,40,0.22); transform: translate(-50%,-50%); }
 .hims-pdot-lg { width: 26px; height: 26px; background: rgba(180,160,40,0.32); }
-.hims-top {
-  position: relative;
-  z-index: 4;
-  text-align: center;
-  padding: clamp(48px,6vw,72px) var(--g) 28px;
-  width: 100%;
-}
-.hims-headline {
-  font-family: 'DM Sans', sans-serif;
-  font-size: clamp(26px,3.5vw,44px); font-weight: 500;
-  color: var(--navy); letter-spacing: -0.02em; line-height: 1.2;
-  margin-bottom: 24px;
-}
-.hims-headline em {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic; font-weight: 400; color: #6A5010;
-}
+.hims-top { position: relative; z-index: 4; text-align: center; padding: clamp(48px,6vw,72px) var(--g) 28px; width: 100%; }
+.hims-headline { font-family: 'DM Sans', sans-serif; font-size: clamp(26px,3.5vw,44px); font-weight: 500; color: var(--navy); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 24px; }
+.hims-headline em { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; color: #6A5010; }
 .hims-btns { display: flex; gap: 12px; justify-content: center; }
-.hims-btn-solid {
-  font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
-  padding: 14px 36px; border-radius: var(--r-pill);
-  background: var(--navy); border: none; color: #fff; cursor: pointer; transition: all 0.25s;
-}
+.hims-btn-solid { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; padding: 14px 36px; border-radius: var(--r-pill); background: var(--navy); border: none; color: #fff; cursor: pointer; transition: all 0.25s; }
 .hims-btn-solid:hover { background: var(--navy-mid); transform: translateY(-2px); }
-.hims-btn-ghost {
-  font-family: 'DM Sans', sans-serif; font-size: 15px;
-  padding: 14px 28px; border-radius: var(--r-pill);
-  background: rgba(255,255,255,0.65); border: 1.5px solid rgba(11,31,58,0.25);
-  color: var(--navy); cursor: pointer; transition: all 0.25s;
-}
+.hims-btn-ghost { font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 14px 28px; border-radius: var(--r-pill); background: rgba(255,255,255,0.65); border: 1.5px solid rgba(11,31,58,0.25); color: var(--navy); cursor: pointer; transition: all 0.25s; }
 .hims-btn-ghost:hover { background: rgba(255,255,255,0.90); }
-
-/* Person — sharp cutout, fills center, NO blend mode */
-.hims-person-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  overflow: visible;
-}
-
-.hims-person-img {
-  position: absolute;
-  bottom: 160px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1100px;
-  height: auto;
-  display: block;
-}
-
-
-/* Product cards */
-.hims-cards {
-  position: relative;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 12px; width: 100%;
-  padding: 16px var(--g) 20px;
-  margin-top: auto;
-}
-.himscard {
-  background: rgba(255,255,255,0.78);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-radius: var(--r-card); padding: 24px;
-  display: flex; flex-direction: column; gap: 4px;
-  min-height: 220px; overflow: hidden; transition: all 0.3s; cursor: pointer;
-}
+.hims-person-wrap { position: absolute; inset: 0; z-index: 2; overflow: visible; }
+.hims-person-img { position: absolute; bottom: 160px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; height: auto; display: block; }
+.hims-cards { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; padding: 16px var(--g) 20px; margin-top: auto; }
+.himscard { background: rgba(255,255,255,0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: var(--r-card); padding: 24px; display: flex; flex-direction: column; gap: 4px; min-height: 220px; overflow: hidden; transition: all 0.3s; cursor: pointer; }
 .himscard:hover { background: rgba(255,255,255,0.95); transform: translateY(-3px); box-shadow: 0 20px 48px rgba(11,31,58,0.10); }
 .himscard-title { font-size: 22px; font-weight: 500; color: var(--navy); letter-spacing: -0.02em; }
 .himscard-sub { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: #6A5010; margin-bottom: 8px; }
 .himscard-vis { font-size: 64px; opacity: 0.20; margin: auto 0; transform: rotate(-8deg); }
-.himscard-btn {
-  font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-  padding: 12px 28px; border-radius: var(--r-pill);
-  background: var(--navy); border: none; color: #fff; cursor: pointer; transition: all 0.25s; align-self: flex-start;
-}
+.himscard-btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 28px; border-radius: var(--r-pill); background: var(--navy); border: none; color: #fff; cursor: pointer; transition: all 0.25s; align-self: flex-start; }
 .himscard-btn:hover { background: var(--navy-mid); transform: translateY(-1px); }
-.hims-disc {
-  font-size: 11px; color: rgba(11,31,58,0.45);
-  text-align: center; padding: 0 var(--g) 24px; line-height: 1.5;
+.hims-disc { font-size: 11px; color: rgba(11,31,58,0.45); text-align: center; padding: 0 var(--g) 24px; line-height: 1.5; }
+
+/* RESPONSIVE */
+@media(max-width:900px){ .doc-grid{grid-template-columns:repeat(3,1fr)} .lead-wrap{grid-template-columns:1fr;gap:32px} }
+@media(max-width:640px){
+  .nav-links{display:none}
+  .hero-cards{grid-template-columns:1fr}
+  .cond{width:calc(100% - 16px);margin-left:8px;margin-right:8px}
+  .cond-cards{grid-template-columns:1fr}
+  .c-headline{font-size:clamp(44px,12vw,72px)}
+  .doc-grid{grid-template-columns:repeat(2,1fr)}
+  .ft-grid{grid-template-columns:1fr}
+  .ft-bot{flex-direction:column;gap:12px;text-align:center}
+  .ft-disc{text-align:center;max-width:100%}
+  .hims-cards{grid-template-columns:1fr}
 }
-@media(max-width:640px) { .hims-cards { grid-template-columns: 1fr; } .hims-person-wrap { width: 90%; } }
+@media(prefers-reduced-motion:reduce){ .rotating,.reveal{opacity:1;transform:none;transition:none} }
 </style>
 </head>
 <body>
@@ -514,16 +343,30 @@ nav {
     <div class="fixed-line">personalized to you</div>
     <div class="hero-cards">
       <div class="pc pc-a">
-        <div class="pc-person" id="man-slot"></div>
+        <div class="pc-person">
+          <img src="assets/svgimg-fd4e5fdf2c35.png" alt="Healthy man" />
+        </div>
         <div class="pc-overlay">
-          <div class="pc-text"><div class="pc-label">Most popular</div><div class="pc-title">Lose weight<br>your way</div><div class="pc-sub">GLP-1 programs that fit your life</div><div class="pc-price">from $149/mo</div></div>
+          <div class="pc-text">
+            <div class="pc-label">Most popular</div>
+            <div class="pc-title">Lose weight<br>your way</div>
+            <div class="pc-sub">GLP-1 programs that fit your life</div>
+            <div class="pc-price">from $149/mo</div>
+          </div>
           <div class="pc-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
         </div>
       </div>
       <div class="pc pc-b">
-        <div class="pc-person" id="woman-slot"></div>
+        <div class="pc-person">
+          <img src="assets/svgimg-6224b7edf290.png" alt="Healthy woman" />
+        </div>
         <div class="pc-overlay">
-          <div class="pc-text"><div class="pc-label">See your results</div><div class="pc-title">How much could<br>you lose?</div><div class="pc-sub">Take the 60-second assessment</div><div class="pc-price">Free assessment</div></div>
+          <div class="pc-text">
+            <div class="pc-label">See your results</div>
+            <div class="pc-title">How much could<br>you lose?</div>
+            <div class="pc-sub">Take the 60-second assessment</div>
+            <div class="pc-price">Free assessment</div>
+          </div>
           <div class="pc-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
         </div>
       </div>
@@ -572,15 +415,9 @@ nav {
   </div>
 </section>
 
-
-
 <!-- WEIGHT LOSS -->
 <section class="hims-section" id="weight-loss">
-
-  <!-- Warm cream gradient background -->
   <div class="hims-bg-grad"></div>
-
-  <!-- Dotted path BEHIND the person — z-index 1 -->
   <div class="hims-path" style="z-index:1">
     <svg viewBox="0 0 1400 600" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
       <path d="M0,480 Q300,280 600,340 T1100,200 T1600,180" fill="none" stroke="rgba(11,31,58,0.20)" stroke-width="1.5" stroke-dasharray="6,5"/>
@@ -590,18 +427,12 @@ nav {
     <div class="hims-pdot" style="left:72%;top:36%"></div>
     <div class="hims-pdot hims-pdot-lg" style="left:88%;top:28%"></div>
   </div>
-
-  <!-- Headline top center — z-index 4 -->
   <div class="hims-top reveal" style="z-index:4">
     <div class="hims-headline">Reach your health goals<br>with <em>Kingdom Longevity Labs</em></div>
-
   </div>
-
-  <!-- Person — crystal clear, NO blend mode, z-index 3 above path below cards -->
   <div class="hims-person-wrap">
     <img src="assets/inline-118be4371246.svg" alt="Fit couple" class="hims-person-img" />
   </div>
-
   <div style="position:relative;z-index:6;display:flex;gap:12px;justify-content:center;width:100%;padding:0 var(--g) 16px;">
     <button class="hims-btn-solid">Get started</button>
     <button class="hims-btn-ghost">How much could I lose? →</button>
@@ -764,9 +595,10 @@ nav {
 </footer>
 
 <script>
-
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
