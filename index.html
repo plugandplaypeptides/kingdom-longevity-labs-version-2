@@ -639,12 +639,12 @@ nav {
 }
 
 
-/* Hair & Sexual sections: editorial blue-gray system */
-#hair.panel-hair, #sexual-health.panel-sexual{ position: relative; overflow: hidden; }
+/* Hair & Sexual sections: editorial blue-gray system (ID-based) */
+#hair, #sexual-health{ position: relative; overflow: hidden; }
 
-/* uniform: bluish top -> gray bottom (consistent with Hormones) */
-#hair.panel-hair .cond-bg-fill,
-#sexual-health.panel-sexual .cond-bg-fill{
+/* uniform: steel blue/gray-blue top -> gray bottom (consistent with Hormones) */
+#hair .cond-bg-fill,
+#sexual-health .cond-bg-fill{
   background: linear-gradient(180deg,
     #D6E3F0 0%,
     #BFCFE0 42%,
@@ -654,19 +654,25 @@ nav {
   opacity: 1 !important;
 }
 
-/* keep all existing content above visual layers */
-#hair.panel-hair .cond-text,
-#hair.panel-hair .cond-cards,
-#hair.panel-hair .cond-path,
-#sexual-health.panel-sexual .cond-text,
-#sexual-health.panel-sexual .cond-cards,
-#sexual-health.panel-sexual .cond-path{ position: relative; z-index: 4; }
+/* keep existing content above visual layers */
+#hair .cond-text,
+#hair .cond-cards,
+#hair .cond-path,
+#sexual-health .cond-text,
+#sexual-health .cond-cards,
+#sexual-health .cond-path{ position: relative; z-index: 4; }
 
-/* Hair image overlay */
-#hair.panel-hair .hair-img-wrap{
-  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+/* Image overlays: make them ABSOLUTE so they add ZERO layout height */
+#hair .hair-img-wrap,
+#sexual-health .sexual-img-wrap{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
 }
-#hair.panel-hair .hair-img-wrap::before{
+
+/* Hair spotlight + image */
+#hair .hair-img-wrap::before{
   content:"";
   position:absolute;
   left: 60%;
@@ -682,22 +688,20 @@ nav {
   );
   opacity: 0.95;
 }
-#hair.panel-hair .hair-img-wrap-img{
+#hair .hair-img-wrap-img{
   position:absolute;
   left: 60%;
   bottom: -12px;
   transform: translateX(-50%);
   width: min(900px, 78vw);
   height:auto;
+  display:block;
   filter: drop-shadow(0 22px 44px rgba(10,16,26,0.22));
   opacity: 0.98;
 }
 
-/* Sexual Health image overlay */
-#sexual-health.panel-sexual .sexual-img-wrap{
-  position: absolute; inset: 0; z-index: 2; pointer-events: none;
-}
-#sexual-health.panel-sexual .sexual-img-wrap::before{
+/* Sexual spotlight + image */
+#sexual-health .sexual-img-wrap::before{
   content:"";
   position:absolute;
   left: 60%;
@@ -713,22 +717,27 @@ nav {
   );
   opacity: 0.95;
 }
-#sexual-health.panel-sexual .sexual-img-wrap-img{
+#sexual-health .sexual-img-wrap-img{
   position:absolute;
   left: 60%;
   bottom: -12px;
   transform: translateX(-50%);
   width: min(900px, 78vw);
   height:auto;
+  display:block;
   filter: drop-shadow(0 22px 44px rgba(10,16,26,0.22));
   opacity: 0.98;
 }
 
 @media (max-width: 900px){
-  #hair.panel-hair .hair-img-wrap::before,
-  #sexual-health.panel-sexual .sexual-img-wrap::before{ left: 50%; top: 58%; width: 92vw; height: 70vw; opacity: 0.55; }
-  #hair.panel-hair .hair-img-wrap-img,
-  #sexual-health.panel-sexual .sexual-img-wrap-img{ left: 50%; width: 92vw; opacity: 0.30; }
+  #hair .hair-img-wrap::before,
+  #sexual-health .sexual-img-wrap::before{ left: 50%; top: 58%; width: 92vw; height: 70vw; opacity: 0.55; }
+  #hair .hair-img-wrap-img,
+  #sexual-health .sexual-img-wrap-img{ left: 50%; width: 92vw; opacity: 0.30; }
+}
+
+  #hair. .hair-img-wrap-img,
+  #sexual-health. .sexual-img-wrap-img{ left: 50%; width: 92vw; opacity: 0.30; }
 }
 </style>
 </head>
