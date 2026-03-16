@@ -577,10 +577,10 @@ nav {
 /* uniform top→bottom transition (lighter top, deeper gray bottom) */
 #hormones.hormone-grayblue .cond-bg-fill{
   background: linear-gradient(180deg,
-    #E7EEF6 0%,
-    #D3DCE7 38%,
-    #A3AAB6 72%,
-    #6E747F 100%
+    #D6E3F0 0%,
+    #BFCFE0 42%,
+    #98A6B6 72%,
+    #6F757F 100%
   ) !important;
   opacity: 1 !important;
 }
@@ -636,6 +636,99 @@ nav {
   #hormones.hormone-grayblue .hormone-people-img{ left: 50%; width: 92vw; opacity: 0.30; }
 }
 
+}
+
+
+/* Hair & Sexual sections: editorial blue-gray system */
+#hair.panel-hair, #sexual-health.panel-sexual{ position: relative; overflow: hidden; }
+
+/* uniform: bluish top -> gray bottom (consistent with Hormones) */
+#hair.panel-hair .cond-bg-fill,
+#sexual-health.panel-sexual .cond-bg-fill{
+  background: linear-gradient(180deg,
+    #D6E3F0 0%,
+    #BFCFE0 42%,
+    #98A6B6 72%,
+    #6F757F 100%
+  ) !important;
+  opacity: 1 !important;
+}
+
+/* keep all existing content above visual layers */
+#hair.panel-hair .cond-text,
+#hair.panel-hair .cond-cards,
+#hair.panel-hair .cond-path,
+#sexual-health.panel-sexual .cond-text,
+#sexual-health.panel-sexual .cond-cards,
+#sexual-health.panel-sexual .cond-path{ position: relative; z-index: 4; }
+
+/* Hair image overlay */
+#hair.panel-hair .hair-img-wrap{
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+}
+#hair.panel-hair .hair-img-wrap::before{
+  content:"";
+  position:absolute;
+  left: 60%;
+  top: 52%;
+  transform: translate(-50%,-50%);
+  width: min(980px, 82vw);
+  height: min(640px, 64vw);
+  background: radial-gradient(circle at 50% 50%,
+    rgba(255,255,255,0.50) 0%,
+    rgba(255,255,255,0.22) 24%,
+    rgba(255,255,255,0.10) 44%,
+    rgba(255,255,255,0.00) 70%
+  );
+  opacity: 0.95;
+}
+#hair.panel-hair .hair-img-wrap-img{
+  position:absolute;
+  left: 60%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: min(900px, 78vw);
+  height:auto;
+  filter: drop-shadow(0 22px 44px rgba(10,16,26,0.22));
+  opacity: 0.98;
+}
+
+/* Sexual Health image overlay */
+#sexual-health.panel-sexual .sexual-img-wrap{
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+}
+#sexual-health.panel-sexual .sexual-img-wrap::before{
+  content:"";
+  position:absolute;
+  left: 60%;
+  top: 52%;
+  transform: translate(-50%,-50%);
+  width: min(980px, 82vw);
+  height: min(640px, 64vw);
+  background: radial-gradient(circle at 50% 50%,
+    rgba(255,255,255,0.50) 0%,
+    rgba(255,255,255,0.22) 24%,
+    rgba(255,255,255,0.10) 44%,
+    rgba(255,255,255,0.00) 70%
+  );
+  opacity: 0.95;
+}
+#sexual-health.panel-sexual .sexual-img-wrap-img{
+  position:absolute;
+  left: 60%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: min(900px, 78vw);
+  height:auto;
+  filter: drop-shadow(0 22px 44px rgba(10,16,26,0.22));
+  opacity: 0.98;
+}
+
+@media (max-width: 900px){
+  #hair.panel-hair .hair-img-wrap::before,
+  #sexual-health.panel-sexual .sexual-img-wrap::before{ left: 50%; top: 58%; width: 92vw; height: 70vw; opacity: 0.55; }
+  #hair.panel-hair .hair-img-wrap-img,
+  #sexual-health.panel-sexual .sexual-img-wrap-img{ left: 50%; width: 92vw; opacity: 0.30; }
 }
 </style>
 </head>
@@ -938,6 +1031,8 @@ nav {
 <div class="cc reveal"><div class="cc-title">Finasteride + Minoxidil <em>to regrow hair</em></div><div class="cc-sub">Clinically-proven dual therapy, personalized doses</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
 <div class="cc reveal d1"><div class="cc-title">Custom topical <em>for faster results</em></div><div class="cc-sub">Compounded formula targeting your specific pattern</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
 </div>
+
+<div class="hair-img-wrap" aria-hidden="true"><img class="hair-img-wrap-img" src="assets/GreatHairManWoman.png" alt="" loading="lazy" onerror="this.style.display='none'" /></div>
 </section>
 <!-- SEXUAL HEALTH -->
 <section class="cond bg-warm" id="sexual-health" style="margin-top:16px">
@@ -960,6 +1055,8 @@ nav {
 <div class="cc reveal"><div class="cc-title">ED treatment <em>that actually works</em></div><div class="cc-sub">Sildenafil, tadalafil, or custom compounded formulas</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
 <div class="cc reveal d1"><div class="cc-title">Women's wellness <em>personalized for you</em></div><div class="cc-sub">Libido, hormones, and intimate health for women</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
 </div>
+
+<div class="sexual-img-wrap" aria-hidden="true"><img class="sexual-img-wrap-img" src="assets/CoupleEmbracing.png" alt="" loading="lazy" onerror="this.style.display='none'" /></div>
 </section>
 <!-- DOCTORS -->
 <section id="doctors">
