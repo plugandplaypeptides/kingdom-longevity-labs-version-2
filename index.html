@@ -1,13 +1,14 @@
 <!-- DEPLOY-MARKER-CTA-TEST -->
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Kingdom Longevity Labs — Personalized Telehealth</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400;1,600&amp;display=swap" rel="stylesheet"/>
 <style>
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -546,477 +547,475 @@ nav {
 @media (max-width:720px){
   }
 
+
+
+/* Hormone section restyle */
+.hormone-section{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-section);
+  margin: 16px 12px 0;
+  width: calc(100% - 24px);
+}
+
+/* “almost gray-blue” gradient (inspired by premium editorial sites) */
+.hormone-section{
+  background: linear-gradient(180deg,
+    #EEF3F9 0%,
+    #DDE7F2 38%,
+    #C6D4E3 70%,
+    #B7C7D9 100%
+  );
+}
+
+.hormone-inner{
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(280px, 520px);
+  gap: clamp(18px, 4vw, 48px);
+  align-items: end;
+  padding: clamp(28px, 4.8vw, 56px) var(--g);
+}
+
+.hormone-content{
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+
+.hormone-visual{
+  position: relative;
+  z-index: 1;
+  min-height: clamp(260px, 28vw, 420px);
+}
+
+.hormone-people-img{
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  width: min(520px, 92%);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 22px 40px rgba(12, 20, 33, 0.18));
+}
+
+.hormone-orb{
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+.hormone-orb-1{
+  width: 160px; height: 160px;
+  right: 24%; top: 14%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.60), rgba(255,255,255,0) 60%);
+  opacity: 0.65;
+}
+.hormone-orb-2{
+  width: 220px; height: 220px;
+  right: -40px; top: 40%;
+  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.42), rgba(255,255,255,0) 65%);
+  opacity: 0.55;
+}
+
+@media (max-width: 900px){
+  .hormone-inner{ grid-template-columns: 1fr; align-items: start; }
+  .hormone-visual{ order: 2; min-height: 320px; }
+  .hormone-people-img{ left: 50%; right: auto; transform: translateX(-50%); width: min(560px, 96%); }
+}
 </style>
 </head>
 <body>
-
 <!-- NAV -->
 <nav>
-  <div class="logo">Kingdom <span>Longevity</span> Labs</div>
-  <ul class="nav-links">
-    <li><a href="#weight-loss">Weight Loss</a></li>
-    <li><a href="#hormones">Hormones</a></li>
-    <li><a href="#hair">Hair</a></li>
-    <li><a href="#sexual-health">Sexual Health</a></li>
-  </ul>
-  <div class="nav-r">
-    <button class="btn-ghost">Log in</button>
-    <button class="btn-navy">Get Started</button>
-  </div>
+<div class="logo">Kingdom <span>Longevity</span> Labs</div>
+<ul class="nav-links">
+<li><a href="#weight-loss">Weight Loss</a></li>
+<li><a href="#hormones">Hormones</a></li>
+<li><a href="#hair">Hair</a></li>
+<li><a href="#sexual-health">Sexual Health</a></li>
+</ul>
+<div class="nav-r">
+<button class="btn-ghost">Log in</button>
+<button class="btn-navy">Get Started</button>
+</div>
 </nav>
-
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-wrap">
-    <div class="clip"><div class="rotating"><span>Weight loss</span><span>Hormone health</span><span>Hair regrowth</span><span>Better intimacy</span></div></div>
-    <div class="fixed-line">personalized to you</div>
-    <div class="hero-cards">
-      <div class="pc pc-a">
-        <div class="pc-person" id="man-slot"></div>
-        <div class="pc-overlay">
-          <div class="pc-text"><div class="pc-label">Most popular</div><div class="pc-title">Lose weight<br>your way</div><div class="pc-sub">GLP-1 programs that fit your life</div><div class="pc-price">from $149/mo</div></div>
-          <div class="pc-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-        </div>
-      </div>
-      <div class="pc pc-b">
-        <div class="pc-person" id="woman-slot"></div>
-        <div class="pc-overlay">
-          <div class="pc-text"><div class="pc-label">See your results</div><div class="pc-title">How much could<br>you lose?</div><div class="pc-sub">Take the 60-second assessment</div><div class="pc-price">Free assessment</div></div>
-          <div class="pc-arrow"><svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-sub-cards">
-      <a class="hsc" href="#hormones">
-        <div class="hsc-text">
-          <span class="hsc-label">Boost</span>
-          <span class="hsc-name">testosterone</span>
-        </div>
-        <div class="hsc-right">
-          <div class="hsc-icon">⚡</div>
-          <svg class="hsc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-      </a>
-      <a class="hsc" href="#hair">
-        <div class="hsc-text">
-          <span class="hsc-label">Regrow</span>
-          <span class="hsc-name">hair</span>
-        </div>
-        <div class="hsc-right">
-          <div class="hsc-icon">🌿</div>
-          <svg class="hsc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-      </a>
-      <a class="hsc" href="#sexual-health">
-        <div class="hsc-text">
-          <span class="hsc-label">Improve</span>
-          <span class="hsc-name">sexual health</span>
-        </div>
-        <div class="hsc-right">
-          <div class="hsc-icon">💫</div>
-          <svg class="hsc-arrow" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </div>
-      </a>
-      <a class="hsc hsc-start" href="#lead">
-        <div class="hsc-text">
-          <span class="hsc-label">Unsure where</span>
-          <span class="hsc-name">to begin?<br><em>Start here</em></span>
-        </div>
-        <div class="hsc-right">
-          <div class="hsc-plus">+</div>
-        </div>
-      </a>
-    </div>
-  </div>
+<div class="hero-wrap">
+<div class="clip"><div class="rotating"><span>Weight loss</span><span>Hormone health</span><span>Hair regrowth</span><span>Better intimacy</span></div></div>
+<div class="fixed-line">personalized to you</div>
+<div class="hero-cards">
+<div class="pc pc-a">
+<div class="pc-person" id="man-slot"></div>
+<div class="pc-overlay">
+<div class="pc-text"><div class="pc-label">Most popular</div><div class="pc-title">Lose weight<br/>your way</div><div class="pc-sub">GLP-1 programs that fit your life</div><div class="pc-price">from $149/mo</div></div>
+<div class="pc-arrow"><svg viewbox="0 0 24 24"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+</div>
+</div>
+<div class="pc pc-b">
+<div class="pc-person" id="woman-slot"></div>
+<div class="pc-overlay">
+<div class="pc-text"><div class="pc-label">See your results</div><div class="pc-title">How much could<br/>you lose?</div><div class="pc-sub">Take the 60-second assessment</div><div class="pc-price">Free assessment</div></div>
+<div class="pc-arrow"><svg viewbox="0 0 24 24"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
+</div>
+</div>
+</div>
+<div class="hero-sub-cards">
+<a class="hsc" href="#hormones">
+<div class="hsc-text">
+<span class="hsc-label">Boost</span>
+<span class="hsc-name">testosterone</span>
+</div>
+<div class="hsc-right">
+<div class="hsc-icon">⚡</div>
+<svg class="hsc-arrow" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</div>
+</a>
+<a class="hsc" href="#hair">
+<div class="hsc-text">
+<span class="hsc-label">Regrow</span>
+<span class="hsc-name">hair</span>
+</div>
+<div class="hsc-right">
+<div class="hsc-icon">🌿</div>
+<svg class="hsc-arrow" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</div>
+</a>
+<a class="hsc" href="#sexual-health">
+<div class="hsc-text">
+<span class="hsc-label">Improve</span>
+<span class="hsc-name">sexual health</span>
+</div>
+<div class="hsc-right">
+<div class="hsc-icon">💫</div>
+<svg class="hsc-arrow" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</div>
+</a>
+<a class="hsc hsc-start" href="#lead">
+<div class="hsc-text">
+<span class="hsc-label">Unsure where</span>
+<span class="hsc-name">to begin?<br/><em>Start here</em></span>
+</div>
+<div class="hsc-right">
+<div class="hsc-plus">+</div>
+</div>
+</a>
+</div>
+</div>
 </section>
-
-
-
 <!-- WEIGHT LOSS -->
 <section class="hims-section" id="weight-loss">
-
-  <!-- Warm cream gradient background -->
-  <div class="hims-bg-grad"></div>
-
-  <!-- Dotted path BEHIND the person — z-index 1 -->
-  <div class="hims-path" style="z-index:1">
-    <svg viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
-      <path id="hero-dotted-path" d="M0,480 Q350,360 700,280 T1600,140" fill="none" stroke="rgba(11,31,58,0.14)" stroke-width="1.5" stroke-dasharray="6,5"/>
-
-      <defs>
-        <filter id="hero-soft-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="1.8" result="blur"/>
-          <feMerge>
-            <feMergeNode in="blur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-
-      <!-- Slow dots: travel up, stop at 3 different points, then radiate -->
-      <g filter="url(#hero-soft-glow)">
-
-        <!-- Dot 1 -->
-        <g>
-          <!-- outer dot -->
-          <circle r="5.5" fill="rgba(232, 208, 126, 0.55)" opacity="0">
-            <animateMotion dur="14.0s" begin="0.0s" fill="freeze"
-              keyPoints="0;0.38;0.38" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" dur="14.0s" begin="0.0s" fill="freeze"
-              values="0;1;1" keyTimes="0;0.03;1"/>
-          </circle>
-
-          <!-- inner dot (circle-in-circle) -->
-          <circle r="2.4" fill="rgba(232, 208, 126, 0.85)" opacity="0">
-            <animateMotion dur="14.0s" begin="0.0s" fill="freeze"
-              keyPoints="0;0.38;0.38" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" dur="14.0s" begin="0.0s" fill="freeze"
-              values="0;1;1" keyTimes="0;0.04;1"/>
-          </circle>
-
-          <!-- radiating ring after stop -->
-          <circle r="5.5" fill="none" stroke="rgba(232, 208, 126, 0.28)" stroke-width="2" opacity="0">
-            <animateMotion dur="14.0s" begin="0.0s" fill="freeze"
-              keyPoints="0;0.38;0.38" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" begin="5.6000000000000005s" dur="9.0s" repeatCount="indefinite"
-              values="0;0.22;0" keyTimes="0;0.18;1"/>
-            <animate attributeName="r" begin="5.6000000000000005s" dur="9.0s" repeatCount="indefinite"
-              values="5.5;30"/>
-          </circle>
-        </g>
-
-        <!-- Dot 2 -->
-        <g>
-          <!-- outer dot -->
-          <circle r="5.5" fill="rgba(232, 208, 126, 0.55)" opacity="0">
-            <animateMotion dur="14.0s" begin="0.8s" fill="freeze"
-              keyPoints="0;0.56;0.56" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" dur="14.0s" begin="0.8s" fill="freeze"
-              values="0;1;1" keyTimes="0;0.03;1"/>
-          </circle>
-
-          <!-- inner dot (circle-in-circle) -->
-          <circle r="2.4" fill="rgba(232, 208, 126, 0.85)" opacity="0">
-            <animateMotion dur="14.0s" begin="0.8s" fill="freeze"
-              keyPoints="0;0.56;0.56" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" dur="14.0s" begin="0.8s" fill="freeze"
-              values="0;1;1" keyTimes="0;0.04;1"/>
-          </circle>
-
-          <!-- radiating ring after stop -->
-          <circle r="5.5" fill="none" stroke="rgba(232, 208, 126, 0.28)" stroke-width="2" opacity="0">
-            <animateMotion dur="14.0s" begin="0.8s" fill="freeze"
-              keyPoints="0;0.56;0.56" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" begin="6.4s" dur="9.0s" repeatCount="indefinite"
-              values="0;0.22;0" keyTimes="0;0.18;1"/>
-            <animate attributeName="r" begin="6.4s" dur="9.0s" repeatCount="indefinite"
-              values="5.5;30"/>
-          </circle>
-        </g>
-
-        <!-- Dot 3 -->
-        <g>
-          <!-- outer dot -->
-          <circle r="5.5" fill="rgba(232, 208, 126, 0.55)" opacity="0">
-            <animateMotion dur="14.0s" begin="1.6s" fill="freeze"
-              keyPoints="0;0.72;0.72" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" dur="14.0s" begin="1.6s" fill="freeze"
-              values="0;1;1" keyTimes="0;0.03;1"/>
-          </circle>
-
-          <!-- inner dot (circle-in-circle) -->
-          <circle r="2.4" fill="rgba(232, 208, 126, 0.85)" opacity="0">
-            <animateMotion dur="14.0s" begin="1.6s" fill="freeze"
-              keyPoints="0;0.72;0.72" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" dur="14.0s" begin="1.6s" fill="freeze"
-              values="0;1;1" keyTimes="0;0.04;1"/>
-          </circle>
-
-          <!-- radiating ring after stop -->
-          <circle r="5.5" fill="none" stroke="rgba(232, 208, 126, 0.28)" stroke-width="2" opacity="0">
-            <animateMotion dur="14.0s" begin="1.6s" fill="freeze"
-              keyPoints="0;0.72;0.72" keyTimes="0;0.4;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" begin="7.200000000000001s" dur="9.0s" repeatCount="indefinite"
-              values="0;0.22;0" keyTimes="0;0.18;1"/>
-            <animate attributeName="r" begin="7.200000000000001s" dur="9.0s" repeatCount="indefinite"
-              values="5.5;30"/>
-          </circle>
-        </g>
-
-      </g>
+<!-- Warm cream gradient background -->
+<div class="hims-bg-grad"></div>
+<!-- Dotted path BEHIND the person — z-index 1 -->
+<div class="hims-path" style="z-index:1">
+<svg preserveaspectratio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%" viewbox="0 0 1600 600">
+<path d="M0,480 Q350,360 700,280 T1600,140" fill="none" id="hero-dotted-path" stroke="rgba(11,31,58,0.14)" stroke-dasharray="6,5" stroke-width="1.5"></path>
+<defs>
+<filter height="200%" id="hero-soft-glow" width="200%" x="-50%" y="-50%">
+<fegaussianblur result="blur" stddeviation="1.8"></fegaussianblur>
+<femerge>
+<femergenode in="blur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Slow dots: travel up, stop at 3 different points, then radiate -->
+<g filter="url(#hero-soft-glow)">
+<!-- Dot 1 -->
+<g>
+<!-- outer dot -->
+<circle fill="rgba(232, 208, 126, 0.55)" opacity="0" r="5.5">
+<animatemotion begin="0.0s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.38;0.38" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="0.0s" dur="14.0s" fill="freeze" keytimes="0;0.03;1" values="0;1;1"></animate>
+</circle>
+<!-- inner dot (circle-in-circle) -->
+<circle fill="rgba(232, 208, 126, 0.85)" opacity="0" r="2.4">
+<animatemotion begin="0.0s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.38;0.38" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="0.0s" dur="14.0s" fill="freeze" keytimes="0;0.04;1" values="0;1;1"></animate>
+</circle>
+<!-- radiating ring after stop -->
+<circle fill="none" opacity="0" r="5.5" stroke="rgba(232, 208, 126, 0.28)" stroke-width="2">
+<animatemotion begin="0.0s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.38;0.38" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="5.6000000000000005s" dur="9.0s" keytimes="0;0.18;1" repeatcount="indefinite" values="0;0.22;0"></animate>
+<animate attributename="r" begin="5.6000000000000005s" dur="9.0s" repeatcount="indefinite" values="5.5;30"></animate>
+</circle>
+</g>
+<!-- Dot 2 -->
+<g>
+<!-- outer dot -->
+<circle fill="rgba(232, 208, 126, 0.55)" opacity="0" r="5.5">
+<animatemotion begin="0.8s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.56;0.56" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="0.8s" dur="14.0s" fill="freeze" keytimes="0;0.03;1" values="0;1;1"></animate>
+</circle>
+<!-- inner dot (circle-in-circle) -->
+<circle fill="rgba(232, 208, 126, 0.85)" opacity="0" r="2.4">
+<animatemotion begin="0.8s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.56;0.56" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="0.8s" dur="14.0s" fill="freeze" keytimes="0;0.04;1" values="0;1;1"></animate>
+</circle>
+<!-- radiating ring after stop -->
+<circle fill="none" opacity="0" r="5.5" stroke="rgba(232, 208, 126, 0.28)" stroke-width="2">
+<animatemotion begin="0.8s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.56;0.56" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="6.4s" dur="9.0s" keytimes="0;0.18;1" repeatcount="indefinite" values="0;0.22;0"></animate>
+<animate attributename="r" begin="6.4s" dur="9.0s" repeatcount="indefinite" values="5.5;30"></animate>
+</circle>
+</g>
+<!-- Dot 3 -->
+<g>
+<!-- outer dot -->
+<circle fill="rgba(232, 208, 126, 0.55)" opacity="0" r="5.5">
+<animatemotion begin="1.6s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.72;0.72" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="1.6s" dur="14.0s" fill="freeze" keytimes="0;0.03;1" values="0;1;1"></animate>
+</circle>
+<!-- inner dot (circle-in-circle) -->
+<circle fill="rgba(232, 208, 126, 0.85)" opacity="0" r="2.4">
+<animatemotion begin="1.6s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.72;0.72" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="1.6s" dur="14.0s" fill="freeze" keytimes="0;0.04;1" values="0;1;1"></animate>
+</circle>
+<!-- radiating ring after stop -->
+<circle fill="none" opacity="0" r="5.5" stroke="rgba(232, 208, 126, 0.28)" stroke-width="2">
+<animatemotion begin="1.6s" calcmode="linear" dur="14.0s" fill="freeze" keypoints="0;0.72;0.72" keytimes="0;0.4;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="7.200000000000001s" dur="9.0s" keytimes="0;0.18;1" repeatcount="indefinite" values="0;0.22;0"></animate>
+<animate attributename="r" begin="7.200000000000001s" dur="9.0s" repeatcount="indefinite" values="5.5;30"></animate>
+</circle>
+</g>
+</g>
+<!-- Dot 2 -->
+<g>
+<circle fill="rgba(220, 195, 135, 0.62)" opacity="0" r="5.5">
+<animatemotion begin="1.8s" calcmode="linear" dur="18s" fill="freeze" keypoints="0;0.70;0.70" keytimes="0;0.35;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="1.8s" dur="18s" fill="freeze" keytimes="0;0.02;1" values="0;1;1"></animate>
+</circle>
+<circle fill="none" opacity="0" r="5.5" stroke="rgba(220, 195, 135, 0.28)" stroke-width="2">
+<animatemotion begin="1.8s" calcmode="linear" dur="18s" fill="freeze" keypoints="0;0.70;0.70" keytimes="0;0.35;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="8.1s" dur="10s" keytimes="0;0.15;1" repeatcount="indefinite" values="0;0.24;0"></animate>
+<animate attributename="r" begin="8.1s" dur="10s" repeatcount="indefinite" values="5;26"></animate>
+</circle>
+</g>
+<!-- Dot 3 -->
+<g>
+<circle fill="rgba(220, 195, 135, 0.62)" opacity="0" r="5.5">
+<animatemotion begin="3.6s" calcmode="linear" dur="18s" fill="freeze" keypoints="0;0.70;0.70" keytimes="0;0.35;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="3.6s" dur="18s" fill="freeze" keytimes="0;0.02;1" values="0;1;1"></animate>
+</circle>
+<circle fill="none" opacity="0" r="5.5" stroke="rgba(220, 195, 135, 0.28)" stroke-width="2">
+<animatemotion begin="3.6s" calcmode="linear" dur="18s" fill="freeze" keypoints="0;0.70;0.70" keytimes="0;0.35;1">
+<mpath href="#hero-dotted-path"></mpath>
+</animatemotion>
+<animate attributename="opacity" begin="9.9s" dur="10s" keytimes="0;0.15;1" repeatcount="indefinite" values="0;0.24;0"></animate>
+<animate attributename="r" begin="9.9s" dur="10s" repeatcount="indefinite" values="5;26"></animate>
+</circle>
+</g>
 
 <!-- Dot 2 -->
-        <g>
-          <circle r="5.5" fill="rgba(220, 195, 135, 0.62)" opacity="0">
-            <animateMotion dur="18s" begin="1.8s" fill="freeze"
-              keyPoints="0;0.70;0.70" keyTimes="0;0.35;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" dur="18s" begin="1.8s" fill="freeze"
-              values="0;1;1" keyTimes="0;0.02;1"/>
-          </circle>
-          <circle r="5.5" fill="none" stroke="rgba(220, 195, 135, 0.28)" stroke-width="2" opacity="0">
-            <animateMotion dur="18s" begin="1.8s" fill="freeze"
-              keyPoints="0;0.70;0.70" keyTimes="0;0.35;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" begin="8.1s" dur="10s" repeatCount="indefinite"
-              values="0;0.24;0" keyTimes="0;0.15;1"/>
-            <animate attributeName="r" begin="8.1s" dur="10s" repeatCount="indefinite"
-              values="5;26"/>
-          </circle>
-        </g>
+<g>
+<circle fill="rgba(255,255,255,0.96)" r="6">
+<animate attributename="opacity" begin="0.8s" dur="4.8s" keytimes="0;0.08;0.90;1" repeatcount="indefinite" values="0;1;1;0"></animate>
+</circle>
+<circle fill="none" r="6" stroke="rgba(255,255,255,0.70)" stroke-width="2">
+<animate attributename="opacity" begin="0.8s" dur="4.8s" keytimes="0;0.80;0.86;0.90;0.96;1" repeatcount="indefinite" values="0;0;0.55;0;0.55;0"></animate>
+<animate attributename="r" begin="0.8s" dur="4.8s" keytimes="0;0.80;0.86;0.90;0.96;1" repeatcount="indefinite" values="6;6;22;6;22;6"></animate>
+</circle>
+</g>
+<!-- Dot 3 -->
+<g>
+<circle fill="rgba(255,255,255,0.96)" r="6">
+<animate attributename="opacity" begin="1.6s" dur="4.8s" keytimes="0;0.08;0.90;1" repeatcount="indefinite" values="0;1;1;0"></animate>
+</circle>
+<circle fill="none" r="6" stroke="rgba(255,255,255,0.70)" stroke-width="2">
+<animate attributename="opacity" begin="1.6s" dur="4.8s" keytimes="0;0.80;0.86;0.90;0.96;1" repeatcount="indefinite" values="0;0;0.55;0;0.55;0"></animate>
+<animate attributename="r" begin="1.6s" dur="4.8s" keytimes="0;0.80;0.86;0.90;0.96;1" repeatcount="indefinite" values="6;6;22;6;22;6"></animate>
+</circle>
+</g>
 
-        <!-- Dot 3 -->
-        <g>
-          <circle r="5.5" fill="rgba(220, 195, 135, 0.62)" opacity="0">
-            <animateMotion dur="18s" begin="3.6s" fill="freeze"
-              keyPoints="0;0.70;0.70" keyTimes="0;0.35;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" dur="18s" begin="3.6s" fill="freeze"
-              values="0;1;1" keyTimes="0;0.02;1"/>
-          </circle>
-          <circle r="5.5" fill="none" stroke="rgba(220, 195, 135, 0.28)" stroke-width="2" opacity="0">
-            <animateMotion dur="18s" begin="3.6s" fill="freeze"
-              keyPoints="0;0.70;0.70" keyTimes="0;0.35;1" calcMode="linear">
-              <mpath href="#hero-dotted-path"/>
-            </animateMotion>
-            <animate attributeName="opacity" begin="9.9s" dur="10s" repeatCount="indefinite"
-              values="0;0.24;0" keyTimes="0;0.15;1"/>
-            <animate attributeName="r" begin="9.9s" dur="10s" repeatCount="indefinite"
-              values="5;26"/>
-          </circle>
-        </g>
-      </g>
-
-<!-- Dot 2 -->
-        <g>
-          <circle r="6" fill="rgba(255,255,255,0.96)">
-            
-            <animate attributeName="opacity" dur="4.8s" repeatCount="indefinite" begin="0.8s"
-              values="0;1;1;0" keyTimes="0;0.08;0.90;1"/>
-          </circle>
-          <circle r="6" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="2">
-            
-            <animate attributeName="opacity" dur="4.8s" repeatCount="indefinite" begin="0.8s"
-              values="0;0;0.55;0;0.55;0" keyTimes="0;0.80;0.86;0.90;0.96;1"/>
-            <animate attributeName="r" dur="4.8s" repeatCount="indefinite" begin="0.8s"
-              values="6;6;22;6;22;6" keyTimes="0;0.80;0.86;0.90;0.96;1"/>
-          </circle>
-        </g>
-
-        <!-- Dot 3 -->
-        <g>
-          <circle r="6" fill="rgba(255,255,255,0.96)">
-            
-            <animate attributeName="opacity" dur="4.8s" repeatCount="indefinite" begin="1.6s"
-              values="0;1;1;0" keyTimes="0;0.08;0.90;1"/>
-          </circle>
-          <circle r="6" fill="none" stroke="rgba(255,255,255,0.70)" stroke-width="2">
-            
-            <animate attributeName="opacity" dur="4.8s" repeatCount="indefinite" begin="1.6s"
-              values="0;0;0.55;0;0.55;0" keyTimes="0;0.80;0.86;0.90;0.96;1"/>
-            <animate attributeName="r" dur="4.8s" repeatCount="indefinite" begin="1.6s"
-              values="6;6;22;6;22;6" keyTimes="0;0.80;0.86;0.90;0.96;1"/>
-          </circle>
-        </g>
-      </g>
-
-    </svg>
-
+</svg>
 </div>
-
-  <!-- Headline top center — z-index 4 -->
-  <div class="hims-top reveal" style="z-index:4">
-    <div class="hims-headline">Reach your health goals<br>with <em>Kingdom Longevity Labs</em></div>
-
-  </div>
-
-  <!-- Person — crystal clear, NO blend mode, z-index 3 above path below cards -->
-  <div class="hims-person-wrap">
-    <img src="assets/hero.png" alt="Fit couple" class="hims-person-img" />
-  </div>
-
-  <div class="hims-cta-row">
-    <button class="hims-btn-solid">Get started</button>
-    <button class="hims-btn-ghost">How much could I lose? →</button>
-  </div>
-  <div class="hims-cards" style="z-index:5">
-    <div class="himscard reveal">
-      <div class="himscard-title">GLP-1 Rx</div>
-      <div class="himscard-sub">to lose weight your way</div>
-      <div class="himscard-vis">💊</div>
-      <button class="himscard-btn">Learn more</button>
-    </div>
-    <div class="himscard reveal d1">
-      <div class="himscard-title">Metabolic labs</div>
-      <div class="himscard-sub">to track your progress</div>
-      <div class="himscard-vis">🧬</div>
-      <button class="himscard-btn">Start testing</button>
-    </div>
-  </div>
-  <div class="hims-disc" style="position:relative;z-index:5">Compounded products are not approved nor evaluated for safety, effectiveness, or quality by the FDA.</div>
+<!-- Headline top center — z-index 4 -->
+<div class="hims-top reveal" style="z-index:4">
+<div class="hims-headline">Reach your health goals<br/>with <em>Kingdom Longevity Labs</em></div>
+</div>
+<!-- Person — crystal clear, NO blend mode, z-index 3 above path below cards -->
+<div class="hims-person-wrap">
+<img alt="Fit couple" class="hims-person-img" src="assets/hero.png"/>
+</div>
+<div class="hims-cta-row">
+<button class="hims-btn-solid">Get started</button>
+<button class="hims-btn-ghost">How much could I lose? →</button>
+</div>
+<div class="hims-cards" style="z-index:5">
+<div class="himscard reveal">
+<div class="himscard-title">GLP-1 Rx</div>
+<div class="himscard-sub">to lose weight your way</div>
+<div class="himscard-vis">💊</div>
+<button class="himscard-btn">Learn more</button>
+</div>
+<div class="himscard reveal d1">
+<div class="himscard-title">Metabolic labs</div>
+<div class="himscard-sub">to track your progress</div>
+<div class="himscard-vis">🧬</div>
+<button class="himscard-btn">Start testing</button>
+</div>
+</div>
+<div class="hims-disc" style="position:relative;z-index:5">Compounded products are not approved nor evaluated for safety, effectiveness, or quality by the FDA.</div>
 </section>
-
 <!-- HORMONES -->
-<section class="cond bg-gold" id="hormones" style="margin-top:16px">
-  <div class="cond-bg"><div class="cond-bg-fill"></div></div>
-  <div class="cond-path">
-    <svg viewBox="0 0 1400 120" preserveAspectRatio="none">
-      <path d="M0,60 Q175,105 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="8,5"/>
-    </svg>
-    <div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
-  </div>
-  <div class="cond-text reveal">
-    <div class="c-eyebrow">Hormone health</div>
-    <div class="c-headline">Get your<br><em>edge back</em></div>
-    <div class="c-btns">
-      <button class="btn-w">Get started</button>
-      <button class="btn-o">Do I have low T? →</button>
-    </div>
-  </div>
-  <div class="cond-cards">
-    <div class="cc reveal"><div class="cc-title">Testosterone <em>Rx to elevate your T</em></div><div class="cc-sub">Personalized TRT based on your bloodwork</div><div class="cc-cta">Learn more <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-    <div class="cc reveal d1"><div class="cc-title">At-home <em>labs to check your T levels</em></div><div class="cc-sub">Comprehensive hormone panel, results in 3 days</div><div class="cc-cta">Start testing <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-  </div>
-</section>
-
+<section class="cond bg-gold hormone-section" id="hormones" style="margin-top:16px"><div class="hormone-inner"><div class="hormone-content">
+<div class="cond-bg"><div class="cond-bg-fill"></div></div>
+<div class="cond-path">
+<svg preserveaspectratio="none" viewbox="0 0 1400 120">
+<path d="M0,60 Q175,105 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+</svg>
+<div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
+</div>
+<div class="cond-text reveal">
+<div class="c-eyebrow">Hormone health</div>
+<div class="c-headline">Get your<br/><em>edge back</em></div>
+<div class="c-btns">
+<button class="btn-w">Get started</button>
+<button class="btn-o">Do I have low T? →</button>
+</div>
+</div>
+<div class="cond-cards">
+<div class="cc reveal"><div class="cc-title">Testosterone <em>Rx to elevate your T</em></div><div class="cc-sub">Personalized TRT based on your bloodwork</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+<div class="cc reveal d1"><div class="cc-title">At-home <em>labs to check your T levels</em></div><div class="cc-sub">Comprehensive hormone panel, results in 3 days</div><div class="cc-cta">Start testing <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+</div>
+</div><div aria-hidden="true" class="hormone-visual"><img alt="" class="hormone-people-img" loading="lazy" src="assets/Hormone/Man/Woman.png"/><span class="hormone-orb hormone-orb-1"></span><span class="hormone-orb hormone-orb-2"></span></div></div></section>
 <!-- HAIR -->
 <section class="cond bg-sage" id="hair" style="margin-top:16px">
-  <div class="cond-bg"><div class="cond-bg-fill"></div></div>
-  <div class="cond-path">
-    <svg viewBox="0 0 1400 120" preserveAspectRatio="none">
-      <path d="M0,60 Q175,15 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="8,5"/>
-    </svg>
-    <div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
-  </div>
-  <div class="cond-text reveal">
-    <div class="c-eyebrow">Hair regrowth</div>
-    <div class="c-headline">Hair you're<br><em>proud of</em></div>
-    <div class="c-btns">
-      <button class="btn-w">Get started</button>
-      <button class="btn-o">See regrowth results →</button>
-    </div>
-  </div>
-  <div class="cond-cards">
-    <div class="cc reveal"><div class="cc-title">Finasteride + Minoxidil <em>to regrow hair</em></div><div class="cc-sub">Clinically-proven dual therapy, personalized doses</div><div class="cc-cta">Learn more <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-    <div class="cc reveal d1"><div class="cc-title">Custom topical <em>for faster results</em></div><div class="cc-sub">Compounded formula targeting your specific pattern</div><div class="cc-cta">Learn more <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-  </div>
+<div class="cond-bg"><div class="cond-bg-fill"></div></div>
+<div class="cond-path">
+<svg preserveaspectratio="none" viewbox="0 0 1400 120">
+<path d="M0,60 Q175,15 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+</svg>
+<div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
+</div>
+<div class="cond-text reveal">
+<div class="c-eyebrow">Hair regrowth</div>
+<div class="c-headline">Hair you're<br/><em>proud of</em></div>
+<div class="c-btns">
+<button class="btn-w">Get started</button>
+<button class="btn-o">See regrowth results →</button>
+</div>
+</div>
+<div class="cond-cards">
+<div class="cc reveal"><div class="cc-title">Finasteride + Minoxidil <em>to regrow hair</em></div><div class="cc-sub">Clinically-proven dual therapy, personalized doses</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+<div class="cc reveal d1"><div class="cc-title">Custom topical <em>for faster results</em></div><div class="cc-sub">Compounded formula targeting your specific pattern</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+</div>
 </section>
-
 <!-- SEXUAL HEALTH -->
 <section class="cond bg-warm" id="sexual-health" style="margin-top:16px">
-  <div class="cond-bg"><div class="cond-bg-fill"></div></div>
-  <div class="cond-path">
-    <svg viewBox="0 0 1400 120" preserveAspectRatio="none">
-      <path d="M0,60 Q175,105 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" stroke-dasharray="8,5"/>
-    </svg>
-    <div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
-  </div>
-  <div class="cond-text reveal">
-    <div class="c-eyebrow">Sexual health</div>
-    <div class="c-headline">Better intimacy<br><em>for everyone</em></div>
-    <div class="c-btns">
-      <button class="btn-w">Get started</button>
-      <button class="btn-o">Learn about options →</button>
-    </div>
-  </div>
-  <div class="cond-cards">
-    <div class="cc reveal"><div class="cc-title">ED treatment <em>that actually works</em></div><div class="cc-sub">Sildenafil, tadalafil, or custom compounded formulas</div><div class="cc-cta">Learn more <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-    <div class="cc reveal d1"><div class="cc-title">Women's wellness <em>personalized for you</em></div><div class="cc-sub">Libido, hormones, and intimate health for women</div><div class="cc-cta">Learn more <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div></div>
-  </div>
+<div class="cond-bg"><div class="cond-bg-fill"></div></div>
+<div class="cond-path">
+<svg preserveaspectratio="none" viewbox="0 0 1400 120">
+<path d="M0,60 Q175,105 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+</svg>
+<div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
+</div>
+<div class="cond-text reveal">
+<div class="c-eyebrow">Sexual health</div>
+<div class="c-headline">Better intimacy<br/><em>for everyone</em></div>
+<div class="c-btns">
+<button class="btn-w">Get started</button>
+<button class="btn-o">Learn about options →</button>
+</div>
+</div>
+<div class="cond-cards">
+<div class="cc reveal"><div class="cc-title">ED treatment <em>that actually works</em></div><div class="cc-sub">Sildenafil, tadalafil, or custom compounded formulas</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+<div class="cc reveal d1"><div class="cc-title">Women's wellness <em>personalized for you</em></div><div class="cc-sub">Libido, hormones, and intimate health for women</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
+</div>
 </section>
-
 <!-- DOCTORS -->
 <section id="doctors">
-  <div class="sec-wrap">
-    <div class="eyebrow reveal">Medical team</div>
-    <div class="sec-title reveal d1">The best care<br><em>by the best in medicine</em></div>
-    <div class="sec-sub reveal d2">Board-certified specialists with decades of combined experience across every specialty we serve.</div>
-    <div class="doc-grid">
-      <div class="doc-card reveal d1"><div class="doc-av">JW</div><div class="doc-role">Chief Medical Officer</div><div class="doc-name">Dr. James Wilson, MD</div><div class="doc-tags"><span class="doc-tag">Metabolic Health</span><span class="doc-tag">Weight Loss</span></div></div>
-      <div class="doc-card reveal d2"><div class="doc-av">SR</div><div class="doc-role">Head of Endocrinology</div><div class="doc-name">Dr. Sarah Reid, MD</div><div class="doc-tags"><span class="doc-tag">Hormones</span><span class="doc-tag">Thyroid</span></div></div>
-      <div class="doc-card reveal d3"><div class="doc-av">MP</div><div class="doc-role">Men's Health Advisor</div><div class="doc-name">Dr. Marcus Park, MD</div><div class="doc-tags"><span class="doc-tag">Sexual Health</span><span class="doc-tag">TRT</span></div></div>
-      <div class="doc-card reveal d4"><div class="doc-av">AK</div><div class="doc-role">Dermatology Advisor</div><div class="doc-name">Dr. Anika Kumar, MD</div><div class="doc-tags"><span class="doc-tag">Hair Regrowth</span><span class="doc-tag">Skin</span></div></div>
-      <div class="doc-card reveal d4"><div class="doc-av">TL</div><div class="doc-role">Women's Health Lead</div><div class="doc-name">Dr. Tanya Lee, MD</div><div class="doc-tags"><span class="doc-tag">Women's Health</span><span class="doc-tag">Hormones</span></div></div>
-    </div>
-  </div>
+<div class="sec-wrap">
+<div class="eyebrow reveal">Medical team</div>
+<div class="sec-title reveal d1">The best care<br/><em>by the best in medicine</em></div>
+<div class="sec-sub reveal d2">Board-certified specialists with decades of combined experience across every specialty we serve.</div>
+<div class="doc-grid">
+<div class="doc-card reveal d1"><div class="doc-av">JW</div><div class="doc-role">Chief Medical Officer</div><div class="doc-name">Dr. James Wilson, MD</div><div class="doc-tags"><span class="doc-tag">Metabolic Health</span><span class="doc-tag">Weight Loss</span></div></div>
+<div class="doc-card reveal d2"><div class="doc-av">SR</div><div class="doc-role">Head of Endocrinology</div><div class="doc-name">Dr. Sarah Reid, MD</div><div class="doc-tags"><span class="doc-tag">Hormones</span><span class="doc-tag">Thyroid</span></div></div>
+<div class="doc-card reveal d3"><div class="doc-av">MP</div><div class="doc-role">Men's Health Advisor</div><div class="doc-name">Dr. Marcus Park, MD</div><div class="doc-tags"><span class="doc-tag">Sexual Health</span><span class="doc-tag">TRT</span></div></div>
+<div class="doc-card reveal d4"><div class="doc-av">AK</div><div class="doc-role">Dermatology Advisor</div><div class="doc-name">Dr. Anika Kumar, MD</div><div class="doc-tags"><span class="doc-tag">Hair Regrowth</span><span class="doc-tag">Skin</span></div></div>
+<div class="doc-card reveal d4"><div class="doc-av">TL</div><div class="doc-role">Women's Health Lead</div><div class="doc-name">Dr. Tanya Lee, MD</div><div class="doc-tags"><span class="doc-tag">Women's Health</span><span class="doc-tag">Hormones</span></div></div>
+</div>
+</div>
 </section>
-
 <!-- TESTIMONIALS -->
 <section id="testimonials">
-  <div class="test-head">
-    <div class="eyebrow reveal">Real results</div>
-    <div class="sec-title reveal d1">Over <em>10,000 members</em><br>and counting</div>
-  </div>
-  <div class="test-overflow">
-    <div class="test-track">
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Down 34 pounds in four months. My doctor adjusted my plan twice and was always available. Life-changing."</div><div class="tc-auth"><div class="tc-av">MR</div><div><div class="tc-name">Marcus R.</div><div class="tc-detail">Weight loss · 4 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Testosterone at 280. Six months in I'm at 750 and feel 35 again. Energy, sleep, drive — everything changed."</div><div class="tc-auth"><div class="tc-av">DJ</div><div><div class="tc-name">David J.</div><div class="tc-detail">Hormone therapy · 6 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Finally a telehealth company that follows up. My provider messages me every two weeks without asking."</div><div class="tc-auth"><div class="tc-av">SL</div><div><div class="tc-name">Sarah L.</div><div class="tc-detail">Hair regrowth · 3 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Skeptical about telehealth but my physician was incredibly thorough, knowledgeable, and genuinely caring."</div><div class="tc-auth"><div class="tc-av">TC</div><div><div class="tc-name">Thomas C.</div><div class="tc-detail">Sexual health · 2 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"The discreet delivery and professional care made all the difference. Recommended KLL to three friends."</div><div class="tc-auth"><div class="tc-av">AP</div><div><div class="tc-name">Amanda P.</div><div class="tc-detail">Weight loss · 5 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Labs reviewed by a real physician through an app. This is what healthcare should have always looked like."</div><div class="tc-auth"><div class="tc-av">KM</div><div><div class="tc-name">Kevin M.</div><div class="tc-detail">Hormone therapy · 8 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Down 34 pounds in four months. My doctor adjusted my plan twice and was always available. Life-changing."</div><div class="tc-auth"><div class="tc-av">MR</div><div><div class="tc-name">Marcus R.</div><div class="tc-detail">Weight loss · 4 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Testosterone at 280. Six months in I'm at 750 and feel 35 again. Energy, sleep, drive — everything changed."</div><div class="tc-auth"><div class="tc-av">DJ</div><div><div class="tc-name">David J.</div><div class="tc-detail">Hormone therapy · 6 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Finally a telehealth company that follows up. My provider messages me every two weeks without asking."</div><div class="tc-auth"><div class="tc-av">SL</div><div><div class="tc-name">Sarah L.</div><div class="tc-detail">Hair regrowth · 3 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Skeptical about telehealth but my physician was incredibly thorough, knowledgeable, and genuinely caring."</div><div class="tc-auth"><div class="tc-av">TC</div><div><div class="tc-name">Thomas C.</div><div class="tc-detail">Sexual health · 2 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"The discreet delivery and professional care made all the difference. Recommended KLL to three friends."</div><div class="tc-auth"><div class="tc-av">AP</div><div><div class="tc-name">Amanda P.</div><div class="tc-detail">Weight loss · 5 months</div></div></div></div>
-      <div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Labs reviewed by a real physician through an app. This is what healthcare should have always looked like."</div><div class="tc-auth"><div class="tc-av">KM</div><div><div class="tc-name">Kevin M.</div><div class="tc-detail">Hormone therapy · 8 months</div></div></div></div>
-    </div>
-  </div>
+<div class="test-head">
+<div class="eyebrow reveal">Real results</div>
+<div class="sec-title reveal d1">Over <em>10,000 members</em><br/>and counting</div>
+</div>
+<div class="test-overflow">
+<div class="test-track">
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Down 34 pounds in four months. My doctor adjusted my plan twice and was always available. Life-changing."</div><div class="tc-auth"><div class="tc-av">MR</div><div><div class="tc-name">Marcus R.</div><div class="tc-detail">Weight loss · 4 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Testosterone at 280. Six months in I'm at 750 and feel 35 again. Energy, sleep, drive — everything changed."</div><div class="tc-auth"><div class="tc-av">DJ</div><div><div class="tc-name">David J.</div><div class="tc-detail">Hormone therapy · 6 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Finally a telehealth company that follows up. My provider messages me every two weeks without asking."</div><div class="tc-auth"><div class="tc-av">SL</div><div><div class="tc-name">Sarah L.</div><div class="tc-detail">Hair regrowth · 3 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Skeptical about telehealth but my physician was incredibly thorough, knowledgeable, and genuinely caring."</div><div class="tc-auth"><div class="tc-av">TC</div><div><div class="tc-name">Thomas C.</div><div class="tc-detail">Sexual health · 2 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"The discreet delivery and professional care made all the difference. Recommended KLL to three friends."</div><div class="tc-auth"><div class="tc-av">AP</div><div><div class="tc-name">Amanda P.</div><div class="tc-detail">Weight loss · 5 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Labs reviewed by a real physician through an app. This is what healthcare should have always looked like."</div><div class="tc-auth"><div class="tc-av">KM</div><div><div class="tc-name">Kevin M.</div><div class="tc-detail">Hormone therapy · 8 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Down 34 pounds in four months. My doctor adjusted my plan twice and was always available. Life-changing."</div><div class="tc-auth"><div class="tc-av">MR</div><div><div class="tc-name">Marcus R.</div><div class="tc-detail">Weight loss · 4 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Testosterone at 280. Six months in I'm at 750 and feel 35 again. Energy, sleep, drive — everything changed."</div><div class="tc-auth"><div class="tc-av">DJ</div><div><div class="tc-name">David J.</div><div class="tc-detail">Hormone therapy · 6 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Finally a telehealth company that follows up. My provider messages me every two weeks without asking."</div><div class="tc-auth"><div class="tc-av">SL</div><div><div class="tc-name">Sarah L.</div><div class="tc-detail">Hair regrowth · 3 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Skeptical about telehealth but my physician was incredibly thorough, knowledgeable, and genuinely caring."</div><div class="tc-auth"><div class="tc-av">TC</div><div><div class="tc-name">Thomas C.</div><div class="tc-detail">Sexual health · 2 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"The discreet delivery and professional care made all the difference. Recommended KLL to three friends."</div><div class="tc-auth"><div class="tc-av">AP</div><div><div class="tc-name">Amanda P.</div><div class="tc-detail">Weight loss · 5 months</div></div></div></div>
+<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Labs reviewed by a real physician through an app. This is what healthcare should have always looked like."</div><div class="tc-auth"><div class="tc-av">KM</div><div><div class="tc-name">Kevin M.</div><div class="tc-detail">Hormone therapy · 8 months</div></div></div></div>
+</div>
+</div>
 </section>
-
 <!-- LEAD CTA -->
 <section id="lead">
-  <div class="lead-wrap">
-    <div>
-      <div class="lead-eyebrow reveal">Start free</div>
-      <div class="lead-title reveal d1">Unlock your free<br><em>Health Assessment</em></div>
-      <div class="lead-body reveal d2">Written by our board-certified physicians. Find out exactly which treatments are right for your goals — before you spend a dollar.</div>
-    </div>
-    <div class="lead-form reveal d2">
-      <input class="lead-inp" type="email" placeholder="Enter your email address"/>
-      <button class="btn-gold">Get my free assessment</button>
-      <div class="lead-disc">By continuing you agree to our Terms of Service and Privacy Policy. We never share your information.</div>
-    </div>
-  </div>
+<div class="lead-wrap">
+<div>
+<div class="lead-eyebrow reveal">Start free</div>
+<div class="lead-title reveal d1">Unlock your free<br/><em>Health Assessment</em></div>
+<div class="lead-body reveal d2">Written by our board-certified physicians. Find out exactly which treatments are right for your goals — before you spend a dollar.</div>
+</div>
+<div class="lead-form reveal d2">
+<input class="lead-inp" placeholder="Enter your email address" type="email"/>
+<button class="btn-gold">Get my free assessment</button>
+<div class="lead-disc">By continuing you agree to our Terms of Service and Privacy Policy. We never share your information.</div>
+</div>
+</div>
 </section>
-
 <!-- FOOTER -->
 <footer id="footer">
-  <div class="ft-wm"><div class="ft-wm-text">KINGDOM</div></div>
-  <div class="ft-grid">
-    <div><div class="ft-brand">Kingdom <span>Longevity</span> Labs</div><div class="ft-tag">Evidence-based telehealth for people who take their health seriously.</div></div>
-    <div><div class="ft-col-title">Treatments</div><ul class="ft-links"><li><a href="#">Weight loss</a></li><li><a href="#">Hormone therapy</a></li><li><a href="#">Hair regrowth</a></li><li><a href="#">Sexual health</a></li><li><a href="#">Skin care</a></li></ul></div>
-    <div><div class="ft-col-title">Company</div><ul class="ft-links"><li><a href="#">About us</a></li><li><a href="#">Our physicians</a></li><li><a href="#">Science</a></li><li><a href="#">Press</a></li><li><a href="#">Careers</a></li></ul></div>
-    <div><div class="ft-col-title">Support</div><ul class="ft-links"><li><a href="#">Help center</a></li><li><a href="#">Contact us</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Terms of service</a></li></ul></div>
-  </div>
-  <div class="ft-bot">
-    <div class="ft-legal">© 2025 Kingdom Longevity Labs LLC. All rights reserved.</div>
-    <div class="ft-disc">Prescription medications require a valid prescription from a licensed provider. Results may vary.</div>
-  </div>
+<div class="ft-wm"><div class="ft-wm-text">KINGDOM</div></div>
+<div class="ft-grid">
+<div><div class="ft-brand">Kingdom <span>Longevity</span> Labs</div><div class="ft-tag">Evidence-based telehealth for people who take their health seriously.</div></div>
+<div><div class="ft-col-title">Treatments</div><ul class="ft-links"><li><a href="#">Weight loss</a></li><li><a href="#">Hormone therapy</a></li><li><a href="#">Hair regrowth</a></li><li><a href="#">Sexual health</a></li><li><a href="#">Skin care</a></li></ul></div>
+<div><div class="ft-col-title">Company</div><ul class="ft-links"><li><a href="#">About us</a></li><li><a href="#">Our physicians</a></li><li><a href="#">Science</a></li><li><a href="#">Press</a></li><li><a href="#">Careers</a></li></ul></div>
+<div><div class="ft-col-title">Support</div><ul class="ft-links"><li><a href="#">Help center</a></li><li><a href="#">Contact us</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Terms of service</a></li></ul></div>
+</div>
+<div class="ft-bot">
+<div class="ft-legal">© 2025 Kingdom Longevity Labs LLC. All rights reserved.</div>
+<div class="ft-disc">Prescription medications require a valid prescription from a licensed provider. Results may vary.</div>
+</div>
 </footer>
-
 <script>
 
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.08});
