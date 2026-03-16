@@ -464,7 +464,7 @@ nav {
 
 .hims-person-img {
   position: absolute;
-  bottom: 110px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -504,6 +504,10 @@ nav {
   text-align: center; padding: 0 var(--g) 24px; line-height: 1.5;
 }
 @media(max-width:640px) { .hims-cards { grid-template-columns: 1fr; } .hims-person-wrap { width: 90%; } }
+
+@media (max-width:720px){
+  .hims-person-img{bottom:-40px;}
+}
 </style>
 </head>
 <body>
