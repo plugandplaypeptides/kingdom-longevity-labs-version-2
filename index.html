@@ -549,79 +549,67 @@ nav {
 
 
 
-/* Hormone section restyle */
-.hormone-section{
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--r-section);
-  margin: 16px 12px 0;
-  width: calc(100% - 24px);
-}
+
 
 /* “almost gray-blue” gradient (inspired by premium editorial sites) */
-.hormone-section{
-  background: linear-gradient(180deg,
-    #EEF3F9 0%,
-    #DDE7F2 38%,
-    #C6D4E3 70%,
-    #B7C7D9 100%
-  );
-}
 
-.hormone-inner{
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(320px, 1fr) minmax(280px, 520px);
-  gap: clamp(18px, 4vw, 48px);
-  align-items: end;
-  padding: clamp(28px, 4.8vw, 56px) var(--g);
-}
 
-.hormone-content{
-  position: relative;
-  z-index: 2;
-  max-width: 640px;
-}
 
-.hormone-visual{
-  position: relative;
-  z-index: 1;
-  min-height: clamp(260px, 28vw, 420px);
-}
 
-.hormone-people-img{
-  position: absolute;
-  right: 0;
-  bottom: -8px;
-  width: min(520px, 92%);
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 22px 40px rgba(12, 20, 33, 0.18));
-}
 
-.hormone-orb{
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: soft-light;
-}
 .hormone-orb-1{
   width: 160px; height: 160px;
   right: 24%; top: 14%;
   background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.60), rgba(255,255,255,0) 60%);
   opacity: 0.65;
 }
-.hormone-orb-2{
-  width: 220px; height: 220px;
-  right: -40px; top: 40%;
-  background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.42), rgba(255,255,255,0) 65%);
-  opacity: 0.55;
-}
 
 @media (max-width: 900px){
   .hormone-inner{ grid-template-columns: 1fr; align-items: start; }
   .hormone-visual{ order: 2; min-height: 320px; }
   .hormone-people-img{ left: 50%; right: auto; transform: translateX(-50%); width: min(560px, 96%); }
+}
+
+
+/* Hormone section: gray-blue gradient + right-side image */
+#hormones.hormone-grayblue{ position: relative; overflow: hidden; }
+#hormones.hormone-grayblue .cond-bg-fill{
+  background: linear-gradient(180deg,
+    #EFF4FA 0%,
+    #DEE8F2 40%,
+    #C8D6E6 75%,
+    #B8C9DB 100%
+  ) !important;
+  opacity: 1 !important;
+}
+#hormones.hormone-grayblue .cond-text,
+#hormones.hormone-grayblue .cond-cards,
+#hormones.hormone-grayblue .cond-path{ position: relative; z-index: 3; }
+
+#hormones.hormone-grayblue .hormone-img-wrap{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+#hormones.hormone-grayblue .hormone-people-img{
+  position: absolute;
+  right: clamp(18px, 3.5vw, 56px);
+  bottom: -8px;
+  width: min(560px, 46vw);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 18px 35px rgba(10,16,26,0.18));
+  opacity: 0.96;
+}
+
+@media (max-width: 900px){
+  #hormones.hormone-grayblue .hormone-people-img{
+    left: 50%; right: auto;
+    transform: translateX(-50%);
+    width: min(520px, 92vw);
+    opacity: 0.35; /* keep copy readable on mobile */
+  }
 }
 </style>
 </head>
@@ -831,7 +819,6 @@ nav {
 <animate attributename="r" begin="9.9s" dur="10s" repeatcount="indefinite" values="5;26"></animate>
 </circle>
 </g>
-
 <!-- Dot 2 -->
 <g>
 <circle fill="rgba(255,255,255,0.96)" r="6">
@@ -852,7 +839,6 @@ nav {
 <animate attributename="r" begin="1.6s" dur="4.8s" keytimes="0;0.80;0.86;0.90;0.96;1" repeatcount="indefinite" values="6;6;22;6;22;6"></animate>
 </circle>
 </g>
-
 </svg>
 </div>
 <!-- Headline top center — z-index 4 -->
@@ -884,7 +870,7 @@ nav {
 <div class="hims-disc" style="position:relative;z-index:5">Compounded products are not approved nor evaluated for safety, effectiveness, or quality by the FDA.</div>
 </section>
 <!-- HORMONES -->
-<section class="cond bg-gold hormone-section" id="hormones" style="margin-top:16px"><div class="hormone-inner"><div class="hormone-content">
+<section class="cond hormone-grayblue" id="hormones" style="margin-top:16px">
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
@@ -904,7 +890,7 @@ nav {
 <div class="cc reveal"><div class="cc-title">Testosterone <em>Rx to elevate your T</em></div><div class="cc-sub">Personalized TRT based on your bloodwork</div><div class="cc-cta">Learn more <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
 <div class="cc reveal d1"><div class="cc-title">At-home <em>labs to check your T levels</em></div><div class="cc-sub">Comprehensive hormone panel, results in 3 days</div><div class="cc-cta">Start testing <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
 </div>
-</div><div aria-hidden="true" class="hormone-visual"><img alt="" class="hormone-people-img" loading="lazy" src="assets/Hormone/Man/Woman.png"/><span class="hormone-orb hormone-orb-1"></span><span class="hormone-orb hormone-orb-2"></span></div></div></section>
+<div aria-hidden="true" class="hormone-img-wrap"><img alt="" class="hormone-people-img" loading="lazy" onerror="this.style.display='none';" src="assets/Hormone/Man/Woman.png"/></div></section>
 <!-- HAIR -->
 <section class="cond bg-sage" id="hair" style="margin-top:16px">
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
