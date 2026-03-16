@@ -806,6 +806,59 @@ nav {
   #hair{ --path-y: 64%; --img-x: 50%; --spot-x: 50%; }
   #sexual-health{ --path-y: 66%; --img-x: 50%; --spot-x: 50%; }
 }
+
+
+/* --- Cond v2 layer fix: keep dotted line behind people --- */
+#hormones .cond-path,
+#hair .cond-path,
+#sexual-health .cond-path{ z-index: 1 !important; }
+#hormones .cond-text, #hormones .cond-cards,
+#hair .cond-text, #hair .cond-cards,
+#sexual-health .cond-text, #sexual-health .cond-cards{ z-index: 5 !important; position: relative; }
+
+/* Ensure image layers sit above the dotted line */
+#hormones .hormone-img-wrap,
+#hair .hair-img-wrap,
+#sexual-health .sexual-img-wrap{ z-index: 3 !important; }
+
+
+/* --- Per-section signatures (keeps steel blue/gray-blue base, adds distinct personality) --- */
+
+/* Base line style */
+.cond-path path{ stroke-linecap: round; }
+
+/* Hormones: cleaner/clinical */
+#hormones .cond-path{ opacity: 0.50; }
+#hormones .cond-path path{ stroke-dasharray: 10 7 !important; stroke-width: 1.35 !important; }
+#hormones .path-dot{ background: rgba(255,255,255,0.14) !important; border-color: rgba(255,255,255,0.32) !important; }
+#hormones::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background: radial-gradient(circle at 70% 42%, rgba(210,230,255,0.14), rgba(0,0,0,0) 62%);
+}
+
+/* Hair: slight cool-teal accent */
+#hair .cond-path{ opacity: 0.46; }
+#hair .cond-path path{ stroke-dasharray: 6 8 !important; stroke-width: 1.25 !important; }
+#hair .path-dot{ background: rgba(230,255,252,0.12) !important; border-color: rgba(230,255,252,0.30) !important; }
+#hair::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background: radial-gradient(circle at 72% 44%, rgba(125,210,195,0.14), rgba(0,0,0,0) 62%);
+}
+
+/* Sexual: slight warm accent */
+#sexual-health .cond-path{ opacity: 0.46; }
+#sexual-health .cond-path path{ stroke-dasharray: 12 6 !important; stroke-width: 1.25 !important; }
+#sexual-health .path-dot{ background: rgba(255,245,240,0.12) !important; border-color: rgba(255,245,240,0.30) !important; }
+#sexual-health::before{
+  content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background: radial-gradient(circle at 72% 44%, rgba(220,150,125,0.14), rgba(0,0,0,0) 62%);
+}
+
+/* Keep content above the new ::before overlays */
+#hormones .cond-bg, #hair .cond-bg, #sexual-health .cond-bg{ z-index: 0; }
+#hormones .cond-text, #hormones .cond-cards,
+#hair .cond-text, #hair .cond-cards,
+#sexual-health .cond-text, #sexual-health .cond-cards{ z-index: 6; }
 </style>
 </head>
 <body>
@@ -1069,7 +1122,7 @@ nav {
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
-<path d="M0,60 Q175,105 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+<path d="M0,88 C260,78 520,64 760,56 S1180,40 1400,30" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
 </svg>
 <div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
 </div>
@@ -1091,7 +1144,7 @@ nav {
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
-<path d="M0,60 Q175,15 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+<path d="M0,92 C280,86 560,74 820,60 S1220,44 1400,34" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
 </svg>
 <div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
 </div>
@@ -1115,7 +1168,7 @@ nav {
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
-<path d="M0,60 Q175,105 350,60 T700,60 T1050,60 T1400,60" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+<path d="M0,90 C240,82 500,66 740,56 S1160,36 1400,26" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
 </svg>
 <div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
 </div>
