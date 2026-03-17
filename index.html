@@ -1297,7 +1297,7 @@ nav {
   <div class="cond-bg"><div class="cond-bg-fill"></div></div>
   <div class="cond-path">
     <svg preserveAspectRatio="none" viewBox="0 0 1400 120">
-      <path d="M0,90 C260,82 520,68 780,56 S1200,36 1400,26" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+      <path d="M0,88 C260,78 520,64 760,56 S1180,40 1400,30" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
       <g class="cond-markers" data-section="longevity"></g>
     </svg>
   </div>
@@ -1312,9 +1312,20 @@ nav {
   </div>
 
   <div class="cond-cards">
-    <div class="cc reveal"><div class="cc-title">Peptide support <em>to complement your plan</em></div><div class="cc-sub">Discuss options with your clinician based on your goals and history (e.g., BPC‑157, Ipamorelin).</div></div>
-    <div class="cc reveal"><div class="cc-title">Recovery + performance <em>that fits your lifestyle</em></div><div class="cc-sub">A structured approach to recovery, sleep, nutrition, and consistency — with support along the way.</div></div>
-    <div class="cc reveal"><div class="cc-title">Longevity labs <em>to track progress</em></div><div class="cc-sub">Objective markers that help guide decisions over time, with clinician review.</div></div>
+    <div class="cc reveal">
+      <div class="cc-title">Peptide support <em>to complement your plan</em></div>
+      <div class="cc-sub">Discuss clinician-guided options based on your goals and history (e.g., BPC‑157, Ipamorelin).</div>
+      <div class="cc-cta">Learn more <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+    </div>
+    <div class="cc reveal d1">
+      <div class="cc-title">Recovery + performance <em>that fits your lifestyle</em></div>
+      <div class="cc-sub">A structured approach to recovery, sleep, nutrition, and consistency — with support along the way.</div>
+      <div class="cc-cta">Learn more <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div>
+    </div>
+  </div>
+
+  <div class="longevity-img-wrap" aria-hidden="true">
+    <img class="longevity-img-wrap-img" src="assets/fitcouple.png" alt="" loading="lazy" onerror="this.style.display='none'" />
   </div>
 </section>
 
@@ -1506,7 +1517,8 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
       'hormones': [0.70, 0.78, 0.86],
       'hair': [0.66, 0.76, 0.88],
       'sexual-health': [0.72, 0.82, 0.92]
-    };
+  , 'longevity': [0.68, 0.80, 0.92]
+};
     const stopPoints = stopPointsBySection[sectionId] || [0.72, 0.80, 0.88];
 
     const stopAt = 0.78;         // legacy default
