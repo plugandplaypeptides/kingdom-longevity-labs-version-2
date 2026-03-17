@@ -962,26 +962,11 @@ nav {
     linear-gradient(135deg, #0f2444 0%, #244a7a 55%, #0b1f3a 100%);
 }
 
-/* Your image (assets/fitcouple.png) as the same kind of subtle “figure in the panel” accent */
-.bg-longevity .cond-bg::after{
-  content:"";
-  position:absolute;
-  right:-40px;
-  bottom:-18px;
-  width: min(520px, 52vw);
-  height: min(520px, 52vw);
-  background-image: url('assets/fitcouple.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  opacity: .18;
-  filter: saturate(1.05) contrast(1.05);
-  pointer-events:none;
-}
+/* Ghost background image removed — fitcouple.png shown via .longevity-img-wrap only */
 
 /* Keep text/cards above the image and dotted path */
-#longevity.bg-longevity .cond-text,
-#longevity.bg-longevity .cond-cards{ position:relative; z-index:2; }
+#longevity.bg-longevity .cond-text{ position:relative; z-index:5; }
+#longevity.bg-longevity .cond-cards{ position:relative; z-index:5; }
 
 /* Longevity image wrap — matches hormones/hair/sexual pattern */
 .longevity-img-wrap { position:absolute; inset:0; z-index:3; pointer-events:none; }
