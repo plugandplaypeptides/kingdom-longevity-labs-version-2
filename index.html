@@ -492,6 +492,7 @@ nav {
   display: flex; flex-direction: column; gap: 4px;
   min-height: 220px; overflow: hidden; transition: all 0.3s; cursor: pointer;
   position: relative;
+}
 .himscard:hover { background: rgba(255,255,255,0.95); transform: translateY(-3px); box-shadow: 0 20px 48px rgba(11,31,58,0.10); }
 .himscard-title { font-size: 22px; font-weight: 500; color: var(--navy); letter-spacing: -0.02em; }
 .himscard-sub { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: #6A5010; margin-bottom: 8px; }
@@ -526,23 +527,7 @@ nav {
 }
 
 
-\/* Muted color, slow motion so it stays background */
-/* radiating ring after it stops */
-/* slight staggering, but still subtle */
-/* Move until ~70% of the line, then stop and stay */
-12%  { opacity: 1; }
-  78%  { offset-distance: 70%; opacity: 1; }
-  100% { offset-distance: 70%; opacity: 1; }
-}
-
-/* Slow radiate after stop (single, gentle) */
-78%  { opacity:0; transform: translate(-50%,-50%) scale(0.2);}
-  86%  { opacity:0.22; transform: translate(-50%,-50%) scale(1.0);}
-  100% { opacity:0; transform: translate(-50%,-50%) scale(3.4);}
-}
-
-/* Prefer reduced motion */
-}
+/* (orphaned keyframe lines removed) */
 
 @media (max-width:720px){
   }
@@ -736,9 +721,7 @@ nav {
   #sexual-health .sexual-img-wrap-img{ left: 50%; width: 92vw; opacity: 0.30; }
 }
 
-  #hair. .hair-img-wrap-img,
-  #sexual-health. .sexual-img-wrap-img{ left: 50%; width: 92vw; opacity: 0.30; }
-}
+/* (orphaned broken rule removed) */
 
 
 /* ===== Cond sections v2: tighten top + reposition dotted path + add per-section variation ===== */
@@ -999,6 +982,10 @@ nav {
 /* Keep text/cards above the image and dotted path */
 #longevity.bg-longevity .cond-text,
 #longevity.bg-longevity .cond-cards{ position:relative; z-index:2; }
+
+/* Longevity image wrap — matches hormones/hair/sexual pattern */
+.longevity-img-wrap { position:absolute; inset:0; z-index:3; pointer-events:none; }
+.longevity-img-wrap-img { position:absolute; left:60%; bottom:-12px; transform:translateX(-50%); width:min(900px,78vw); height:auto; display:block; filter:drop-shadow(0 22px 44px rgba(10,16,26,0.22)); opacity:0.98; }
 
 /* Make cards read consistently on the darker background */
 .bg-longevity .cc{ background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.14); }
@@ -1567,6 +1554,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
   window.initCondMotionMarkers = function(){
     setupSection('hormones', ['♂','♀','♂']);
+    setupSection('longevity', ['◇','◇','◇']);
     setupSection('hair', ['↑','↑','↑']);
     setupSection('sexual-health', ['∞','∞','∞']);
   };
