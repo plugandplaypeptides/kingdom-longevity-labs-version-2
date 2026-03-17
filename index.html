@@ -1429,10 +1429,11 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
     const markers = glyphs.map(g => makeMarker(container, g));
 
     const L = path.getTotalLength();
-    const stopAt = 1.0;          // full path
-    const travel = 3.9;          // seconds (hero-like)
+    const stopAt = 0.78;         // stop point along path
+    const travel = 4.2;          // seconds (hero-like travel)
+    const hold = 3.6;            // seconds (radiate/pulse while stopped)
     const stagger = 1.7;         // seconds between markers
-    const cycle = travel;        // continuous loop
+    const cycle = travel + hold; // loop
 
     function frame(nowMs){
       const now = nowMs/1000;
@@ -1440,14 +1441,29 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
         const delay = i * (cycle/3); // stagger 3 markers
         const t = ((now + delay) % cycle);
         let u;
-        // Continuous travel along the curve (no stop phase)
-        const tt = easeInOut(t / travel);
-        u = tt * stopAt;
+        let pulsing = 0;
+
+        if(t <= travel){
+          const tt = easeInOut(t / travel);
+          u = tt * stopAt;
+          pulsing = 0;
+        } else {
+          u = stopAt;
+          pulsing = (t - travel) / hold; // 0..1
+        }
 
         const pt = path.getPointAtLength(u * L);
         mk.g.setAttribute('transform', `translate(${pt.x},${pt.y})`);
-        // Keep pulse hidden in continuous mode
-        mk.pulse.style.opacity = 0;
+        // Radiate ring while stopped
+        if(pulsing>0){
+          const k = Math.max(0, Math.min(1, pulsing));
+          const r = 12 + k*24;
+          const op = (1-k) * 0.26;
+          mk.pulse.setAttribute('r', r.toFixed(2));
+          mk.pulse.style.opacity = op.toFixed(3);
+        } else {
+          mk.pulse.style.opacity = 0;
+        }
       });
       requestAnimationFrame(frame);
     }
