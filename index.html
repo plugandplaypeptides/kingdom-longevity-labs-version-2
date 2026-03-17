@@ -861,7 +861,6 @@ nav {
 #sexual-health .cond-text, #sexual-health .cond-cards{ z-index: 6; }
 
 
-/* ===== Dotted markers: per-section icons (uniqueness lives here) ===== */
 
 /* Base: make the marker a clean ring that can host an icon */
 #hormones .path-dot,
@@ -909,6 +908,36 @@ nav {
 @media (max-width: 720px){
   #hormones .path-dot, #hair .path-dot, #sexual-health .path-dot{ width: 22px; height: 22px; }
   #hormones .path-dot::before, #hair .path-dot::before, #sexual-health .path-dot::before{ font-size: 12px; }
+}
+
+
+/* ===== Cond motion markers (icons ride the dotted line) ===== */
+
+/* Keep dotted line and markers behind the people images */
+#hormones .cond-path,
+#hair .cond-path,
+#sexual-health .cond-path{ z-index: 1 !important; }
+#hormones .hormone-img-wrap,
+#hair .hair-img-wrap,
+#sexual-health .sexual-img-wrap{ z-index: 3 !important; }
+#hormones .cond-text, #hormones .cond-cards,
+#hair .cond-text, #hair .cond-cards,
+#sexual-health .cond-text, #sexual-health .cond-cards{ z-index: 5 !important; position: relative; }
+
+/* SVG marker styling */
+.cond-markers .m-core{ fill: rgba(255,255,255,0.14); stroke: rgba(255,255,255,0.30); stroke-width: 1.2; }
+.cond-markers .m-ring{ fill: none; stroke: rgba(255,255,255,0.26); stroke-width: 1.4; }
+.cond-markers .m-glyph{ fill: rgba(255,255,255,0.78); font: 700 16px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+.cond-markers .m-pulse{ fill: none; stroke: rgba(255,255,255,0.18); stroke-width: 1.6; opacity: 0; }
+
+/* Slight per-section tint (still subtle + premium) */
+#hair .cond-markers .m-ring{ stroke: rgba(220,255,248,0.26); }
+#hair .cond-markers .m-glyph{ fill: rgba(220,255,248,0.82); }
+#sexual-health .cond-markers .m-ring{ stroke: rgba(255,240,232,0.26); }
+#sexual-health .cond-markers .m-glyph{ fill: rgba(255,240,232,0.82); }
+
+@media (max-width: 720px){
+  .cond-markers .m-glyph{ font-size: 14px; }
 }
 </style>
 </head>
@@ -1174,8 +1203,9 @@ nav {
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
 <path d="M0,88 C260,78 520,64 760,56 S1180,40 1400,30" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+
+<g class="cond-markers" data-section="hormones"></g>
 </svg>
-<div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
 </div>
 <div class="cond-text reveal">
 <div class="c-eyebrow">Hormone health</div>
@@ -1196,8 +1226,9 @@ nav {
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
 <path d="M0,92 C280,86 560,74 820,60 S1220,44 1400,34" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+
+<g class="cond-markers" data-section="hair"></g>
 </svg>
-<div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
 </div>
 <div class="cond-text reveal">
 <div class="c-eyebrow">Hair regrowth</div>
@@ -1220,8 +1251,9 @@ nav {
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
 <path d="M0,90 C240,82 500,66 740,56 S1160,36 1400,26" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+
+<g class="cond-markers" data-section="sexual-health"></g>
 </svg>
-<div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div><div class="path-dot"></div>
 </div>
 <div class="cond-text reveal">
 <div class="c-eyebrow">Sexual health</div>
@@ -1310,5 +1342,120 @@ nav {
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
+
+<script>
+(function(){
+  function easeInOut(t){ return t<0.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2; }
+
+  function makeMarker(svg, glyph){
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('class','m');
+
+    const ring = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    ring.setAttribute('class','m-ring');
+    ring.setAttribute('r','12');
+    ring.setAttribute('cx','0');
+    ring.setAttribute('cy','0');
+
+    const core = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    core.setAttribute('class','m-core');
+    core.setAttribute('r','10');
+    core.setAttribute('cx','0');
+    core.setAttribute('cy','0');
+
+    const text = document.createElementNS('http://www.w3.org/2000/svg','text');
+    text.setAttribute('class','m-glyph');
+    text.setAttribute('text-anchor','middle');
+    text.setAttribute('dominant-baseline','central');
+    text.textContent = glyph;
+
+    const pulse = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    pulse.setAttribute('class','m-pulse');
+    pulse.setAttribute('r','12');
+    pulse.setAttribute('cx','0');
+    pulse.setAttribute('cy','0');
+
+    g.appendChild(pulse);
+    g.appendChild(ring);
+    g.appendChild(core);
+    g.appendChild(text);
+
+    svg.appendChild(g);
+    return {g, pulse};
+  }
+
+  function setupSection(sectionId, glyphs){
+    const sec = document.getElementById(sectionId);
+    if(!sec) return;
+
+    const svg = sec.querySelector('.cond-path svg');
+    const path = sec.querySelector('.cond-path svg path');
+    const container = sec.querySelector('.cond-path svg .cond-markers');
+    if(!svg || !path || !container) return;
+
+    // Clear any previous markers
+    while(container.firstChild) container.removeChild(container.firstChild);
+
+    const markers = glyphs.map(g => makeMarker(container, g));
+
+    const L = path.getTotalLength();
+    const stopAt = 0.78;          // stop before the very end
+    const travel = 10.5;          // seconds
+    const hold = 4.0;             // seconds
+    const cycle = travel + hold;  // seconds
+
+    function frame(nowMs){
+      const now = nowMs/1000;
+      markers.forEach((mk, i) => {
+        const delay = i * (cycle/3); // stagger 3 markers
+        const t = ((now + delay) % cycle);
+        let u;
+        let pulsing = 0;
+
+        if(t <= travel){
+          const tt = easeInOut(t / travel);
+          u = tt * stopAt;
+          pulsing = 0;
+        } else {
+          u = stopAt;
+          // pulse during hold
+          const ph = (t - travel) / hold; // 0..1
+          pulsing = ph;
+        }
+
+        const pt = path.getPointAtLength(u * L);
+        mk.g.setAttribute('transform', `translate(${pt.x},${pt.y})`);
+
+        // Pulse ring (subtle)
+        if(pulsing>0){
+          const k = pulsing;
+          const r = 12 + k*22;
+          const op = (1-k) * 0.20;
+          mk.pulse.setAttribute('r', r.toFixed(2));
+          mk.pulse.style.opacity = op.toFixed(3);
+        } else {
+          mk.pulse.style.opacity = 0;
+        }
+      });
+      requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  window.initCondMotionMarkers = function(){
+    setupSection('hormones', ['♂','♀','♂']);
+    setupSection('hair', ['↑','↑','↑']);
+    setupSection('sexual-health', ['∞','∞','∞']);
+  };
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', window.initCondMotionMarkers);
+  } else {
+    window.initCondMotionMarkers();
+  }
+})();
+</script>
+
 </body>
 </html>
