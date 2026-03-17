@@ -1415,6 +1415,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   }
 
   function setupSection(sectionId, glyphs){
+    const t0 = performance.now()/1000;
     const sec = document.getElementById(sectionId);
     if(!sec) return;
 
@@ -1429,7 +1430,17 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
     const markers = glyphs.map(g => makeMarker(container, g));
 
     const L = path.getTotalLength();
-    const stopAt = 0.78;         // stop point along path
+
+    // Different stop points so markers don’t stack on the same spot
+    const stopPointsBySection = {
+      'hormones': [0.70, 0.78, 0.86],
+      'hair': [0.66, 0.76, 0.88],
+      'sexual-health': [0.72, 0.82, 0.92]
+    };
+    const stopPoints = stopPointsBySection[sectionId] || [0.72, 0.80, 0.88];
+
+    const stopAt = 0.78;         // legacy default
+
     const travel = 4.2;          // seconds (hero-like travel)
     const hold = 3.6;            // seconds (radiate/pulse while stopped)
     const stagger = 1.7;         // seconds between markers
@@ -1437,19 +1448,20 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
     function frame(nowMs){
       const now = nowMs/1000;
+      const local = now - t0;
       markers.forEach((mk, i) => {
-        const delay = i * (cycle/3); // stagger 3 markers
-        const t = ((now + delay) % cycle);
+        const delay = i * stagger; // stagger like hero; ensures all start moving
+        const t = ((local + delay) % cycle);
         let u;
         let pulsing = 0;
 
         if(t <= travel){
           const tt = easeInOut(t / travel);
-          u = tt * stopAt;
+          u = tt * (stopPoints[i % stopPoints.length] || stopAt);
           pulsing = 0;
         } else {
-          u = stopAt;
-          pulsing = (t - travel) / hold; // 0..1
+          u = (stopPoints[i % stopPoints.length] || stopAt);
+          pulsing = Math.max(0, Math.min(1, (t - travel) / hold)); // 0..1
         }
 
         const pt = path.getPointAtLength(u * L);
