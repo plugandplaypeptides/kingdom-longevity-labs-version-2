@@ -939,6 +939,36 @@ nav {
 @media (max-width: 720px){
   .cond-markers .m-glyph{ font-size: 14px; }
 }
+
+
+/* ===== Per-section palettes (distinct, premium) ===== */
+#hormones .cond-bg-fill{
+  /* steel blue -> slate gray */
+  background: linear-gradient(180deg,
+    #D2DFEE 0%,
+    #B6C8DC 42%,
+    #93A3B6 74%,
+    #68707C 100%
+  ) !important;
+}
+#hair .cond-bg-fill{
+  /* cool teal-slate -> graphite */
+  background: linear-gradient(180deg,
+    #CFE7E6 0%,
+    #B0D2D4 42%,
+    #8CA8AE 74%,
+    #616E78 100%
+  ) !important;
+}
+#sexual-health .cond-bg-fill{
+  /* warm mauve-slate -> charcoal */
+  background: linear-gradient(180deg,
+    #E6D7E2 0%,
+    #D2B6C8 42%,
+    #A78C9B 74%,
+    #6B6772 100%
+  ) !important;
+}
 </style>
 </head>
 <body>
@@ -1399,10 +1429,10 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
     const markers = glyphs.map(g => makeMarker(container, g));
 
     const L = path.getTotalLength();
-    const stopAt = 0.78;          // stop before the very end
-    const travel = 10.5;          // seconds
-    const hold = 4.0;             // seconds
-    const cycle = travel + hold;  // seconds
+    const stopAt = 1.0;          // full path
+    const travel = 3.9;          // seconds (hero-like)
+    const stagger = 1.7;         // seconds between markers
+    const cycle = travel;        // continuous loop
 
     function frame(nowMs){
       const now = nowMs/1000;
@@ -1410,32 +1440,14 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
         const delay = i * (cycle/3); // stagger 3 markers
         const t = ((now + delay) % cycle);
         let u;
-        let pulsing = 0;
-
-        if(t <= travel){
-          const tt = easeInOut(t / travel);
-          u = tt * stopAt;
-          pulsing = 0;
-        } else {
-          u = stopAt;
-          // pulse during hold
-          const ph = (t - travel) / hold; // 0..1
-          pulsing = ph;
-        }
+        // Continuous travel along the curve (no stop phase)
+        const tt = easeInOut(t / travel);
+        u = tt * stopAt;
 
         const pt = path.getPointAtLength(u * L);
         mk.g.setAttribute('transform', `translate(${pt.x},${pt.y})`);
-
-        // Pulse ring (subtle)
-        if(pulsing>0){
-          const k = pulsing;
-          const r = 12 + k*22;
-          const op = (1-k) * 0.20;
-          mk.pulse.setAttribute('r', r.toFixed(2));
-          mk.pulse.style.opacity = op.toFixed(3);
-        } else {
-          mk.pulse.style.opacity = 0;
-        }
+        // Keep pulse hidden in continuous mode
+        mk.pulse.style.opacity = 0;
       });
       requestAnimationFrame(frame);
     }
