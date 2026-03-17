@@ -1,14 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Privacy Policy | Kingdom Longevity Labs</title>
-  <link rel="canonical" href="https://kingdom-longevity-labs-version-2.pages.dev/privacy"/>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400;1,600&amp;display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kingdom Longevity Labs — Personalized Telehealth</title>
+<link rel="canonical" href="/privacy">
+<style>
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -967,148 +965,141 @@ nav {
     #6B6772 100%
   ) !important;
 }
+</style>
 
-/* ============ Legal pages v2 (brand-matched, not boring) ============ */
-body{ background: radial-gradient(1200px 700px at 20% 0%, rgba(214,227,240,.55), rgba(255,255,255,0) 60%),
-              radial-gradient(1100px 900px at 90% 20%, rgba(201,169,110,.12), rgba(255,255,255,0) 55%),
-              linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(245,248,252,1) 60%, rgba(240,244,249,1) 100%);
-}
+<style>
+  :root{
+    --ink:#0b1220;
+    --muted:#5b6b85;
+    --card:rgba(255,255,255,.78);
+    --card2:rgba(255,255,255,.92);
+    --stroke:rgba(16,24,40,.10);
+    --shadow: 0 18px 50px rgba(11,18,32,.12);
+    --shadow2: 0 10px 26px rgba(11,18,32,.10);
+    --radius:22px;
+    --radius2:16px;
+    --gold:#c9a14a;
+    --steel1:#0f2444;
+    --steel2:#294c7a;
+    --bg:#f5f7fb;
+  }
 
-.legal-hero{
-  position:relative;
-  padding: 120px 16px 34px;
-  overflow:hidden;
-}
-.legal-hero::before{
-  content:"";
-  position:absolute; inset:-2px;
-  background:
-    radial-gradient(900px 420px at 30% 35%, rgba(255,255,255,.92), rgba(255,255,255,0) 60%),
-    linear-gradient(180deg, rgba(214,227,240,.95) 0%, rgba(111,117,127,.86) 100%);
-  opacity:.55;
-  pointer-events:none;
-}
-.legal-hero::after{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    radial-gradient(520px 220px at 68% 58%, rgba(201,169,110,.35), rgba(201,169,110,0) 65%);
-  opacity:.35;
-  pointer-events:none;
-}
+  body{ background: radial-gradient(1200px 700px at 20% -10%, rgba(41,76,122,.18), transparent 60%),
+                 radial-gradient(1000px 600px at 90% 0%, rgba(201,161,74,.18), transparent 55%),
+                 var(--bg);
+        color:var(--ink);
+  }
 
-.legal-hero-inner{
-  position:relative;
-  max-width: var(--max-w);
-  margin:0 auto;
-  display:grid;
-  grid-template-columns: 1fr;
-  gap:14px;
-}
-@media (min-width: 980px){
-  .legal-hero-inner{ grid-template-columns: 1.25fr .75fr; align-items:end; }
-}
+  .legal-hero{
+    position:relative;
+    padding: 40px 0 22px;
+    background: linear-gradient(135deg, rgba(15,36,68,.92), rgba(41,76,122,.92));
+    color:#fff;
+    overflow:hidden;
+  }
+  .legal-hero::before{
+    content:"";
+    position:absolute; inset:-30% -20% auto -20%;
+    height:240px;
+    background: radial-gradient(closest-side, rgba(201,161,74,.35), transparent 70%);
+    transform: rotate(8deg);
+    filter: blur(2px);
+  }
+  .legal-hero .wrap{ position:relative; }
+  .wrap{ width:min(1100px, calc(100% - 40px)); margin:0 auto; }
 
-.legal-kicker{
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  font-size:12px;
-  opacity:.75;
-  margin:0 0 10px;
-}
+  .crumb{ font-size:13px; opacity:.85; display:flex; gap:8px; align-items:center; }
+  .crumb a{ color:rgba(255,255,255,.92); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.18); }
+  .crumb a:hover{ border-bottom-color: rgba(255,255,255,.55); }
 
-.legal-meta{ margin:0; opacity:.82; }
+  .legal-title{ margin:14px 0 8px; font-size: clamp(28px, 3.4vw, 44px); letter-spacing:-.02em; }
+  .legal-sub{ margin:0; max-width:72ch; color: rgba(255,255,255,.82); font-size:15px; line-height:1.55; }
 
-.legal-summary{
-  border-radius: 22px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(255,255,255,.65);
-  box-shadow: 0 10px 50px rgba(11,31,58,.10);
-  padding: 16px;
-}
-.legal-summary strong{ color: var(--navy); }
+  .legal-meta{ margin-top:16px; display:flex; flex-wrap:wrap; gap:10px; }
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 12px; border-radius:999px;
+    background: rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.18);
+    color:#fff; font-size:13px;
+    backdrop-filter: blur(10px);
+  }
+  .pill strong{ font-weight:600; }
 
-.legal-shell{
-  max-width: var(--max-w);
-  margin:0 auto;
-  padding: 0 16px 72px;
-}
+  .legal-main{ padding: 26px 0 64px; }
+  .grid{ display:grid; grid-template-columns: 320px 1fr; gap: 18px; align-items:start; }
 
-.legal-grid{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-@media (min-width: 980px){
-  .legal-grid{ grid-template-columns: 1.25fr .75fr; gap: 18px; }
-}
+  .card{
+    background: var(--card);
+    border:1px solid var(--stroke);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow2);
+    backdrop-filter: blur(14px);
+  }
+  .card .card-in{ padding: 18px 18px; }
 
-.legal-card{
-  border-radius: 24px;
-  background: rgba(255,255,255,.72);
-  border: 1px solid rgba(255,255,255,.75);
-  box-shadow: 0 12px 60px rgba(11,31,58,.10);
-}
-.legal-card.pad{ padding: 22px; }
+  .toc{ position:sticky; top:90px; }
+  .toc h3{ margin:0 0 10px; font-size:14px; letter-spacing:.06em; text-transform:uppercase; color: rgba(11,18,32,.72); }
+  .toc a{ display:flex; gap:10px; align-items:flex-start; text-decoration:none; padding:10px 10px; border-radius:12px; color: var(--ink); }
+  .toc a:hover{ background: rgba(41,76,122,.10); }
+  .toc a.active{ background: rgba(41,76,122,.16); border:1px solid rgba(41,76,122,.18); }
+  .toc .muted{ color: var(--muted); font-size:13px; line-height:1.35; }
 
-.legal-card h2{
-  margin: 18px 0 8px;
-  font-size: 20px;
-}
-.legal-card p, .legal-card li{ opacity:.92; }
-.legal-card ul{ padding-left: 18px; }
+  .summary{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .kpi{ background: rgba(255,255,255,.65); border:1px solid var(--stroke); border-radius:18px; padding:14px; }
+  .kpi .t{ font-size:12px; color:rgba(11,18,32,.62); text-transform:uppercase; letter-spacing:.08em; }
+  .kpi .v{ margin-top:6px; font-weight:650; }
 
-.legal-section{
-  padding: 14px 14px;
-  border-radius: 18px;
-  background: rgba(11,31,58,.035);
-  border: 1px solid rgba(11,31,58,.06);
-  margin: 12px 0;
-}
+  .section{ margin-top: 14px; }
+  .section h2{ margin:0; font-size:18px; letter-spacing:-.01em; display:flex; gap:10px; align-items:center; }
+  .section p, .section li{ color: rgba(11,18,32,.82); line-height:1.65; }
+  .section ul{ margin:10px 0 0 18px; }
 
-.legal-toc a{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding: 10px 12px;
-  border-radius: 14px;
-  text-decoration:none;
-  color: var(--body);
-  background: rgba(255,255,255,.35);
-  border: 1px solid rgba(255,255,255,.55);
-}
-.legal-toc a:hover{ color: var(--navy); background: rgba(255,255,255,.55); }
+  .callout{
+    margin-top:14px;
+    padding:14px 14px;
+    border-radius:18px;
+    background: linear-gradient(135deg, rgba(201,161,74,.18), rgba(41,76,122,.12));
+    border:1px solid rgba(201,161,74,.25);
+  }
+  .callout strong{ color: rgba(11,18,32,.92); }
 
-.legal-pill{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  text-decoration:none;
-  background: rgba(11,31,58,.06);
-  border: 1px solid rgba(11,31,58,.10);
-  color: var(--navy);
-  font-weight: 600;
-}
+  .mini{ font-size:13px; color: rgba(11,18,32,.68); }
 
-.legal-callout{
-  border-radius: 18px;
-  padding: 16px;
-  background: rgba(201,169,110,.10);
-  border: 1px solid rgba(201,169,110,.22);
-}
-.legal-callout strong{ color: var(--navy); }
+  .icon{ width:18px; height:18px; flex:0 0 18px; color: rgba(11,18,32,.82); }
+  .icon.on-dark{ color: rgba(255,255,255,.92); }
 
-.legal-mini{
-  font-size: 13px;
-  opacity: .82;
-}
+  .two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-  </style>
+  .qa{ border-top:1px solid var(--stroke); padding-top:12px; margin-top:12px; }
+  .qa:first-child{ border-top:none; padding-top:0; margin-top:0; }
+  .qa h3{ margin:0 0 6px; font-size:15px; }
+
+  /* Mobile */
+  @media (max-width: 920px){
+    .grid{ grid-template-columns: 1fr; }
+    .toc{ position:relative; top:auto; }
+    .summary{ grid-template-columns: 1fr; }
+    .two-col{ grid-template-columns: 1fr; }
+  }
+</style>
+
 </head>
 <body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="i-home" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3.1 2.5 11v10h7v-6h5v6h7V11L12 3.1Zm7 15.9h-3v-6H8v6H5v-7.1l7-5.2 7 5.2V19Z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2 3.5 5.5V12c0 5.3 3.6 9.9 8.5 10.9 4.9-1 8.5-5.6 8.5-10.9V5.5L12 2Zm6.5 10c0 4.2-2.7 7.9-6.5 8.8-3.8-.9-6.5-4.6-6.5-8.8V6.9L12 4.3l6.5 2.6V12Z"/></symbol>
+  <symbol id="i-cookie" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10c0-.5 0-1-.1-1.4-2.7.2-4.8-1.9-5-4.6-2.7.4-5-1.7-4.9-4.5-.6-.2-1.3-.3-2-.3Zm-2.4 8.3a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8Zm6.6 1a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6ZM9.5 15.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Zm6.4 1a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path fill="currentColor" d="M18 16a3 3 0 0 0-2.4 1.2L8.9 13.5a3.2 3.2 0 0 0 0-3L15.6 6.8A3 3 0 1 0 15 5a3 3 0 0 0 .1.7L8.3 9.5a3 3 0 1 0 0 5l6.8 3.8a3 3 0 1 0 2.9-2.3Z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><path fill="currentColor" d="M17 10V8a5 5 0 0 0-10 0v2H5v12h14V10h-2Zm-8 0V8a3 3 0 1 1 6 0v2H9Zm3 4a2 2 0 0 1 1 3.7V19h-2v-1.3A2 2 0 0 1 12 14Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path fill="currentColor" d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.5 4.5 0 0 0 12 12Zm0 2c-4.4 0-8 2.2-8 5v3h16v-3c0-2.8-3.6-5-8-5Z"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path fill="currentColor" d="M6 2h12v20l-2-1-2 1-2-1-2 1-2-1-2 1V2Zm3 6h6V6H9v2Zm0 4h6v-2H9v2Zm0 4h6v-2H9v2Z"/></symbol>
+  <symbol id="i-cancel" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm5.3 13.9-1.4 1.4L12 13.4l-3.9 3.9-1.4-1.4L10.6 12 6.7 8.1l1.4-1.4L12 10.6l3.9-3.9 1.4 1.4L13.4 12Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></symbol>
+  <symbol id="i-location" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z"/></symbol>
+</svg>
+
 <nav>
 <div class="logo">Kingdom <span>Longevity</span> Labs</div>
 <ul class="nav-links">
@@ -1122,108 +1113,126 @@ body{ background: radial-gradient(1200px 700px at 20% 0%, rgba(214,227,240,.55),
 <button class="btn-navy">Get Started</button>
 </div>
 </nav>
-
-<header class="legal-hero">
-  <div class="legal-hero-inner">
-    <div>
-      <p class="legal-kicker">Legal</p>
-      <h1 class="c-headline" style="margin:0 0 10px;">Privacy Policy</h1>
-      <p class="legal-meta"><strong>Effective date:</strong> 2026-03-17</p>
-    </div>
-    <div class="legal-summary">
-      <div class="legal-mini"><strong>Quick view</strong></div>
-      <div style="margin-top:8px;line-height:1.45;">We collect the info you share + standard analytics.<br/>We use it to provide, secure, and improve services.<br/><strong>We do not sell your personal information.</strong></div>
-    </div>
+<section class="legal-hero">
+  <div class="wrap">
+    <div class="crumb"><svg class="icon on-dark"><use href="#i-home"></use></svg><a href="/">Home</a><span style="opacity:.6">/</span><span style="opacity:.9">Privacy Policy</span></div>
+    <h1 class="legal-title">Privacy Policy</h1>
+    <p class="legal-sub">A clear, modern summary of how we collect, use, and protect information.</p>
+    <div class="legal-meta"><span class="pill"><svg class="icon on-dark"><use href="#i-shield"></use></svg><strong>Status</strong> Active</span>
+<span class="pill"><svg class="icon on-dark"><use href="#i-lock"></use></svg><strong>Security</strong> Safeguards in place</span>
+<span class="pill"><svg class="icon on-dark"><use href="#i-cookie"></use></svg><strong>Cookies</strong> Browser‑controlled</span></div>
   </div>
-</header>
-
-<main class="legal-shell">
-  <div class="legal-grid">
-    <article class="legal-card pad">
-<p id="overview">This Privacy Policy explains how <strong>Kingdom Longevity Labs</strong> (“we,” “us,” or “our”) collects, uses, and shares information when you visit our website or use our services.</p>
-
-<div class="legal-section" id="who-we-are">
-  <h2 style="margin-top:0;">Who we are</h2>
-  <p style="margin:0;"><strong>Business name:</strong> Kingdom Longevity Labs<br/>
-  <strong>Address:</strong> 210 E Custer Street, Laramie, Wyoming 82070<br/>
-  <strong>Email:</strong> <a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a></p>
-</div>
-
-<div class="legal-callout" id="quick-summary">
-  <strong>Key point:</strong> We do not sell your personal information.
-</div>
-
-<h2 id="info-we-collect">Information we collect</h2>
-<ul>
-  <li><strong>Contact information</strong> you provide (e.g., name, email, phone).</li>
-  <li><strong>Account/assessment information</strong> you submit through forms.</li>
-  <li><strong>Device and usage data</strong> (e.g., IP address, browser type, pages viewed) collected via cookies and similar technologies.</li>
-</ul>
-
-<h2 id="how-we-use">How we use information</h2>
-<ul>
-  <li>To provide and improve our website and services.</li>
-  <li>To respond to inquiries and provide customer support.</li>
-  <li>To process requests and communicate about services.</li>
-  <li>To secure and maintain our site, prevent fraud, and comply with legal obligations.</li>
-</ul>
-
-<h2 id="sharing">How we share information</h2>
-<p>We may share information with service providers that help us operate the site (e.g., hosting, analytics, communications) and as required by law.</p>
-
-<h2 id="cookies">Cookies &amp; analytics</h2>
-<p>We may use cookies and similar technologies to remember preferences and understand how the site is used. You can control cookies through your browser settings; disabling cookies may affect site functionality.</p>
-
-<h2 id="security">Security</h2>
-<p>We use reasonable administrative, technical, and physical safeguards designed to protect information. No method of transmission or storage is 100% secure.</p>
-
-<h2 id="your-choices">Your choices</h2>
-<ul>
-  <li>You can request access, correction, or deletion of certain information by contacting us.</li>
-  <li>You can opt out of marketing emails by using the unsubscribe link (if applicable).</li>
-</ul>
-
-<h2 id="contact">Contact</h2>
-<p>If you have questions, contact us at <a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a>.</p>
-</article>
-    <aside class="legal-card pad legal-toc">
-      <div class="ft-col-title" style="margin-bottom:10px;">On this page</div>
-      <a href="#overview"><span>Overview</span><span style="opacity:.55">→</span></a>
-<a href="#who-we-are"><span>Who we are</span><span style="opacity:.55">→</span></a>
-<a href="#quick-summary"><span>Key point</span><span style="opacity:.55">→</span></a>
-<a href="#info-we-collect"><span>Information we collect</span><span style="opacity:.55">→</span></a>
-<a href="#how-we-use"><span>How we use info</span><span style="opacity:.55">→</span></a>
-<a href="#sharing"><span>How we share info</span><span style="opacity:.55">→</span></a>
-<a href="#cookies"><span>Cookies</span><span style="opacity:.55">→</span></a>
-<a href="#security"><span>Security</span><span style="opacity:.55">→</span></a>
-<a href="#your-choices"><span>Your choices</span><span style="opacity:.55">→</span></a>
-<a href="#contact"><span>Contact</span><span style="opacity:.55">→</span></a>
-      <div style="height:14px"></div>
-      
-<div class="legal-callout">
-  <div style="font-weight:700;margin-bottom:6px;">Need help?</div>
-  <div style="opacity:.9">Email <a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a></div>
-</div>
-<div style="height:12px"></div>
-<a class="legal-pill" href="/refunds">Refund &amp; Cancellation Policy →</a>
-
+</section>
+<main class="legal-main">
+  <div class="wrap grid">
+    <aside>
+      <div class="card toc"><div class="card-in">
+<h3>On this page</h3>
+<a href="#overview"><svg class="icon"><use href="#i-shield"></use></svg><div><div style="font-weight:650">Overview</div><div class="muted">What this policy covers and how to reach us.</div></div></a>
+<a href="#collect"><svg class="icon"><use href="#i-user"></use></svg><div><div style="font-weight:650">Information we collect</div><div class="muted">What you provide and what we collect automatically.</div></div></a>
+<a href="#use"><svg class="icon"><use href="#i-lock"></use></svg><div><div style="font-weight:650">How we use information</div><div class="muted">How your information supports service delivery and security.</div></div></a>
+<a href="#share"><svg class="icon"><use href="#i-share"></use></svg><div><div style="font-weight:650">How we share information</div><div class="muted">When we share and when we don’t.</div></div></a>
+<a href="#cookies"><svg class="icon"><use href="#i-cookie"></use></svg><div><div style="font-weight:650">Cookies &amp; analytics</div><div class="muted">Preferences, performance, and browser controls.</div></div></a>
+<a href="#security"><svg class="icon"><use href="#i-shield"></use></svg><div><div style="font-weight:650">Security</div><div class="muted">How we safeguard data.</div></div></a>
+<a href="#choices"><svg class="icon"><use href="#i-user"></use></svg><div><div style="font-weight:650">Your choices</div><div class="muted">Access, correction, deletion, and marketing preferences.</div></div></a>
+<a href="#contact"><svg class="icon"><use href="#i-mail"></use></svg><div><div style="font-weight:650">Contact</div><div class="muted">How to contact Kingdom Longevity Labs.</div></div></a>
+<div class="mini" style="margin-top:10px">Tip: use your browser’s search (⌘/Ctrl+F) to find keywords quickly.</div>
+</div></div>
     </aside>
+    <section>
+      <div class="card"><div class="card-in"><div class="summary"><div class="kpi"><div class="t">We collect</div><div class="v">Contact + account/assessment + device/usage data</div></div><div class="kpi"><div class="t">We do</div><div class="v">Operate, improve, secure, and support the service</div></div><div class="kpi"><div class="t">We don’t</div><div class="v">Sell your personal information</div></div></div><div class="callout"><strong>Key point:</strong> We share data only with service providers that help run the site (e.g., hosting, analytics, communications) and when required by law.</div></div></div>
+
+<section id="overview" class="card section">
+  <div class="card-in">
+    <h2><svg class="icon"><use href="#i-shield"></use></svg>Overview</h2>
+    <p>This Privacy Policy explains how <strong>Kingdom Longevity Labs</strong> ("we", "us") collects, uses, and shares information when you use our website and related services.</p><div class="two-col"><div class="callout"><div class="mini"><strong>Business address</strong></div><div style="display:flex;gap:10px;align-items:center;margin-top:6px"><svg class="icon"><use href="#i-location"></use></svg><div>210 E Custer Street, Laramie, Wyoming 82070</div></div></div><div class="callout"><div class="mini"><strong>Support email</strong></div><div style="display:flex;gap:10px;align-items:center;margin-top:6px"><svg class="icon"><use href="#i-mail"></use></svg><div><a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a></div></div></div></div>
+  </div>
+</section>
+
+<section id="collect" class="card section">
+  <div class="card-in">
+    <h2><svg class="icon"><use href="#i-user"></use></svg>Information we collect</h2>
+    <ul><li><strong>Information you provide:</strong> name, email, phone number, and other information you submit through forms or assessments.</li><li><strong>Account/assessment information:</strong> details you enter to receive services or recommendations.</li><li><strong>Device & usage data:</strong> IP address, browser type, pages viewed, and similar data collected through cookies or comparable technologies.</li></ul>
+  </div>
+</section>
+
+<section id="use" class="card section">
+  <div class="card-in">
+    <h2><svg class="icon"><use href="#i-lock"></use></svg>How we use information</h2>
+    <ul><li>Provide, maintain, and improve our website and services.</li><li>Respond to inquiries and provide customer support.</li><li>Process requests and communicate about services.</li><li>Maintain security, prevent fraud, and enforce our policies.</li><li>Comply with legal obligations.</li></ul>
+  </div>
+</section>
+
+<section id="share" class="card section">
+  <div class="card-in">
+    <h2><svg class="icon"><use href="#i-share"></use></svg>How we share information</h2>
+    <p>We may share information with trusted <strong>service providers</strong> who perform services on our behalf (such as hosting, analytics, and communications). We may also disclose information if required by law or to protect rights, safety, and security.</p><div class="callout"><strong>We do not sell personal information.</strong></div>
+  </div>
+</section>
+
+<section id="cookies" class="card section">
+  <div class="card-in">
+    <h2><svg class="icon"><use href="#i-cookie"></use></svg>Cookies &amp; analytics</h2>
+    <p>We use cookies and similar technologies to remember preferences and understand how the site is used.</p><ul><li>You can manage cookies through your browser settings.</li><li>Disabling cookies may affect some features or functionality.</li></ul>
+  </div>
+</section>
+
+<section id="security" class="card section">
+  <div class="card-in">
+    <h2><svg class="icon"><use href="#i-shield"></use></svg>Security</h2>
+    <p>We use reasonable administrative, technical, and physical safeguards designed to protect information. However, no method of transmission or storage is 100% secure.</p>
+  </div>
+</section>
+
+<section id="choices" class="card section">
+  <div class="card-in">
+    <h2><svg class="icon"><use href="#i-user"></use></svg>Your choices</h2>
+    <ul><li><strong>Access / correction / deletion:</strong> You may request access to, correction of, or deletion of your information by contacting us.</li><li><strong>Marketing:</strong> You can opt out of marketing emails using the unsubscribe link included in those emails.</li></ul>
+  </div>
+</section>
+
+<section id="contact" class="card section">
+  <div class="card-in">
+    <h2><svg class="icon"><use href="#i-mail"></use></svg>Contact</h2>
+    <p>If you have questions about this Privacy Policy, contact us at <a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a>.</p>
+  </div>
+</section>
+    </section>
   </div>
 </main>
-
 <footer id="footer">
 <div class="ft-wm"><div class="ft-wm-text">KINGDOM</div></div>
 <div class="ft-grid">
 <div><div class="ft-brand">Kingdom <span>Longevity</span> Labs</div><div class="ft-tag">Evidence-based telehealth for people who take their health seriously.</div></div>
 <div><div class="ft-col-title">Treatments</div><ul class="ft-links"><li><a href="#">Weight loss</a></li><li><a href="#">Hormone therapy</a></li><li><a href="#">Hair regrowth</a></li><li><a href="#">Sexual health</a></li><li><a href="#">Skin care</a></li></ul></div>
 <div><div class="ft-col-title">Company</div><ul class="ft-links"><li><a href="#">About us</a></li><li><a href="#">Our physicians</a></li><li><a href="#">Science</a></li><li><a href="#">Press</a></li><li><a href="#">Careers</a></li></ul></div>
-<div><div class="ft-col-title">Support</div><ul class="ft-links"><li><a href="#">Help center</a></li>
-<li><a href="/refunds">Refund &amp; Cancellation Policy</a></li><li><a href="#">Contact us</a></li><li><a href="/privacy">Privacy policy</a></li><li><a href="#">Terms of service</a></li></ul></div>
+<div><div class="ft-col-title">Support</div><ul class="ft-links"><li><a href="#">Help center</a></li><li><a href="#">Contact us</a></li><li><a href="#">Privacy policy</a></li><li><a href="#">Terms of service</a></li></ul></div>
 </div>
 <div class="ft-bot">
 <div class="ft-legal">© 2025 Kingdom Longevity Labs LLC. All rights reserved.</div>
 <div class="ft-disc">Prescription medications require a valid prescription from a licensed provider. Results may vary.</div>
 </div>
 </footer>
+
+<script>
+  // TOC active state while scrolling
+  (function(){
+    const links = Array.from(document.querySelectorAll('.toc a'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    if(!links.length || !sections.length) return;
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(l=>l.classList.remove('active'));
+          const id = '#'+e.target.id;
+          const a = links.find(l=>l.getAttribute('href')===id);
+          if(a) a.classList.add('active');
+        }
+      });
+    }, {rootMargin:'-25% 0px -65% 0px', threshold:[0,1]});
+    sections.forEach(s=>obs.observe(s));
+  })();
+</script>
+
 </body>
 </html>
