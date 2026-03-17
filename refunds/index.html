@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Refund &amp; Cancellation Policy | Kingdom Longevity Labs</title>
   <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400;1,600&amp;display=swap" rel="stylesheet"/>
-<style>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Refund &amp; Cancellation Policy | Kingdom Longevity Labs</title>
+  <link rel="canonical" href="https://kingdom-longevity-labs-version-2.pages.dev/refunds"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+  <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -964,22 +967,91 @@ nav {
     #6B6772 100%
   ) !important;
 }
-/* --- Legal page helpers (small + non-invasive) --- */
-.legal-wrap{max-width:var(--max-w);margin:0 auto;padding:120px 16px 56px;}
-.legal-hero{max-width:900px;margin:0 auto 18px;}
-.legal-hero .eyebrow{letter-spacing:.22em;text-transform:uppercase;font-size:12px;opacity:.75;margin:0 0 10px;}
-.legal-hero h1{margin:0 0 8px;}
-.legal-hero .sub{opacity:.82;margin:0;}
-.legal-card{max-width:900px;margin:0 auto;padding:24px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter: blur(12px);}
-.legal-card h2{margin-top:22px;margin-bottom:8px;font-size:20px;}
-.legal-card p, .legal-card li{opacity:.92;}
-.legal-card ul{padding-left:18px;}
-.legal-footer{max-width:900px;margin:18px auto 0;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;opacity:.85;}
-.legal-footer a{text-decoration:none;}
-</style>
+
+/* ---- Legal pages: same brand, more interesting layout ---- */
+.legal-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 16px 28px;
+}
+.legal-hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(900px 420px at 20% 20%, rgba(255,255,255,.85), rgba(255,255,255,0) 55%),
+              linear-gradient(180deg, rgba(214,227,240,.95) 0%, rgba(111,117,127,.95) 100%);
+  opacity: .55;
+  pointer-events:none;
+}
+.legal-hero-inner{
+  position:relative;
+  max-width: var(--max-w);
+  margin:0 auto;
+}
+.legal-kicker{
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  font-size:12px;
+  opacity:.75;
+  margin:0 0 12px;
+}
+.legal-title{ margin:0 0 10px; }
+.legal-meta{ margin:0; opacity:.8; }
+
+.legal-shell{
+  max-width: var(--max-w);
+  margin:0 auto;
+  padding: 0 16px 72px;
+}
+.legal-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+@media (min-width: 980px){
+  .legal-grid{ grid-template-columns: 1.15fr .85fr; gap: 18px; }
+}
+
+.legal-card{
+  border-radius: 22px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 12px 60px rgba(11,31,58,.12);
+  backdrop-filter: blur(14px);
+}
+.legal-card.pad{ padding: 22px; }
+
+.legal-toc a{
+  display:block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration:none;
+  color: var(--body);
+}
+.legal-toc a:hover{
+  background: rgba(255,255,255,.07);
+  color: var(--navy);
+}
+
+.legal-card h2{
+  margin: 18px 0 8px;
+  font-size: 20px;
+}
+.legal-card p, .legal-card li{ opacity:.92; }
+.legal-card ul{ padding-left: 18px; }
+
+.legal-callout{
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(201,169,110,.10);
+  border: 1px solid rgba(201,169,110,.22);
+}
+.legal-callout strong{ color: var(--navy); }
+
+  </style>
 </head>
 <body>
-  <nav>
+<nav>
 <div class="logo">Kingdom <span>Longevity</span> Labs</div>
 <ul class="nav-links">
 <li><a href="#weight-loss">Weight Loss</a></li>
@@ -992,33 +1064,68 @@ nav {
 <button class="btn-navy">Get Started</button>
 </div>
 </nav>
-  <div class="legal-wrap">
-  <header class="legal-hero">
-    <p class="eyebrow">Legal</p>
-    <h1>Refund & Cancellation Policy</h1>
-    <p class="sub"><strong>Effective date:</strong> 2026-03-17</p>
-  </header>
 
-  <article class="legal-card">
-    <h2>Refunds</h2>
-    <p><strong>No refunds.</strong> All sales are final. We do not offer refunds.</p>
-
-    <h2>Cancellations</h2>
-    <p>If your purchase includes a recurring subscription or membership, you may cancel future billing by contacting us at <a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a>. Cancellation timing may affect whether the next billing cycle has already processed.</p>
-
-    <h2>Billing questions / wrong charge</h2>
-    <p>If you believe you were charged in error, contact us as soon as possible so we can review and help resolve the issue.</p>
-
-    <h2>Contact</h2>
-    <p><strong>Kingdom Longevity Labs</strong><br/>
-       210 E Custer Street, Laramie, Wyoming 82070<br/>
-       <a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a></p>
-  </article>
-
-  <div class="legal-footer">
-    <a href="/">Home</a>
-    <a href="/privacy/">Privacy Policy</a>
+<header class="legal-hero">
+  <div class="legal-hero-inner">
+    <p class="legal-kicker">Legal</p>
+    <h1 class="c-headline legal-title">Refund &amp; Cancellation Policy</h1>
+    <p class="legal-meta"><strong>Effective date:</strong> 2026-03-17</p>
   </div>
+</header>
+
+<main class="legal-shell">
+  <div class="legal-grid">
+    <article class="legal-card pad">
+<p id="overview">This Refund &amp; Cancellation Policy describes our policies regarding refunds, cancellations, and billing questions.</p>
+
+<div class="legal-callout" id="refunds">
+  <strong>Refunds:</strong> <span style="opacity:.92">No refunds. All sales are final.</span>
 </div>
+
+<h2 id="cancellations">Cancellations</h2>
+<p>If your purchase includes a recurring subscription or membership, you may cancel future billing by contacting us at <a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a>. Cancellation timing may affect whether the next billing cycle has already processed.</p>
+
+<h2 id="billing">Billing questions / wrong charge</h2>
+<p>If you believe you were charged in error, contact us as soon as possible so we can review and help resolve the issue.</p>
+
+<h2 id="contact">Contact</h2>
+<p><strong>Kingdom Longevity Labs</strong><br/>
+210 E Custer Street, Laramie, Wyoming 82070<br/>
+<a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a></p>
+</article>
+    <aside class="legal-card pad legal-toc">
+      <div class="ft-col-title" style="margin-bottom:10px;">On this page</div>
+      <a href="#overview">Overview</a>
+<a href="#refunds">Refunds</a>
+<a href="#cancellations">Cancellations</a>
+<a href="#billing">Billing questions</a>
+<a href="#contact">Contact</a>
+      <div style="height:14px"></div>
+      
+<div class="legal-callout">
+  <div style="font-weight:600;margin-bottom:6px;">Fastest way to reach us</div>
+  <div style="opacity:.9">Email <a href="mailto:help@kingdomlongevitylabs.com">help@kingdomlongevitylabs.com</a></div>
+</div>
+<div style="height:10px"></div>
+<a class="btn-ghost" style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;" href="/privacy">Privacy Policy</a>
+
+    </aside>
+  </div>
+</main>
+
+<footer id="footer">
+<div class="ft-wm"><div class="ft-wm-text">KINGDOM</div></div>
+<div class="ft-grid">
+<div><div class="ft-brand">Kingdom <span>Longevity</span> Labs</div><div class="ft-tag">Evidence-based telehealth for people who take their health seriously.</div></div>
+<div><div class="ft-col-title">Treatments</div><ul class="ft-links"><li><a href="#">Weight loss</a></li><li><a href="#">Hormone therapy</a></li><li><a href="#">Hair regrowth</a></li><li><a href="#">Sexual health</a></li><li><a href="#">Skin care</a></li></ul></div>
+<div><div class="ft-col-title">Company</div><ul class="ft-links"><li><a href="#">About us</a></li><li><a href="#">Our physicians</a></li><li><a href="#">Science</a></li><li><a href="#">Press</a></li><li><a href="#">Careers</a></li></ul></div>
+<div><div class="ft-col-title">Support</div><ul class="ft-links"><li><a href="#">Help center</a></li>
+<li><a href="/refunds">Refund &amp; Cancellation Policy</a></li><li><a href="#">Contact us</a></li><li><a href="/privacy">Privacy policy</a></li><li><a href="#">Terms of service</a></li></ul></div>
+</div>
+<div class="ft-bot">
+<div class="ft-legal">© 2025 Kingdom Longevity Labs LLC. All rights reserved.</div>
+<div class="ft-disc">Prescription medications require a valid prescription from a licensed provider. Results may vary.</div>
+</div>
+</footer>
 </body>
 </html>
