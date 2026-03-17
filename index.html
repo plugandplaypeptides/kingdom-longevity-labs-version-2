@@ -859,6 +859,57 @@ nav {
 #hormones .cond-text, #hormones .cond-cards,
 #hair .cond-text, #hair .cond-cards,
 #sexual-health .cond-text, #sexual-health .cond-cards{ z-index: 6; }
+
+
+/* ===== Dotted markers: per-section icons (uniqueness lives here) ===== */
+
+/* Base: make the marker a clean ring that can host an icon */
+#hormones .path-dot,
+#hair .path-dot,
+#sexual-health .path-dot{
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.00);
+  border: 1.5px solid rgba(255,255,255,0.28);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+#hormones .path-dot::before,
+#hair .path-dot::before,
+#sexual-health .path-dot::before{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-52%);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(255,255,255,0.78);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.10);
+}
+
+/* Hormones: alternate male/female symbols along the ascent */
+#hormones .path-dot:nth-child(1)::before{ content: "♂"; }
+#hormones .path-dot:nth-child(2)::before{ content: "♀"; }
+#hormones .path-dot:nth-child(3)::before{ content: "♂"; }
+#hormones .path-dot:nth-child(4)::before{ content: "♀"; }
+
+/* Hair: upward arrows */
+#hair .path-dot::before{ content: "↑"; }
+#hair .path-dot::before{ color: rgba(230,255,252,0.82); }
+#hair .path-dot{ border-color: rgba(230,255,252,0.30); }
+
+/* Sexual health: infinity */
+#sexual-health .path-dot::before{ content: "∞"; }
+#sexual-health .path-dot::before{ color: rgba(255,245,240,0.82); }
+#sexual-health .path-dot{ border-color: rgba(255,245,240,0.30); }
+
+@media (max-width: 720px){
+  #hormones .path-dot, #hair .path-dot, #sexual-health .path-dot{ width: 22px; height: 22px; }
+  #hormones .path-dot::before, #hair .path-dot::before, #sexual-health .path-dot::before{ font-size: 12px; }
+}
 </style>
 </head>
 <body>
