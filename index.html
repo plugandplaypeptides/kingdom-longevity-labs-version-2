@@ -65,7 +65,7 @@ nav {
 .fixed-line { font-size: clamp(40px,6.5vw,78px); font-weight: 300; color: var(--navy); letter-spacing: -0.03em; line-height: 1; margin-bottom: 40px; }
 
 /* Hero promo cards */
-.hero-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.hero-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px; }
 .pc { border-radius: var(--r-card); overflow: hidden; position: relative; min-height: 220px; cursor: pointer; box-shadow: 0 8px 32px rgba(11,31,58,0.10); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s; }
 .pc:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(11,31,58,0.18); }
 .pc-a { background: radial-gradient(ellipse at center, #5A9ED0 0%, #2E78B8 40%, #1458A0 70%, #0C4080 100%); }
@@ -83,31 +83,55 @@ nav {
 .pc:hover .pc-arrow { background: rgba(255,255,255,0.28); transform: translate(2px,-2px); }
 .pc-arrow svg { width: 15px; height: 15px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Hero sub cards — 4 equal cards matching Hims layout */
+/* Hero sub cards — 4 equal cards matching ForHers layout */
 .hero-sub-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  gap: 6px;
+  margin-top: 6px;
 }
 .hsc {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 18px;
-  background: #fff;
-  border: 1px solid rgba(11,31,58,0.10);
+  padding: 22px 20px;
+  background: #EFECE7;
+  border: none;
   border-radius: 16px;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
-  box-shadow: 0 2px 10px rgba(11,31,58,0.06);
+  transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: none;
   gap: 10px;
+  min-height: 72px;
+  overflow: hidden;
 }
 .hsc:hover {
-  box-shadow: 0 8px 28px rgba(11,31,58,0.11);
-  transform: translateY(-2px);
-  border-color: rgba(11,31,58,0.18);
+  box-shadow: none;
+  transform: none;
 }
+
+/* Themed hover colors per card */
+.hsc-testosterone:hover {
+  background: #1A3355;
+}
+.hsc-testosterone:hover .hsc-label,
+.hsc-testosterone:hover .hsc-name { color: #fff; }
+.hsc-testosterone:hover .hsc-arrow { stroke: #fff; }
+
+.hsc-hair:hover {
+  background: #2D5A3D;
+}
+.hsc-hair:hover .hsc-label,
+.hsc-hair:hover .hsc-name { color: #fff; }
+.hsc-hair:hover .hsc-arrow { stroke: #fff; }
+
+.hsc-sexual:hover {
+  background: #6B2D3E;
+}
+.hsc-sexual:hover .hsc-label,
+.hsc-sexual:hover .hsc-name { color: #fff; }
+.hsc-sexual:hover .hsc-arrow { stroke: #fff; }
 .hsc-text {
   display: flex;
   flex-direction: column;
@@ -143,24 +167,35 @@ nav {
   font-size: 28px;
   line-height: 1;
 }
+.hsc-product-img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), filter 0.35s;
+}
+.hsc:hover .hsc-product-img {
+  transform: scale(1.08) translateY(-2px);
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.2));
+}
 .hsc-arrow {
-  width: 16px; height: 16px;
+  width: 24px; height: 24px;
   stroke: var(--navy); fill: none;
   stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-  opacity: 0.5;
-  transition: opacity 0.2s, transform 0.2s;
+  opacity: 0.4;
+  transition: opacity 0.3s, transform 0.3s;
+  flex-shrink: 0;
 }
-.hsc:hover .hsc-arrow { opacity: 1; transform: translateX(2px); }
+.hsc:hover .hsc-arrow { opacity: 1; transform: translateX(3px); }
 
-/* Last card — "Start here" variant */
+/* Last card — "Start here" variant (dark by default like ForHers) */
 .hsc-start {
-  background: var(--navy);
-  border-color: var(--navy);
+  background: #3D6B6B;
 }
-.hsc-start .hsc-label { color: rgba(255,255,255,0.55); }
+.hsc-start .hsc-label { color: rgba(255,255,255,0.7); }
 .hsc-start .hsc-name { color: #fff; }
 .hsc-start .hsc-name em { color: var(--gold-light); }
-.hsc-start:hover { background: var(--navy-mid); border-color: var(--navy-mid); }
+.hsc-start:hover { background: #2D5555; }
 .hsc-plus {
   width: 32px; height: 32px;
   border-radius: 50%;
@@ -1007,14 +1042,14 @@ nav {
 <div class="fixed-line">personalized to you</div>
 <div class="hero-cards">
 <div class="pc pc-a">
-<div class="pc-person" id="man-slot"></div>
+<div class="pc-person" id="man-slot"><img src="assets/hero-man.png" alt="Fit healthy man" loading="lazy"></div>
 <div class="pc-overlay">
 <div class="pc-text"><div class="pc-label">Most popular</div><div class="pc-title">Lose weight<br/>your way</div><div class="pc-sub">GLP-1 programs that fit your life</div><div class="pc-price">from $149/mo</div></div>
 <div class="pc-arrow"><svg viewbox="0 0 24 24"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
 </div>
 </div>
 <div class="pc pc-b">
-<div class="pc-person" id="woman-slot"></div>
+<div class="pc-person" id="woman-slot"><img src="assets/hero-woman.png" alt="Fit healthy woman" loading="lazy"></div>
 <div class="pc-overlay">
 <div class="pc-text"><div class="pc-label">See your results</div><div class="pc-title">How much could<br/>you lose?</div><div class="pc-sub">Take the 60-second assessment</div><div class="pc-price">Free assessment</div></div>
 <div class="pc-arrow"><svg viewbox="0 0 24 24"><line x1="7" x2="17" y1="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></div>
@@ -1022,33 +1057,33 @@ nav {
 </div>
 </div>
 <div class="hero-sub-cards">
-<a class="hsc" href="#hormones">
+<a class="hsc hsc-testosterone" href="#hormones">
 <div class="hsc-text">
 <span class="hsc-label">Boost</span>
 <span class="hsc-name">testosterone</span>
 </div>
 <div class="hsc-right">
-<div class="hsc-icon">⚡</div>
+<img class="hsc-product-img" src="assets/vial-testosterone.png" alt="Testosterone vial" loading="lazy">
 <svg class="hsc-arrow" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
 </div>
 </a>
-<a class="hsc" href="#hair">
+<a class="hsc hsc-hair" href="#hair">
 <div class="hsc-text">
 <span class="hsc-label">Regrow</span>
 <span class="hsc-name">hair</span>
 </div>
 <div class="hsc-right">
-<div class="hsc-icon">🌿</div>
+<img class="hsc-product-img" src="assets/vial-hair.png" alt="Hair regrowth vial" loading="lazy">
 <svg class="hsc-arrow" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
 </div>
 </a>
-<a class="hsc" href="#sexual-health">
+<a class="hsc hsc-sexual" href="#sexual-health">
 <div class="hsc-text">
 <span class="hsc-label">Improve</span>
 <span class="hsc-name">sexual health</span>
 </div>
 <div class="hsc-right">
-<div class="hsc-icon">💫</div>
+<img class="hsc-product-img" src="assets/vial-sexual-health.png" alt="Sexual health vial" loading="lazy">
 <svg class="hsc-arrow" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
 </div>
 </a>
