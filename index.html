@@ -969,6 +969,42 @@ nav {
     #6B6772 100%
   ) !important;
 }
+
+
+/* Longevity section — matches the existing cond system */
+.bg-longevity .cond-bg-fill{ position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 60% 40%, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 58%),
+    radial-gradient(ellipse at 18% 22%, rgba(201,161,74,.22) 0%, rgba(201,161,74,0) 62%),
+    linear-gradient(135deg, #0f2444 0%, #244a7a 55%, #0b1f3a 100%);
+}
+
+/* Your image (assets/fitcouple.png) as the same kind of subtle “figure in the panel” accent */
+.bg-longevity .cond-bg::after{
+  content:"";
+  position:absolute;
+  right:-40px;
+  bottom:-18px;
+  width: min(520px, 52vw);
+  height: min(520px, 52vw);
+  background-image: url('assets/fitcouple.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  opacity: .18;
+  filter: saturate(1.05) contrast(1.05);
+  pointer-events:none;
+}
+
+/* Keep text/cards above the image and dotted path */
+#longevity.bg-longevity .cond-text,
+#longevity.bg-longevity .cond-cards{ position:relative; z-index:2; }
+
+/* Make cards read consistently on the darker background */
+.bg-longevity .cc{ background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.14); }
+.bg-longevity .cc-title{ color:#fff; }
+.bg-longevity .cc-sub{ color: rgba(255,255,255,.78); }
+
 </style>
 <style>
   a.logo{ color:inherit; text-decoration:none; }
@@ -983,6 +1019,7 @@ nav {
 <ul class="nav-links">
 <li><a href="#weight-loss">Weight Loss</a></li>
 <li><a href="#hormones">Hormones</a></li>
+<li><a href="#longevity">Longevity</a></li>
 <li><a href="#hair">Hair</a></li>
 <li><a href="#sexual-health">Sexual Health</a></li>
 </ul>
@@ -1255,6 +1292,33 @@ nav {
 <div class="cc reveal d1"><div class="cc-title">At-home <em>labs to check your T levels</em></div><div class="cc-sub">Comprehensive hormone panel, results in 3 days</div><div class="cc-cta">Start testing <svg viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></div></div>
 </div>
 <div aria-hidden="true" class="hormone-img-wrap"><img alt="" class="hormone-people-img" loading="lazy" onerror="this.style.display='none';" src="assets/hormone-couple.png"/><!-- expects repo file: /assets/hormone-couple.png --></div></section>
+
+<section class="cond bg-longevity" id="longevity" style="margin-top:16px">
+  <div class="cond-bg"><div class="cond-bg-fill"></div></div>
+  <div class="cond-path">
+    <svg preserveAspectRatio="none" viewBox="0 0 1400 120">
+      <path d="M0,90 C260,82 520,68 780,56 S1200,36 1400,26" fill="none" stroke="rgba(255,255,255,0.22)" stroke-dasharray="8,5" stroke-width="1.5"></path>
+      <g class="cond-markers" data-section="longevity"></g>
+    </svg>
+  </div>
+
+  <div class="cond-text reveal">
+    <div class="c-eyebrow">Longevity</div>
+    <div class="c-headline">Build a plan for<br/><em>the long run</em></div>
+    <div class="c-btns">
+      <button class="btn-w">Get started</button>
+      <button class="btn-o">Explore longevity options →</button>
+    </div>
+  </div>
+
+  <div class="cond-cards">
+    <div class="cc reveal"><div class="cc-title">Peptide support <em>to complement your plan</em></div><div class="cc-sub">Discuss options with your clinician based on your goals and history (e.g., BPC‑157, Ipamorelin).</div></div>
+    <div class="cc reveal"><div class="cc-title">Recovery + performance <em>that fits your lifestyle</em></div><div class="cc-sub">A structured approach to recovery, sleep, nutrition, and consistency — with support along the way.</div></div>
+    <div class="cc reveal"><div class="cc-title">Longevity labs <em>to track progress</em></div><div class="cc-sub">Objective markers that help guide decisions over time, with clinician review.</div></div>
+  </div>
+</section>
+
+
 <!-- HAIR -->
 <section class="cond bg-sage" id="hair" style="margin-top:16px">
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
