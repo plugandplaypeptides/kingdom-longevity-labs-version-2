@@ -220,8 +220,8 @@ nav {
 .cond {
   position: relative;
   width: 100%;
-  margin: 0;
-  border-radius: 0;
+  margin: 16px 0 0;
+  border-radius: var(--r-section);
   overflow: hidden;
   min-height: 100vh;
   display: flex;
@@ -340,8 +340,8 @@ nav {
 
 /* ═══ TESTIMONIALS ═══ */
 #testimonials {
-  width: 100%; margin: 0;
-  border-radius: 0; overflow: hidden;
+  width: 100%; margin: 16px 0 0;
+  border-radius: var(--r-section); overflow: hidden;
   background: radial-gradient(ellipse at center, #FDF8F0 0%, #F5E8D0 40%, #E8D4B0 70%, #D4B87A 100%);
   position: relative;
 }
@@ -375,8 +375,8 @@ nav {
 
 /* ═══ LEAD CTA ═══ */
 #lead {
-  width: 100%; margin: 0;
-  border-radius: 0; overflow: hidden;
+  width: 100%; margin: 16px 0 0;
+  border-radius: var(--r-section); overflow: hidden;
   background: #fff;
   position: relative;
   min-height: 820px;
@@ -433,8 +433,8 @@ nav {
 
 /* ═══ FOOTER ═══ */
 #footer {
-  width: 100%; margin: 0;
-  border-radius: 0; overflow: hidden;
+  width: 100%; margin: 16px 0 0;
+  border-radius: var(--r-section); overflow: hidden;
   background: radial-gradient(ellipse at center, #3A5F88 0%, #2A4A72 40%, #1A3458 70%, #0F2242 100%);
   position: relative;
 }
@@ -558,7 +558,7 @@ nav {
   .hsc-product-img{width:44px;height:44px}
 
   /* ── Weight loss (Hims section) ── */
-  .hims-section{min-height:auto;overflow:visible}
+  .hims-section{min-height:auto;overflow:visible;margin-top:12px}
   .hims-top{padding:40px 16px 20px}
   .hims-headline{font-size:clamp(20px,5.5vw,28px)}
   .hims-person-wrap{position:relative;width:100%;z-index:2;overflow:hidden;max-height:50vh}
@@ -571,7 +571,7 @@ nav {
   .himscard-vis{width:110px;height:110px;right:10px}
 
   /* ── Condition sections ── */
-  .cond{min-height:auto;padding-bottom:32px}
+  .cond{min-height:auto;padding-bottom:32px;margin-top:12px}
   .cond-text{padding:clamp(40px,8vw,56px) 16px 0 !important}
   .cond-cards{grid-template-columns:1fr;gap:8px;padding:0 16px 32px}
   .c-headline{font-size:clamp(36px,10vw,56px)}
@@ -617,13 +617,14 @@ nav {
   .sec-sub{font-size:14px;margin-bottom:32px}
 
   /* ── Testimonials ── */
+  #testimonials{margin-top:12px}
   .tc{width:300px;min-height:200px}
   .tc-person-wrap{width:120px}
   .tc-quote{font-size:14px}
   .test-head{padding:40px 16px 24px}
 
   /* ── Lead CTA ── */
-  #lead{min-height:auto}
+  #lead{min-height:auto;margin-top:12px}
   .lead-content-col{padding:32px 16px;max-width:100%}
   .lead-title{font-size:clamp(28px,7vw,40px)}
   .lead-body{font-size:14px}
@@ -637,6 +638,7 @@ nav {
   }
 
   /* ── Footer ── */
+  #footer{margin-top:12px}
   .ft-grid{grid-template-columns:1fr;gap:24px;padding:24px 16px}
   .ft-bot{flex-direction:column;gap:12px;text-align:center;padding:0 16px 24px}
   .ft-disc{text-align:center;max-width:100%}
@@ -656,8 +658,8 @@ nav {
 .hims-section {
   position: relative;
   width: 100%;
-  margin: 0;
-  border-radius: 0;
+  margin: 16px 0 0;
+  border-radius: var(--r-section);
   overflow: hidden;
   min-height: 110vh;
   display: flex;
