@@ -58,10 +58,10 @@ nav {
 /* HERO */
 #hero { padding: 120px var(--g) 64px; }
 .hero-wrap { max-width: var(--max-w); margin: 0 auto; }
-.clip { height: clamp(52px,7vw,84px); overflow: hidden; margin-bottom: 4px; }
-.rotating { animation: rot 9s cubic-bezier(0.4,0,0.2,1) infinite; }
-.rotating span { display: block; height: clamp(52px,7vw,84px); line-height: clamp(52px,7vw,84px); font-family: 'Cormorant Garamond', serif; font-size: clamp(44px,7vw,84px); font-weight: 400; font-style: italic; color: var(--gold); letter-spacing: -0.02em; }
-@keyframes rot { 0%,20%{transform:translateY(0)} 25%,45%{transform:translateY(-25%)} 50%,70%{transform:translateY(-50%)} 75%,95%{transform:translateY(-75%)} 100%{transform:translateY(0)} }
+.clip { height: clamp(68px,9.5vw,112px); overflow: hidden; margin-bottom: 4px; }
+.rotating { animation: rot 10s cubic-bezier(0.4,0,0.2,1) infinite; }
+.rotating span { display: flex; align-items: center; height: clamp(68px,9.5vw,112px); font-family: 'Cormorant Garamond', serif; font-size: clamp(44px,7vw,84px); font-weight: 400; font-style: italic; color: var(--gold); letter-spacing: -0.02em; }
+@keyframes rot { 0%,18%{transform:translateY(0)} 20%,38%{transform:translateY(-20%)} 40%,58%{transform:translateY(-40%)} 60%,78%{transform:translateY(-60%)} 80%,98%{transform:translateY(-80%)} 100%{transform:translateY(-80%)} }
 .fixed-line { font-size: clamp(40px,6.5vw,78px); font-weight: 300; color: var(--navy); letter-spacing: -0.03em; line-height: 1; margin-bottom: 40px; }
 
 /* Hero promo cards */
@@ -209,7 +209,7 @@ nav {
 .hsc-start:hover .hsc-plus { background: rgba(255,255,255,0.28); }
 
 @media(max-width:640px) {
-  .hero-sub-cards { grid-template-columns: repeat(2, 1fr); }
+  .hero-sub-cards { grid-template-columns: 1fr; }
 }
 
 
@@ -310,20 +310,33 @@ nav {
 
 
 /* ═══ DOCTORS ═══ */
-#doctors { padding: clamp(64px,8vw,100px) var(--g); }
+#trust { padding: clamp(80px,10vw,120px) var(--g); position: relative; overflow: hidden; }
+.trust-bg {
+  position: absolute;
+  right: -40px;
+  bottom: 0;
+  height: 95%;
+  max-height: 620px;
+  object-fit: contain;
+  object-position: bottom right;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
 .sec-wrap { max-width: var(--max-w); margin: 0 auto; }
 .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
 .sec-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,4.5vw,54px); font-weight: 400; color: var(--navy); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
 .sec-title em { font-style: italic; color: var(--gold); }
 .sec-sub { font-size: 16px; color: var(--muted); line-height: 1.65; max-width: 520px; font-weight: 300; margin-bottom: 48px; }
-.doc-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
-.doc-card { background: #fff; border: 1px solid rgba(11,31,58,0.08); border-radius: var(--r-card); padding: 24px 20px; box-shadow: 0 4px 20px rgba(11,31,58,0.06); transition: all 0.3s; cursor: pointer; }
-.doc-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(11,31,58,0.10); }
-.doc-av { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--sky) 0%, var(--gold-light) 100%); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 14px; }
-.doc-role { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-.doc-name { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
-.doc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-.doc-tag { font-size: 10px; padding: 3px 9px; border-radius: var(--r-pill); background: var(--sky); color: var(--navy-mid); border: 1px solid rgba(11,31,58,0.08); }
+.trust-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+.trust-card { background: rgba(11,31,58,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-card); padding: 36px 28px; box-shadow: 0 8px 32px rgba(11,31,58,0.2); text-align: center; transition: all 0.3s; }
+.trust-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(11,31,58,0.3); }
+.trust-number { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 600; color: #fff; line-height: 1; margin-bottom: 4px; }
+.trust-number span { color: #fff; }
+.trust-label { font-size: 15px; font-weight: 500; color: var(--gold-light); margin-bottom: 6px; }
+.trust-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
 
 /* ═══ TESTIMONIALS ═══ */
 #testimonials {
@@ -337,16 +350,26 @@ nav {
 .test-head .eyebrow { color: #A07840; }
 .test-head .sec-title em { color: #A07840; }
 .test-overflow { overflow: hidden; padding-bottom: clamp(40px,5vw,64px); position: relative; z-index: 1; }
-.test-track { display: flex; gap: 16px; padding: 0 var(--g); animation: st 32s linear infinite; width: max-content; }
-.test-track:hover { animation-play-state: paused; }
-@keyframes st { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-.tc { width: 300px; flex-shrink: 0; background: rgba(255,255,255,0.70); border: 1px solid rgba(201,169,110,0.2); border-radius: var(--r-card); padding: 24px; backdrop-filter: blur(8px); transition: all 0.3s; cursor: pointer; }
-.tc:hover { transform: translateY(-4px) rotate(0.4deg); box-shadow: 0 16px 40px rgba(11,31,58,0.12); background: rgba(255,255,255,0.90); }
+.test-track { display: flex; gap: 16px; padding: 0 var(--g); width: max-content; will-change: transform; }
+.tc { width: 440px; min-height: 240px; flex-shrink: 0; background: rgba(255,255,255,0.70); border: 1px solid rgba(201,169,110,0.2); border-radius: var(--r-card); backdrop-filter: blur(8px); transition: all 0.3s; cursor: pointer; position: relative; overflow: hidden; display: flex; align-items: stretch; }
+.tc:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(11,31,58,0.12); background: rgba(255,255,255,0.90); }
+.tc-content { padding: 24px; padding-right: 8px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; position: relative; z-index: 2; }
+.tc-person-wrap { width: 180px; flex-shrink: 0; position: relative; overflow: hidden; }
+.tc-person {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%);
+  mask-image: linear-gradient(to right, transparent 0%, black 25%);
+}
 .tc-stars { display: flex; gap: 3px; margin-bottom: 12px; }
 .star { width: 13px; height: 13px; background: var(--gold); clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
 .tc-quote { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-style: italic; color: var(--body); line-height: 1.6; margin-bottom: 18px; }
-.tc-auth { display: flex; align-items: center; gap: 10px; }
-.tc-av { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--sky) 0%, var(--gold-light) 100%); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: var(--navy); flex-shrink: 0; }
+.tc-auth { display: flex; flex-direction: column; }
 .tc-name { font-size: 13px; font-weight: 500; color: var(--navy); }
 .tc-detail { font-size: 11px; color: var(--muted); margin-top: 1px; }
 
@@ -354,22 +377,59 @@ nav {
 #lead {
   width: calc(100% - 24px); margin: 16px 12px 0;
   border-radius: var(--r-section); overflow: hidden;
-  background: radial-gradient(ellipse at center, #5BB0E0 0%, #2E88C8 35%, #1260A8 65%, #0A4A90 100%);
+  background: #fff;
   position: relative;
+  min-height: 820px;
 }
-#lead::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 45%, transparent 70%); }
-.lead-wrap { max-width: var(--max-w); margin: 0 auto; padding: clamp(56px,7vw,80px) var(--g); display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
-.lead-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
-.lead-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,4.5vw,54px); font-weight: 400; color: #fff; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px; }
-.lead-title em { font-style: italic; color: var(--gold-light); }
-.lead-body { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.65; font-weight: 300; }
+.lead-bg {
+  position: absolute;
+  right: 40px;
+  bottom: 0;
+  height: 95%;
+  width: auto;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 0 0 white) brightness(1.03) contrast(1.02);
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+.lead-content-col {
+  max-width: 520px;
+  padding: clamp(64px,8vw,100px) var(--g);
+  position: relative;
+  z-index: 2;
+}
+.lead-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.lead-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,4.5vw,54px); font-weight: 400; color: var(--navy); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px; }
+.lead-title em { font-style: italic; color: var(--gold); }
+.lead-body { font-size: 16px; color: rgba(11,31,58,0.55); line-height: 1.65; font-weight: 300; margin-bottom: 28px; }
+.lead-form-card {
+  background: var(--navy);
+  border-radius: var(--r-card);
+  padding: 36px;
+  box-shadow: 0 12px 48px rgba(11,31,58,0.20);
+}
+.lead-form-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.lead-form-card p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
 .lead-form { display: flex; flex-direction: column; gap: 12px; }
-.lead-inp { font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 16px 20px; border-radius: var(--r-pill); border: 1.5px solid rgba(255,255,255,0.22); background: rgba(255,255,255,0.10); color: #fff; outline: none; transition: all 0.2s; }
+.lead-inp { font-family: 'DM Sans', sans-serif; font-size: 15px; padding: 16px 20px; border-radius: var(--r-pill); border: 1.5px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); color: #fff; outline: none; transition: all 0.2s; }
 .lead-inp::placeholder { color: rgba(255,255,255,0.4); }
-.lead-inp:focus { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.15); }
+.lead-inp:focus { border-color: var(--gold); background: rgba(255,255,255,0.12); box-shadow: 0 0 0 3px rgba(201,169,110,0.2); }
 .btn-gold { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; padding: 16px 32px; border-radius: var(--r-pill); background: var(--gold); border: none; color: #fff; cursor: pointer; transition: all 0.25s; }
 .btn-gold:hover { background: #D4B483; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,0.35); }
-.lead-disc { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.5; }
+.lead-disc { font-size: 11px; color: rgba(255,255,255,0.3); line-height: 1.5; margin-top: 4px; }
+.lead-disc a { color: var(--gold-light); }
 
 /* ═══ FOOTER ═══ */
 #footer {
@@ -400,21 +460,166 @@ nav {
 .reveal.on { opacity: 1; transform: none; }
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* RESPONSIVE */
-@media(max-width:900px){.doc-grid{grid-template-columns:repeat(3,1fr)}.lead-wrap{grid-template-columns:1fr;gap:32px}}
-@media(max-width:640px){
-  .nav-links{display:none}
-  .hero-cards{grid-template-columns:1fr}
-  .pills{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}
-  .pills::-webkit-scrollbar{display:none}
-  .cond{width:calc(100% - 16px);margin-left:8px;margin-right:8px}
-  .cond-cards{grid-template-columns:1fr}
-  .c-headline{font-size:clamp(44px,12vw,72px)}
-  .doc-grid{grid-template-columns:repeat(2,1fr)}
-  .ft-grid{grid-template-columns:1fr}
-  .ft-bot{flex-direction:column;gap:12px;text-align:center}
-  .ft-disc{text-align:center;max-width:100%}
+/* ═══ HAMBURGER MENU ═══ */
+.nav-hamburger {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  width: 36px; height: 36px;
+  flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+  padding: 0;
 }
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--navy); border-radius: 2px;
+  transition: all 0.3s;
+}
+.mobile-menu-overlay {
+  display: none; position: fixed; inset: 0; z-index: 299;
+  background: rgba(0,0,0,0.4); opacity: 0;
+  transition: opacity 0.3s;
+}
+.mobile-menu-overlay.open { display: block; opacity: 1; }
+.mobile-menu {
+  position: fixed; top: 0; right: -100%; z-index: 300;
+  width: 85%; max-width: 360px; height: 100dvh;
+  background: #fff; padding: 20px 24px 32px;
+  display: flex; flex-direction: column;
+  transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: -8px 0 32px rgba(0,0,0,0.15);
+}
+.mobile-menu.open { right: 0; }
+.mobile-menu-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 32px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--stroke);
+}
+.mobile-menu-close {
+  background: none; border: none; font-size: 28px;
+  color: var(--navy); cursor: pointer; line-height: 1;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+}
+.mobile-menu-links {
+  list-style: none; display: flex; flex-direction: column; gap: 0;
+}
+.mobile-menu-links a {
+  display: block; padding: 16px 0; font-size: 17px;
+  color: var(--navy); text-decoration: none; font-weight: 500;
+  border-bottom: 1px solid var(--stroke);
+}
+.mobile-menu-btns {
+  margin-top: auto; display: flex; flex-direction: column; gap: 10px;
+}
+
+/* ═══ RESPONSIVE ═══ */
+
+/* Tablet */
+@media(max-width:900px){
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .lead-inner{grid-template-columns:1fr;min-height:auto}
+  .lead-photo-col{min-height:400px;order:-1}
+  .lead-content-col{padding:40px 24px}
+}
+
+/* Mobile */
+@media(max-width:640px){
+  /* ── Nav: logo + login + hamburger ── */
+  .nav-links{display:none}
+  .nav-cta-desktop{display:none}
+  .nav-hamburger{display:flex}
+  nav{padding:0 16px;height:56px}
+
+  /* ── Hero ── */
+  #hero{padding:80px 16px 32px}
+  .clip{height:clamp(48px,11vw,68px);margin-bottom:2px}
+  .rotating span{height:clamp(48px,11vw,68px);font-size:clamp(32px,9vw,52px)}
+  .fixed-line{font-size:clamp(28px,8.5vw,48px);margin-bottom:24px}
+
+  /* Hero promo cards — stay 2-col but shorter */
+  .hero-cards{grid-template-columns:1fr 1fr;gap:6px}
+  .pc{min-height:160px;border-radius:14px}
+  .pc-overlay{padding:14px 14px}
+  .pc-title{font-size:14px}
+  .pc-sub{font-size:12px}
+  .pc-price{font-size:11px}
+  .pc-label{font-size:10px}
+  .pc-arrow{width:30px;height:30px}
+  .pc-arrow svg{width:12px;height:12px}
+
+  /* Hero sub-cards — single column list rows (ForHers style) */
+  .hero-sub-cards{
+    grid-template-columns:1fr;
+    gap:6px;
+    margin-top:6px;
+  }
+  .hsc{
+    border-radius:14px;
+    padding:18px 16px;
+    min-height:auto;
+  }
+  .hsc-product-img{width:44px;height:44px}
+
+  /* ── Condition sections ── */
+  .cond{width:calc(100% - 16px);margin-left:8px;margin-right:8px;min-height:80vh}
+  .cond-cards{grid-template-columns:1fr;gap:8px}
+  .c-headline{font-size:clamp(36px,10vw,56px)}
+  .c-btns{gap:8px}
+  .btn-w{font-size:14px;padding:12px 24px}
+  .btn-o{font-size:14px;padding:12px 20px}
+
+  /* ── Weight loss (Hims section) ── */
+  .hims-section{min-height:auto}
+  .hims-top{padding:40px 16px 20px}
+  .hims-headline{font-size:clamp(20px,5.5vw,28px)}
+  .hims-btns{flex-direction:column;gap:8px;align-items:stretch}
+  .hims-btn-solid,.hims-btn-ghost{width:100%;text-align:center}
+  .hims-cards{grid-template-columns:1fr;gap:8px;padding:6px 16px 16px}
+  .himscard{min-height:180px}
+  .himscard-vis{width:120px;height:120px;right:-5px}
+  .hims-cta-row{flex-direction:row;gap:8px;padding:0 16px;margin-bottom:8px}
+  .hims-cta-row .hims-btn-solid,
+  .hims-cta-row .hims-btn-ghost{flex:1;text-align:center;padding:12px 16px;font-size:14px}
+  .hims-person-wrap{position:relative;width:100%;z-index:2}
+  .hims-person-img{position:relative;width:100%;max-width:none;left:auto;transform:none;bottom:auto}
+
+  /* ── Trust section ── */
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .trust-card{padding:24px 18px}
+  .trust-number{font-size:38px}
+  .trust-label{font-size:13px}
+  .trust-desc{font-size:12px}
+  #trust{padding:48px 16px}
+  .trust-bg{display:none}
+
+  /* ── Testimonials ── */
+  .tc{width:300px;min-height:200px}
+  .tc-person-wrap{width:120px}
+  .tc-quote{font-size:14px}
+
+  /* ── Lead CTA ── */
+  #lead{min-height:auto;margin:12px 8px 0}
+  .lead-content-col{padding:32px 16px;max-width:100%}
+  .lead-title{font-size:clamp(28px,7vw,40px)}
+  .lead-body{font-size:14px}
+  .lead-form-card{padding:24px 20px}
+  .lead-bg{position:relative;width:100%;height:auto;right:auto;bottom:auto;
+    -webkit-mask-image:none;mask-image:none;max-height:360px;object-fit:cover}
+
+  /* ── Footer ── */
+  #footer{margin:12px 8px 12px}
+  .ft-grid{grid-template-columns:1fr;gap:24px;padding:24px 16px}
+  .ft-bot{flex-direction:column;gap:12px;text-align:center;padding:0 16px 24px}
+  .ft-disc{text-align:center;max-width:100%}
+  .ft-wm-text{font-size:clamp(60px,16vw,160px)}
+}
+
+/* Small phones */
+@media(max-width:380px){
+  .hero-cards{grid-template-columns:1fr;gap:6px}
+  .pc{min-height:140px}
+  .hims-cta-row{flex-direction:column}
+}
+
 @media(prefers-reduced-motion:reduce){.rotating,.reveal{opacity:1;transform:none;transition:none}}
 
 /* ═══ HIMS-STYLE SECTION ═══ */
@@ -532,13 +737,34 @@ nav {
 .himscard-title { font-size: 22px; font-weight: 500; color: var(--navy); letter-spacing: -0.02em; }
 .himscard-sub { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: #6A5010; margin-bottom: 8px; }
 .himscard-vis {
-  font-size: 64px;
-  opacity: 0.20;
   position: absolute;
-  right: 24px;
-  bottom: 24px;
-  transform: rotate(-8deg);
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 210px;
+  height: 210px;
+  object-fit: contain;
   pointer-events: none;
+  opacity: 0.85;
+  filter: drop-shadow(0 8px 20px rgba(11,31,58,0.18));
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), filter 0.35s, opacity 0.35s;
+  -webkit-mask-image:
+    linear-gradient(to right, black 60%, transparent 100%),
+    linear-gradient(to left, black 60%, transparent 100%),
+    linear-gradient(to bottom, black 60%, transparent 100%),
+    linear-gradient(to top, black 60%, transparent 100%);
+  -webkit-mask-composite: destination-in;
+  mask-image:
+    linear-gradient(to right, black 60%, transparent 100%),
+    linear-gradient(to left, black 60%, transparent 100%),
+    linear-gradient(to bottom, black 60%, transparent 100%),
+    linear-gradient(to top, black 60%, transparent 100%);
+  mask-composite: intersect;
+}
+.himscard:hover .himscard-vis {
+  transform: translateY(-50%) scale(1.06);
+  filter: drop-shadow(0 12px 28px rgba(11,31,58,0.25));
+  opacity: 0.95;
 }
 .himscard-btn {
   font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
@@ -558,7 +784,7 @@ nav {
 
 @media (max-width:520px){
   .himscard{min-height:200px;}
-  .himscard-vis{right:16px;bottom:16px;font-size:56px;}
+  .himscard-vis{width:140px;height:140px;right:-5px;bottom:-5px;}
 }
 
 
@@ -1032,13 +1258,35 @@ nav {
 </ul>
 <div class="nav-r">
 <button class="btn-ghost">Log in</button>
-<button class="btn-navy">Get Started</button>
+<button class="btn-navy nav-cta-desktop">Get Started</button>
+<button class="nav-hamburger" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
 </div>
 </nav>
+<!-- Mobile slide-out menu -->
+<div class="mobile-menu-overlay"></div>
+<div class="mobile-menu">
+<div class="mobile-menu-header">
+<a class="logo" href="/">Kingdom <span>Longevity</span> Labs</a>
+<button class="mobile-menu-close" aria-label="Close menu">&times;</button>
+</div>
+<ul class="mobile-menu-links">
+<li><a href="#weight-loss">Weight Loss</a></li>
+<li><a href="#hormones">Hormones</a></li>
+<li><a href="#longevity">Longevity</a></li>
+<li><a href="#hair">Hair</a></li>
+<li><a href="#sexual-health">Sexual Health</a></li>
+</ul>
+<div class="mobile-menu-btns">
+<button class="btn-ghost" style="width:100%">Log in</button>
+<button class="btn-navy" style="width:100%">Get Started</button>
+</div>
+</div>
 <!-- HERO -->
 <section id="hero">
 <div class="hero-wrap">
-<div class="clip"><div class="rotating"><span>Weight loss</span><span>Hormone health</span><span>Hair regrowth</span><span>Better intimacy</span></div></div>
+<div class="clip"><div class="rotating"><span>Weight loss</span><span>Hormone health</span><span>Hair regrowth</span><span>Better intimacy</span><span>Weight loss</span></div></div>
 <div class="fixed-line">personalized to you</div>
 <div class="hero-cards">
 <div class="pc pc-a">
@@ -1264,13 +1512,13 @@ nav {
 <div class="himscard reveal">
 <div class="himscard-title">GLP-1 Rx</div>
 <div class="himscard-sub">to lose weight your way</div>
-<div class="himscard-vis">💊</div>
+<img class="himscard-vis" src="assets/glp1-pen.png" alt="GLP-1 pre-filled syringe" loading="lazy">
 <button class="himscard-btn">Learn more</button>
 </div>
 <div class="himscard reveal d1">
 <div class="himscard-title">Metabolic labs</div>
 <div class="himscard-sub">to track your progress</div>
-<div class="himscard-vis">🧬</div>
+<img class="himscard-vis" src="assets/dna-helix.png" alt="DNA helix" loading="lazy">
 <button class="himscard-btn">Start testing</button>
 </div>
 </div>
@@ -1387,18 +1635,34 @@ nav {
 
 <div class="sexual-img-wrap" aria-hidden="true"><img class="sexual-img-wrap-img" src="assets/CoupleEmbracing.png" alt="" loading="lazy" onerror="this.style.display='none'" /></div>
 </section>
-<!-- DOCTORS -->
-<section id="doctors">
-<div class="sec-wrap">
-<div class="eyebrow reveal">Medical team</div>
-<div class="sec-title reveal d1">The best care<br/><em>by the best in medicine</em></div>
-<div class="sec-sub reveal d2">Board-certified specialists with decades of combined experience across every specialty we serve.</div>
-<div class="doc-grid">
-<div class="doc-card reveal d1"><div class="doc-av">JW</div><div class="doc-role">Chief Medical Officer</div><div class="doc-name">Dr. James Wilson, MD</div><div class="doc-tags"><span class="doc-tag">Metabolic Health</span><span class="doc-tag">Weight Loss</span></div></div>
-<div class="doc-card reveal d2"><div class="doc-av">SR</div><div class="doc-role">Head of Endocrinology</div><div class="doc-name">Dr. Sarah Reid, MD</div><div class="doc-tags"><span class="doc-tag">Hormones</span><span class="doc-tag">Thyroid</span></div></div>
-<div class="doc-card reveal d3"><div class="doc-av">MP</div><div class="doc-role">Men's Health Advisor</div><div class="doc-name">Dr. Marcus Park, MD</div><div class="doc-tags"><span class="doc-tag">Sexual Health</span><span class="doc-tag">TRT</span></div></div>
-<div class="doc-card reveal d4"><div class="doc-av">AK</div><div class="doc-role">Dermatology Advisor</div><div class="doc-name">Dr. Anika Kumar, MD</div><div class="doc-tags"><span class="doc-tag">Hair Regrowth</span><span class="doc-tag">Skin</span></div></div>
-<div class="doc-card reveal d4"><div class="doc-av">TL</div><div class="doc-role">Women's Health Lead</div><div class="doc-name">Dr. Tanya Lee, MD</div><div class="doc-tags"><span class="doc-tag">Women's Health</span><span class="doc-tag">Hormones</span></div></div>
+<!-- TRUST -->
+<section id="trust">
+<img class="trust-bg" src="assets/Older Black Man Gray Beard.png" alt="" loading="lazy">
+<div class="sec-wrap" style="position:relative;z-index:1">
+<div class="eyebrow reveal">Why Kingdom</div>
+<div class="sec-title reveal d1">Trusted by thousands<br/><em>backed by science</em></div>
+<div class="sec-sub reveal d2">Every provider on our platform is board-certified and licensed in your state. Your health is in expert hands.</div>
+<div class="trust-grid">
+<div class="trust-card reveal d1">
+<div class="trust-number">500<span>+</span></div>
+<div class="trust-label">Licensed Providers</div>
+<div class="trust-desc">Board-certified physicians across every specialty we serve</div>
+</div>
+<div class="trust-card reveal d2">
+<div class="trust-number">50</div>
+<div class="trust-label">States Covered</div>
+<div class="trust-desc">Licensed to prescribe and treat patients nationwide</div>
+</div>
+<div class="trust-card reveal d3">
+<div class="trust-number">98<span>%</span></div>
+<div class="trust-label">Patient Satisfaction</div>
+<div class="trust-desc">Based on post-visit surveys from verified patients</div>
+</div>
+<div class="trust-card reveal d4">
+<div class="trust-number">24<span>/7</span></div>
+<div class="trust-label">Medical Support</div>
+<div class="trust-desc">Ongoing care and messaging with your clinical team</div>
+</div>
 </div>
 </div>
 </section>
@@ -1410,33 +1674,34 @@ nav {
 </div>
 <div class="test-overflow">
 <div class="test-track">
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Down 34 pounds in four months. My doctor adjusted my plan twice and was always available. Life-changing."</div><div class="tc-auth"><div class="tc-av">MR</div><div><div class="tc-name">Marcus R.</div><div class="tc-detail">Weight loss · 4 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Testosterone at 280. Six months in I'm at 750 and feel 35 again. Energy, sleep, drive — everything changed."</div><div class="tc-auth"><div class="tc-av">DJ</div><div><div class="tc-name">David J.</div><div class="tc-detail">Hormone therapy · 6 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Finally a telehealth company that follows up. My provider messages me every two weeks without asking."</div><div class="tc-auth"><div class="tc-av">SL</div><div><div class="tc-name">Sarah L.</div><div class="tc-detail">Hair regrowth · 3 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Skeptical about telehealth but my physician was incredibly thorough, knowledgeable, and genuinely caring."</div><div class="tc-auth"><div class="tc-av">TC</div><div><div class="tc-name">Thomas C.</div><div class="tc-detail">Sexual health · 2 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"The discreet delivery and professional care made all the difference. Recommended KLL to three friends."</div><div class="tc-auth"><div class="tc-av">AP</div><div><div class="tc-name">Amanda P.</div><div class="tc-detail">Weight loss · 5 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Labs reviewed by a real physician through an app. This is what healthcare should have always looked like."</div><div class="tc-auth"><div class="tc-av">KM</div><div><div class="tc-name">Kevin M.</div><div class="tc-detail">Hormone therapy · 8 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Down 34 pounds in four months. My doctor adjusted my plan twice and was always available. Life-changing."</div><div class="tc-auth"><div class="tc-av">MR</div><div><div class="tc-name">Marcus R.</div><div class="tc-detail">Weight loss · 4 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Testosterone at 280. Six months in I'm at 750 and feel 35 again. Energy, sleep, drive — everything changed."</div><div class="tc-auth"><div class="tc-av">DJ</div><div><div class="tc-name">David J.</div><div class="tc-detail">Hormone therapy · 6 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Finally a telehealth company that follows up. My provider messages me every two weeks without asking."</div><div class="tc-auth"><div class="tc-av">SL</div><div><div class="tc-name">Sarah L.</div><div class="tc-detail">Hair regrowth · 3 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Skeptical about telehealth but my physician was incredibly thorough, knowledgeable, and genuinely caring."</div><div class="tc-auth"><div class="tc-av">TC</div><div><div class="tc-name">Thomas C.</div><div class="tc-detail">Sexual health · 2 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"The discreet delivery and professional care made all the difference. Recommended KLL to three friends."</div><div class="tc-auth"><div class="tc-av">AP</div><div><div class="tc-name">Amanda P.</div><div class="tc-detail">Weight loss · 5 months</div></div></div></div>
-<div class="tc"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Labs reviewed by a real physician through an app. This is what healthcare should have always looked like."</div><div class="tc-auth"><div class="tc-av">KM</div><div><div class="tc-name">Kevin M.</div><div class="tc-detail">Hormone therapy · 8 months</div></div></div></div>
+<div class="tc"><div class="tc-content"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Down 34 pounds in four months. My doctor adjusted my plan twice and was always available. Life-changing."</div><div class="tc-auth"><div class="tc-name">Marcus R.</div><div class="tc-detail">Weight loss · 4 months</div></div></div><div class="tc-person-wrap"><img class="tc-person" src="assets/tc-marcus.png" alt="" loading="lazy"></div></div>
+<div class="tc"><div class="tc-content"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Testosterone at 280. Six months in I'm at 750 and feel 35 again. Energy, sleep, drive — everything changed."</div><div class="tc-auth"><div class="tc-name">David J.</div><div class="tc-detail">Hormone therapy · 6 months</div></div></div><div class="tc-person-wrap"><img class="tc-person" src="assets/tc-david.png" alt="" loading="lazy"></div></div>
+<div class="tc"><div class="tc-content"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Finally a telehealth company that follows up. My provider messages me every two weeks without asking."</div><div class="tc-auth"><div class="tc-name">Sarah L.</div><div class="tc-detail">Hair regrowth · 3 months</div></div></div><div class="tc-person-wrap"><img class="tc-person" src="assets/tc-sarah.png" alt="" loading="lazy"></div></div>
+<div class="tc"><div class="tc-content"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Skeptical about telehealth but my physician was incredibly thorough, knowledgeable, and genuinely caring."</div><div class="tc-auth"><div class="tc-name">Thomas C.</div><div class="tc-detail">Sexual health · 2 months</div></div></div><div class="tc-person-wrap"><img class="tc-person" src="assets/tc-thomas.png" alt="" loading="lazy"></div></div>
+<div class="tc"><div class="tc-content"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"The discreet delivery and professional care made all the difference. Recommended KLL to three friends."</div><div class="tc-auth"><div class="tc-name">Amanda P.</div><div class="tc-detail">Weight loss · 5 months</div></div></div><div class="tc-person-wrap"><img class="tc-person" src="assets/tc-amanda.png" alt="" loading="lazy"></div></div>
+<div class="tc"><div class="tc-content"><div class="tc-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><div class="tc-quote">"Labs reviewed by a real physician through an app. This is what healthcare should have always looked like."</div><div class="tc-auth"><div class="tc-name">Kevin M.</div><div class="tc-detail">Hormone therapy · 8 months</div></div></div><div class="tc-person-wrap"><img class="tc-person" src="assets/tc-kevin.png" alt="" loading="lazy"></div></div>
 </div>
 </div>
 </section>
 <!-- LEAD CTA -->
 <section id="lead">
-<div class="lead-wrap">
-<div>
-<div class="lead-eyebrow reveal">Start free</div>
-<div class="lead-title reveal d1">Unlock your free<br/><em>Health Assessment</em></div>
-<div class="lead-body reveal d2">Written by our board-certified physicians. Find out exactly which treatments are right for your goals — before you spend a dollar.</div>
-</div>
-<div class="lead-form reveal d2">
+<div class="lead-inner">
+<div class="lead-content-col">
+<div class="lead-eyebrow reveal">Free guide</div>
+<div class="lead-title reveal d1">Optimizing Your<br/><em>Hormones</em></div>
+<div class="lead-body reveal d2">Our physicians put together the definitive guide to understanding and optimizing your hormones — covering testosterone, thyroid, metabolic health, and more. Yours free.</div>
+<div class="lead-form-card reveal d3">
+<h3>Get your free copy</h3>
+<p>Enter your email and we'll send the guide straight to your inbox.</p>
+<div class="lead-form">
 <input class="lead-inp" placeholder="Enter your email address" type="email"/>
-<button class="btn-gold">Get my free assessment</button>
-<div class="lead-disc">By continuing you agree to our Terms of Service, <a href="/privacy">Privacy Policy</a>, and <a href="/refunds">Refund &amp; Cancellation Policy</a>. We never share your information.</div>
+<button class="btn-gold">Send me the free guide</button>
+<div class="lead-disc">By continuing you agree to our <a href="/terms">Terms of Service</a>, <a href="/privacy">Privacy Policy</a>, and <a href="/refunds">Refund &amp; Cancellation Policy</a>. We never share your information.</div>
+</div>
+</div>
+</div>
+<div class="lead-photo-col">
+<img class="lead-bg" src="assets/lead-couple.png" alt="Healthy couple" loading="lazy">
 </div>
 </div>
 </section>
@@ -1459,6 +1724,24 @@ nav {
 
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* Scroll-driven testimonial track */
+(function(){
+  const track = document.querySelector('.test-track');
+  const section = document.getElementById('testimonials');
+  if(!track || !section) return;
+  const maxShift = track.scrollWidth - window.innerWidth;
+  function onScroll(){
+    const rect = section.getBoundingClientRect();
+    const sectionH = section.offsetHeight;
+    const viewH = window.innerHeight;
+    const progress = Math.max(0, Math.min(1, (viewH - rect.top) / (sectionH + viewH)));
+    track.style.transform = 'translateX(' + (-progress * maxShift) + 'px)';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', function(){ onScroll(); }, {passive:true});
+  onScroll();
+})();
 </script>
 
 <script>
@@ -1587,5 +1870,23 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 })();
 </script>
 
+<script>
+/* Mobile hamburger menu */
+(function(){
+  const hamburger = document.querySelector('.nav-hamburger');
+  const menu = document.querySelector('.mobile-menu');
+  const overlay = document.querySelector('.mobile-menu-overlay');
+  const closeBtn = document.querySelector('.mobile-menu-close');
+  if(!hamburger || !menu || !overlay) return;
+
+  function openMenu(){ menu.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ menu.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow=''; }
+
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+})();
+</script>
 </body>
 </html>
