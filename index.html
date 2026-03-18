@@ -219,9 +219,9 @@ nav {
    ═══════════════════════════════════════════ */
 .cond {
   position: relative;
-  width: calc(100% - 24px);
-  margin: 16px 12px 0;
-  border-radius: var(--r-section);
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
   overflow: hidden;
   min-height: 100vh;
   display: flex;
@@ -340,8 +340,8 @@ nav {
 
 /* ═══ TESTIMONIALS ═══ */
 #testimonials {
-  width: calc(100% - 24px); margin: 0 12px;
-  border-radius: var(--r-section); overflow: hidden;
+  width: 100%; margin: 0;
+  border-radius: 0; overflow: hidden;
   background: radial-gradient(ellipse at center, #FDF8F0 0%, #F5E8D0 40%, #E8D4B0 70%, #D4B87A 100%);
   position: relative;
 }
@@ -375,8 +375,8 @@ nav {
 
 /* ═══ LEAD CTA ═══ */
 #lead {
-  width: calc(100% - 24px); margin: 16px 12px 0;
-  border-radius: var(--r-section); overflow: hidden;
+  width: 100%; margin: 0;
+  border-radius: 0; overflow: hidden;
   background: #fff;
   position: relative;
   min-height: 820px;
@@ -433,8 +433,8 @@ nav {
 
 /* ═══ FOOTER ═══ */
 #footer {
-  width: calc(100% - 24px); margin: 16px 12px 16px;
-  border-radius: var(--r-section); overflow: hidden;
+  width: 100%; margin: 0;
+  border-radius: 0; overflow: hidden;
   background: radial-gradient(ellipse at center, #3A5F88 0%, #2A4A72 40%, #1A3458 70%, #0F2242 100%);
   position: relative;
 }
@@ -516,8 +516,6 @@ nav {
 /* Tablet */
 @media(max-width:900px){
   .trust-grid{grid-template-columns:repeat(2,1fr)}
-  .lead-inner{grid-template-columns:1fr;min-height:auto}
-  .lead-photo-col{min-height:400px;order:-1}
   .lead-content-col{padding:40px 24px}
 }
 
@@ -559,28 +557,53 @@ nav {
   }
   .hsc-product-img{width:44px;height:44px}
 
+  /* ── Weight loss (Hims section) ── */
+  .hims-section{min-height:auto;overflow:visible}
+  .hims-top{padding:40px 16px 20px}
+  .hims-headline{font-size:clamp(20px,5.5vw,28px)}
+  .hims-person-wrap{position:relative;width:100%;z-index:2;overflow:hidden;max-height:50vh}
+  .hims-person-img{position:relative;width:100%;max-width:none;left:auto;transform:none;bottom:auto;display:block}
+  .hims-cta-row{flex-direction:row;gap:8px;padding:0 16px;margin-bottom:12px;margin-top:0}
+  .hims-cta-row .hims-btn-solid,
+  .hims-cta-row .hims-btn-ghost{flex:1;text-align:center;padding:12px 16px;font-size:14px}
+  .hims-cards{grid-template-columns:1fr;gap:8px;padding:6px 16px 16px}
+  .himscard{min-height:160px}
+  .himscard-vis{width:110px;height:110px;right:10px}
+
   /* ── Condition sections ── */
-  .cond{width:calc(100% - 16px);margin-left:8px;margin-right:8px;min-height:80vh}
-  .cond-cards{grid-template-columns:1fr;gap:8px}
+  .cond{min-height:auto;padding-bottom:32px}
+  .cond-text{padding:clamp(40px,8vw,56px) 16px 0 !important}
+  .cond-cards{grid-template-columns:1fr;gap:8px;padding:0 16px 32px}
   .c-headline{font-size:clamp(36px,10vw,56px)}
   .c-btns{gap:8px}
   .btn-w{font-size:14px;padding:12px 24px}
   .btn-o{font-size:14px;padding:12px 20px}
 
-  /* ── Weight loss (Hims section) ── */
-  .hims-section{min-height:auto}
-  .hims-top{padding:40px 16px 20px}
-  .hims-headline{font-size:clamp(20px,5.5vw,28px)}
-  .hims-btns{flex-direction:column;gap:8px;align-items:stretch}
-  .hims-btn-solid,.hims-btn-ghost{width:100%;text-align:center}
-  .hims-cards{grid-template-columns:1fr;gap:8px;padding:6px 16px 16px}
-  .himscard{min-height:180px}
-  .himscard-vis{width:120px;height:120px;right:-5px}
-  .hims-cta-row{flex-direction:row;gap:8px;padding:0 16px;margin-bottom:8px}
-  .hims-cta-row .hims-btn-solid,
-  .hims-cta-row .hims-btn-ghost{flex:1;text-align:center;padding:12px 16px;font-size:14px}
-  .hims-person-wrap{position:relative;width:100%;z-index:2}
-  .hims-person-img{position:relative;width:100%;max-width:none;left:auto;transform:none;bottom:auto}
+  /* Condition section people images — visible on mobile */
+  .hormone-img-wrap,
+  .longevity-img-wrap,
+  .hair-img-wrap,
+  .sexual-img-wrap{position:relative !important;z-index:2;width:100%;height:auto;min-height:280px}
+  .hormone-people-img,
+  .longevity-img-wrap-img,
+  .hair-img-wrap-img,
+  .sexual-img-wrap-img{
+    position:relative !important;
+    left:auto !important;
+    transform:none !important;
+    width:100% !important;
+    max-width:100% !important;
+    display:block;
+    opacity:1 !important;
+    filter:none !important;
+    bottom:auto !important;
+  }
+  /* Override the 900px opacity rules */
+  #hormones.hormone-grayblue .hormone-people-img{opacity:1 !important;left:auto !important;width:100% !important;transform:none !important}
+  #hair .hair-img-wrap-img,
+  #sexual-health .sexual-img-wrap-img{opacity:1 !important;left:auto !important;width:100% !important;transform:none !important}
+  /* Hide dotted path on mobile */
+  .cond-path{display:none}
 
   /* ── Trust section ── */
   .trust-grid{grid-template-columns:repeat(2,1fr);gap:10px}
@@ -590,23 +613,30 @@ nav {
   .trust-desc{font-size:12px}
   #trust{padding:48px 16px}
   .trust-bg{display:none}
+  .sec-title{font-size:clamp(26px,6vw,36px)}
+  .sec-sub{font-size:14px;margin-bottom:32px}
 
   /* ── Testimonials ── */
   .tc{width:300px;min-height:200px}
   .tc-person-wrap{width:120px}
   .tc-quote{font-size:14px}
+  .test-head{padding:40px 16px 24px}
 
   /* ── Lead CTA ── */
-  #lead{min-height:auto;margin:12px 8px 0}
+  #lead{min-height:auto}
   .lead-content-col{padding:32px 16px;max-width:100%}
   .lead-title{font-size:clamp(28px,7vw,40px)}
   .lead-body{font-size:14px}
   .lead-form-card{padding:24px 20px}
-  .lead-bg{position:relative;width:100%;height:auto;right:auto;bottom:auto;
-    -webkit-mask-image:none;mask-image:none;max-height:360px;object-fit:cover}
+  .lead-bg{
+    position:relative;width:100%;height:auto;
+    right:auto;bottom:auto;
+    -webkit-mask-image:none;mask-image:none;
+    max-height:360px;object-fit:cover;
+    display:block;
+  }
 
   /* ── Footer ── */
-  #footer{margin:12px 8px 12px}
   .ft-grid{grid-template-columns:1fr;gap:24px;padding:24px 16px}
   .ft-bot{flex-direction:column;gap:12px;text-align:center;padding:0 16px 24px}
   .ft-disc{text-align:center;max-width:100%}
@@ -625,9 +655,9 @@ nav {
 /* ═══ HIMS-STYLE SECTION ═══ */
 .hims-section {
   position: relative;
-  width: calc(100% - 24px);
-  margin: 16px 12px 0;
-  border-radius: var(--r-section);
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
   overflow: hidden;
   min-height: 110vh;
   display: flex;
@@ -1525,7 +1555,7 @@ nav {
 <div class="hims-disc" style="position:relative;z-index:5">Compounded products are not approved nor evaluated for safety, effectiveness, or quality by the FDA.</div>
 </section>
 <!-- HORMONES -->
-<section class="cond hormone-grayblue" id="hormones" style="margin-top:16px">
+<section class="cond hormone-grayblue" id="hormones">
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
@@ -1548,7 +1578,7 @@ nav {
 </div>
 <div aria-hidden="true" class="hormone-img-wrap"><img alt="" class="hormone-people-img" loading="lazy" onerror="this.style.display='none';" src="assets/hormone-couple.png"/><!-- expects repo file: /assets/hormone-couple.png --></div></section>
 
-<section class="cond bg-longevity" id="longevity" style="margin-top:16px">
+<section class="cond bg-longevity" id="longevity">
   <div class="cond-bg"><div class="cond-bg-fill"></div></div>
   <div class="cond-path">
     <svg preserveAspectRatio="none" viewBox="0 0 1400 120">
@@ -1586,7 +1616,7 @@ nav {
 
 
 <!-- HAIR -->
-<section class="cond bg-sage" id="hair" style="margin-top:16px">
+<section class="cond bg-sage" id="hair">
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
@@ -1611,7 +1641,7 @@ nav {
 <div class="hair-img-wrap" aria-hidden="true"><img class="hair-img-wrap-img" src="assets/GreatHairManWoman.png" alt="" loading="lazy" onerror="this.style.display='none'" /></div>
 </section>
 <!-- SEXUAL HEALTH -->
-<section class="cond bg-warm" id="sexual-health" style="margin-top:16px">
+<section class="cond bg-warm" id="sexual-health">
 <div class="cond-bg"><div class="cond-bg-fill"></div></div>
 <div class="cond-path">
 <svg preserveaspectratio="none" viewbox="0 0 1400 120">
