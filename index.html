@@ -1443,19 +1443,32 @@ nav {
       padding-bottom:0 !important;
     }
 
-    /* Headline area: tight top padding, order first */
+    /* Break .cond-text so its children become flex items we can reorder */
     #hormones .cond-text{
+      display:contents !important;
+    }
+    #hormones .c-eyebrow{
       order:1 !important;
-      padding:24px 16px 12px !important;
+      padding:24px 16px 0 !important;
+      position:relative !important;
       z-index:6 !important;
     }
     #hormones .c-headline{
+      order:1 !important;
+      padding:0 16px !important;
       font-size:clamp(32px,9vw,48px) !important;
-      margin-bottom:16px !important;
+      margin-bottom:0 !important;
+      position:relative !important;
+      z-index:6 !important;
     }
 
-    /* Buttons: match Hers — 24px radius, compact */
+    /* Buttons: order 3, overlap bottom of image with negative margin */
     #hormones .c-btns{
+      order:3 !important;
+      position:relative !important;
+      z-index:7 !important;
+      margin-top:-56px !important;
+      padding:0 20px !important;
       gap:8px !important;
     }
     #hormones .btn-w{
@@ -1504,9 +1517,9 @@ nav {
       display:none !important;
     }
 
-    /* Cards: order 3, compact, single column */
+    /* Cards: order 4, compact, single column */
     #hormones .cond-cards{
-      order:3 !important;
+      order:4 !important;
       grid-template-columns:1fr !important;
       gap:8px !important;
       padding:4px 16px 16px !important;
