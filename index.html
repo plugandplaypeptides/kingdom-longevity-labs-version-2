@@ -1369,20 +1369,20 @@ nav {
       bottom:0 !important;
       display:block !important;
     }
-    /* Bottom fade on the image — soft gradient into the card area */
+    /* Bottom fade — fades to transparent so section gradient shows through */
     #weight-loss .hims-person-wrap::after{
       content:'' !important;
       position:absolute !important;
       bottom:0 !important;
       left:0 !important;
       right:0 !important;
-      height:40% !important;
-      background:linear-gradient(to top, #F8F6E6 0%, rgba(248,246,230,0.6) 40%, transparent 100%) !important;
+      height:35% !important;
+      background:linear-gradient(to top, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.3) 50%, transparent 100%) !important;
       z-index:3 !important;
       pointer-events:none !important;
     }
 
-    /* CTA buttons: overlap bottom of image, Hers-size (smaller, less round) */
+    /* CTA buttons: match Hers exactly — 22px radius, compact, side by side */
     #weight-loss .hims-cta-row{
       margin-top:-56px !important;
       position:relative !important;
@@ -1395,16 +1395,26 @@ nav {
     #weight-loss .hims-cta-row .hims-btn-solid{
       flex:1 !important;
       text-align:center !important;
-      padding:12px 16px !important;
-      font-size:13px !important;
-      border-radius:14px !important;
+      padding:13px 20px !important;
+      font-size:14px !important;
+      font-weight:500 !important;
+      border-radius:22px !important;
+      background:#fff !important;
+      color:var(--navy) !important;
+      border:none !important;
     }
     #weight-loss .hims-cta-row .hims-btn-ghost{
       flex:1 !important;
       text-align:center !important;
-      padding:12px 16px !important;
-      font-size:13px !important;
-      border-radius:14px !important;
+      padding:13px 20px !important;
+      font-size:14px !important;
+      font-weight:400 !important;
+      border-radius:22px !important;
+      background:rgba(255,255,255,0.55) !important;
+      border:1.5px solid rgba(11,31,58,0.18) !important;
+      color:var(--navy) !important;
+      backdrop-filter:blur(8px) !important;
+      -webkit-backdrop-filter:blur(8px) !important;
     }
 
     /* Compact product cards */
