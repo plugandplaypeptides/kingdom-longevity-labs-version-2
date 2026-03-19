@@ -1898,6 +1898,36 @@ nav {
       order:3 !important;
     }
   }
+
+  /* ═══ TESTIMONIALS MOBILE FIX — manual swipe carousel ═══ */
+  @media(max-width:640px){
+    #testimonials .test-overflow{
+      overflow-x:auto !important;
+      overflow-y:hidden !important;
+      -webkit-overflow-scrolling:touch !important;
+      scroll-snap-type:x mandatory !important;
+      padding-bottom:24px !important;
+    }
+    #testimonials .test-track{
+      width:max-content !important;
+      transform:none !important;
+      will-change:auto !important;
+      padding:0 16px !important;
+      gap:12px !important;
+    }
+    #testimonials .tc{
+      width:85vw !important;
+      min-height:auto !important;
+      scroll-snap-align:start !important;
+    }
+    /* Hide scrollbar but keep swipe */
+    #testimonials .test-overflow::-webkit-scrollbar{
+      display:none !important;
+    }
+    #testimonials .test-overflow{
+      scrollbar-width:none !important;
+    }
+  }
 </style>
 
 </head>
@@ -2381,13 +2411,15 @@ nav {
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* Scroll-driven testimonial track */
+/* Scroll-driven testimonial track — desktop only */
 (function(){
+  if(window.innerWidth <= 640) return;
   const track = document.querySelector('.test-track');
   const section = document.getElementById('testimonials');
   if(!track || !section) return;
   const maxShift = track.scrollWidth - window.innerWidth;
   function onScroll(){
+    if(window.innerWidth <= 640){ track.style.transform = 'none'; return; }
     const rect = section.getBoundingClientRect();
     const sectionH = section.offsetHeight;
     const viewH = window.innerHeight;
