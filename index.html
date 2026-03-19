@@ -1928,6 +1928,68 @@ nav {
       scrollbar-width:none !important;
     }
   }
+
+  /* ═══ LEAD CTA MOBILE FIX — image between text and form ═══ */
+  @media(max-width:640px){
+    #lead{
+      display:flex !important;
+      flex-direction:column !important;
+      min-height:auto !important;
+      overflow:hidden !important;
+    }
+    /* Break containers so children become flex items */
+    #lead .lead-inner{
+      display:contents !important;
+    }
+    #lead .lead-content-col{
+      display:contents !important;
+    }
+    /* Text: order 1 */
+    #lead .lead-eyebrow{
+      order:1 !important;
+      padding:32px 16px 0 !important;
+    }
+    #lead .lead-title{
+      order:1 !important;
+      padding:0 16px !important;
+    }
+    #lead .lead-body{
+      order:1 !important;
+      padding:0 16px !important;
+      margin-bottom:0 !important;
+    }
+    /* Image: order 2, tall, object-fit cover, fade to white */
+    #lead .lead-photo-col{
+      order:2 !important;
+      position:relative !important;
+      width:100% !important;
+      height:55vh !important;
+      overflow:hidden !important;
+      -webkit-mask-image:linear-gradient(to bottom, black 55%, transparent 100%) !important;
+      mask-image:linear-gradient(to bottom, black 55%, transparent 100%) !important;
+    }
+    #lead .lead-bg{
+      position:absolute !important;
+      inset:0 !important;
+      width:100% !important;
+      height:100% !important;
+      max-height:none !important;
+      right:auto !important;
+      bottom:auto !important;
+      object-fit:cover !important;
+      object-position:center top !important;
+      display:block !important;
+      pointer-events:none !important;
+      filter:none !important;
+      -webkit-mask-image:none !important;
+      mask-image:none !important;
+    }
+    /* Form card: order 3 */
+    #lead .lead-form-card{
+      order:3 !important;
+      margin:0 16px 24px !important;
+    }
+  }
 </style>
 
 </head>
