@@ -533,36 +533,54 @@ nav {
   .rotating span{height:clamp(48px,11vw,68px);font-size:clamp(32px,9vw,52px)}
   .fixed-line{font-size:clamp(28px,8.5vw,48px);margin-bottom:24px}
 
-  /* Hero promo cards — 2-col, tall like ForHers */
-  .hero-cards{grid-template-columns:1fr 1fr !important;gap:6px}
-  .pc{min-height:340px;border-radius:16px}
+  /* Hero promo cards — 2-col, tall portrait like ForHers */
+  .hero-cards{grid-template-columns:1fr 1fr !important;gap:8px}
+  .pc{min-height:380px;border-radius:18px}
+
+  /* Overlay: title pinned top, price+arrow pinned bottom */
   .pc-overlay{
-    padding:0;flex-direction:column;
-    justify-content:space-between;align-items:stretch;
+    padding:0;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:stretch;
   }
   .pc-text{
-    padding:16px 16px 0;
-    position:relative;z-index:4;
+    padding:18px 16px 0;
+    position:relative;z-index:5;
   }
-  .pc-title{font-size:15px;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,0.3)}
+  .pc-title{
+    font-size:16px;font-weight:600;line-height:1.25;
+    text-shadow:0 1px 6px rgba(0,0,0,0.35);
+  }
   .pc-label{display:none}
   .pc-sub{display:none}
   .pc-price{
-    font-size:13px;padding:0 16px 14px;
-    position:relative;z-index:4;
-    text-shadow:0 1px 4px rgba(0,0,0,0.4);
+    position:absolute;bottom:16px;left:16px;z-index:5;
+    font-size:13px;color:rgba(255,255,255,0.85);
+    text-shadow:0 1px 4px rgba(0,0,0,0.5);
+    margin:0;
   }
-  .pc-arrow{width:32px;height:32px;position:absolute;bottom:14px;right:14px;z-index:4}
+  .pc-arrow{
+    width:34px;height:34px;
+    position:absolute;bottom:14px;right:14px;z-index:5;
+  }
   .pc-arrow svg{width:13px;height:13px}
-  /* Stronger bottom gradient for readability */
+
+  /* Subtle bottom gradient — just enough for price readability */
   .pc::after{
     content:'';position:absolute;bottom:0;left:0;right:0;
-    height:50%;z-index:3;
-    background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 100%);
-    border-radius:0 0 16px 16px;pointer-events:none;
+    height:35%;z-index:3;
+    background:linear-gradient(to top,rgba(0,0,0,0.45) 0%,transparent 100%);
+    border-radius:0 0 18px 18px;pointer-events:none;
   }
-  /* Push people images down so faces aren't under title */
-  .pc-person img{transform:translateY(12%);height:110%}
+
+  /* People: faces in middle, not cropped by title */
+  .pc-person{align-items:center;justify-content:center}
+  .pc-person img{
+    height:100%;width:100%;
+    object-fit:cover;object-position:center 30%;
+    transform:none;mix-blend-mode:normal;
+  }
 
   /* Hero sub-cards — single column list rows (ForHers style) */
   .hero-sub-cards{
