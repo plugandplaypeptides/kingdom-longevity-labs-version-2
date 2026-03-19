@@ -535,51 +535,68 @@ nav {
 
   /* Hero promo cards — 2-col, tall portrait like ForHers */
   .hero-cards{grid-template-columns:1fr 1fr !important;gap:8px}
-  .pc{min-height:380px;border-radius:18px}
+  .pc{min-height:52vw !important;border-radius:18px !important}
 
-  /* Overlay: title pinned top, price+arrow pinned bottom */
+  /* Overlay: full card, column layout */
   .pc-overlay{
-    padding:0;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items:stretch;
+    padding:0 !important;
+    flex-direction:column !important;
+    justify-content:flex-start !important;
+    align-items:stretch !important;
   }
+
+  /* Title at the very top */
   .pc-text{
-    padding:18px 16px 0;
-    position:relative;z-index:5;
+    padding:16px 14px 0 !important;
+    position:relative !important;
+    z-index:5 !important;
+    gap:0 !important;
   }
   .pc-title{
-    font-size:16px;font-weight:600;line-height:1.25;
-    text-shadow:0 1px 6px rgba(0,0,0,0.35);
+    font-size:15px !important;font-weight:600 !important;line-height:1.25 !important;
+    text-shadow:0 1px 6px rgba(0,0,0,0.4) !important;
   }
-  .pc-label{display:none}
-  .pc-sub{display:none}
+  .pc-label{display:none !important}
+  .pc-sub{display:none !important}
+
+  /* Price: absolute bottom-left */
   .pc-price{
-    position:absolute;bottom:16px;left:16px;z-index:5;
-    font-size:13px;color:rgba(255,255,255,0.85);
-    text-shadow:0 1px 4px rgba(0,0,0,0.5);
-    margin:0;
+    position:absolute !important;bottom:16px !important;left:14px !important;
+    z-index:5 !important;
+    font-size:13px !important;color:rgba(255,255,255,0.9) !important;
+    text-shadow:0 1px 4px rgba(0,0,0,0.5) !important;
+    margin:0 !important;
   }
+
+  /* Arrow: absolute bottom-right */
   .pc-arrow{
-    width:34px;height:34px;
-    position:absolute;bottom:14px;right:14px;z-index:5;
+    width:34px !important;height:34px !important;
+    position:absolute !important;bottom:14px !important;right:14px !important;
+    z-index:5 !important;
+    align-self:auto !important;
   }
-  .pc-arrow svg{width:13px;height:13px}
+  .pc-arrow svg{width:13px !important;height:13px !important}
 
-  /* Subtle bottom gradient — just enough for price readability */
+  /* Dark gradient at bottom only for price readability */
   .pc::after{
-    content:'';position:absolute;bottom:0;left:0;right:0;
-    height:35%;z-index:3;
-    background:linear-gradient(to top,rgba(0,0,0,0.45) 0%,transparent 100%);
-    border-radius:0 0 18px 18px;pointer-events:none;
+    content:'' !important;position:absolute !important;
+    bottom:0 !important;left:0 !important;right:0 !important;
+    height:40% !important;z-index:3 !important;
+    background:linear-gradient(to top,rgba(0,0,0,0.5) 0%,transparent 100%) !important;
+    border-radius:0 0 18px 18px !important;pointer-events:none !important;
   }
 
-  /* People: faces in middle, not cropped by title */
-  .pc-person{align-items:center;justify-content:center}
+  /* People: fill card, face in center — NOT under title */
+  .pc-person{
+    align-items:flex-end !important;
+    justify-content:center !important;
+  }
   .pc-person img{
-    height:100%;width:100%;
-    object-fit:cover;object-position:center 30%;
-    transform:none;mix-blend-mode:normal;
+    width:100% !important;height:105% !important;
+    object-fit:cover !important;
+    object-position:center top !important;
+    transform:translateY(5%) !important;
+    mix-blend-mode:normal !important;
   }
 
   /* Hero sub-cards — single column list rows (ForHers style) */
