@@ -1329,6 +1329,73 @@ nav {
 <style>
   a.logo{ color:inherit; text-decoration:none; }
   a.logo:hover{ opacity:.9; }
+
+  /* ═══ WEIGHT-LOSS MOBILE FIX (Hers-style layout) ═══ */
+  @media(max-width:640px){
+    /* Tighter headline — small top margin, no dead space below */
+    #weight-loss .hims-top{
+      padding:24px 16px 8px !important;
+    }
+    #weight-loss .hims-headline{
+      font-size:clamp(22px,6vw,30px) !important;
+      margin-bottom:8px !important;
+    }
+
+    /* Person image: fill the section, remove the 50vh cap */
+    #weight-loss .hims-person-wrap{
+      position:relative !important;
+      width:100% !important;
+      z-index:2 !important;
+      overflow:hidden !important;
+      max-height:none !important;
+    }
+    #weight-loss .hims-person-img{
+      position:relative !important;
+      width:100% !important;
+      max-width:none !important;
+      left:auto !important;
+      transform:none !important;
+      bottom:auto !important;
+      display:block !important;
+    }
+
+    /* CTA buttons: overlap the bottom of the image like Hers */
+    #weight-loss .hims-cta-row{
+      margin-top:-64px !important;
+      position:relative !important;
+      z-index:6 !important;
+      padding:0 16px !important;
+      margin-bottom:8px !important;
+      flex-direction:row !important;
+      gap:8px !important;
+    }
+
+    /* Compact product cards — less padding, shorter */
+    #weight-loss .himscard{
+      min-height:auto !important;
+      padding:16px 18px !important;
+    }
+    #weight-loss .himscard-title{
+      font-size:18px !important;
+    }
+    #weight-loss .himscard-sub{
+      font-size:15px !important;
+      margin-bottom:4px !important;
+    }
+    #weight-loss .himscard-btn{
+      padding:10px 22px !important;
+      font-size:13px !important;
+    }
+    #weight-loss .himscard-vis{
+      width:90px !important;
+      height:90px !important;
+      right:8px !important;
+    }
+    #weight-loss .hims-cards{
+      gap:8px !important;
+      padding:4px 16px 12px !important;
+    }
+  }
 </style>
 
 </head>
