@@ -1850,6 +1850,54 @@ nav {
       z-index:0 !important;
     }
   }
+
+  /* ═══ TRUST SECTION MOBILE FIX ═══ */
+  @media(max-width:640px){
+    /* Make section flex column so we can reorder image vs content */
+    #trust{
+      display:flex !important;
+      flex-direction:column !important;
+      padding:32px 16px !important;
+    }
+    /* Break .sec-wrap so its children become flex items */
+    #trust .sec-wrap{
+      display:contents !important;
+    }
+    /* Text elements: order 1 */
+    #trust .eyebrow{
+      order:1 !important;
+    }
+    #trust .sec-title{
+      order:1 !important;
+    }
+    #trust .sec-sub{
+      order:1 !important;
+      margin-bottom:0 !important;
+    }
+    /* Image: order 2, show it, tall with object-fit cover + fade */
+    #trust .trust-bg{
+      display:block !important;
+      order:2 !important;
+      position:relative !important;
+      width:100% !important;
+      height:50vh !important;
+      max-height:none !important;
+      right:auto !important;
+      bottom:auto !important;
+      object-fit:cover !important;
+      object-position:center top !important;
+      pointer-events:none !important;
+      z-index:1 !important;
+      -webkit-mask-image:linear-gradient(to bottom, black 55%, transparent 100%) !important;
+      mask-image:linear-gradient(to bottom, black 55%, transparent 100%) !important;
+      margin:0 -16px !important;
+      width:calc(100% + 32px) !important;
+    }
+    /* Cards: order 3 */
+    #trust .trust-grid{
+      order:3 !important;
+    }
+  }
 </style>
 
 </head>
