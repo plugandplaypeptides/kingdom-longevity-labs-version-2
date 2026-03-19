@@ -1353,8 +1353,11 @@ nav {
       width:100% !important;
       height:60vh !important;
       max-height:none !important;
-      overflow:visible !important;
+      overflow:hidden !important;
       z-index:2 !important;
+      /* Fade image to transparent at bottom — bg gradient shows through */
+      -webkit-mask-image:linear-gradient(to bottom, black 55%, transparent 100%) !important;
+      mask-image:linear-gradient(to bottom, black 55%, transparent 100%) !important;
     }
     #weight-loss .hims-person-img{
       position:absolute !important;
@@ -1369,20 +1372,12 @@ nav {
       bottom:0 !important;
       display:block !important;
     }
-    /* Bottom fade — fades to transparent so section gradient shows through */
+    /* Remove any ::after overlay */
     #weight-loss .hims-person-wrap::after{
-      content:'' !important;
-      position:absolute !important;
-      bottom:0 !important;
-      left:0 !important;
-      right:0 !important;
-      height:35% !important;
-      background:linear-gradient(to top, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.3) 50%, transparent 100%) !important;
-      z-index:3 !important;
-      pointer-events:none !important;
+      display:none !important;
     }
 
-    /* CTA buttons: match Hers exactly — 22px radius, compact, side by side */
+    /* CTA buttons: match Hers — 24px radius, compact single-line */
     #weight-loss .hims-cta-row{
       margin-top:-56px !important;
       position:relative !important;
@@ -1395,26 +1390,20 @@ nav {
     #weight-loss .hims-cta-row .hims-btn-solid{
       flex:1 !important;
       text-align:center !important;
-      padding:13px 20px !important;
-      font-size:14px !important;
+      padding:11px 16px !important;
+      font-size:13px !important;
       font-weight:500 !important;
-      border-radius:22px !important;
-      background:#fff !important;
-      color:var(--navy) !important;
-      border:none !important;
+      border-radius:24px !important;
+      white-space:nowrap !important;
     }
     #weight-loss .hims-cta-row .hims-btn-ghost{
       flex:1 !important;
       text-align:center !important;
-      padding:13px 20px !important;
-      font-size:14px !important;
+      padding:11px 16px !important;
+      font-size:13px !important;
       font-weight:400 !important;
-      border-radius:22px !important;
-      background:rgba(255,255,255,0.55) !important;
-      border:1.5px solid rgba(11,31,58,0.18) !important;
-      color:var(--navy) !important;
-      backdrop-filter:blur(8px) !important;
-      -webkit-backdrop-filter:blur(8px) !important;
+      border-radius:24px !important;
+      white-space:nowrap !important;
     }
 
     /* Compact product cards */
