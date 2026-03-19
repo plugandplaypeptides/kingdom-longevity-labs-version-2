@@ -533,18 +533,36 @@ nav {
   .rotating span{height:clamp(48px,11vw,68px);font-size:clamp(32px,9vw,52px)}
   .fixed-line{font-size:clamp(28px,8.5vw,48px);margin-bottom:24px}
 
-  /* Hero promo cards — 2-col, tall & square like ForHers */
+  /* Hero promo cards — 2-col, tall like ForHers */
   .hero-cards{grid-template-columns:1fr 1fr !important;gap:6px}
-  .pc{min-height:280px;border-radius:16px;aspect-ratio:auto}
-  .pc-overlay{padding:16px 16px;flex-direction:column;justify-content:space-between;align-items:flex-start}
-  .pc-title{font-size:16px;font-weight:600}
+  .pc{min-height:340px;border-radius:16px}
+  .pc-overlay{
+    padding:0;flex-direction:column;
+    justify-content:space-between;align-items:stretch;
+  }
+  .pc-text{
+    padding:16px 16px 0;
+    position:relative;z-index:4;
+  }
+  .pc-title{font-size:15px;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,0.3)}
   .pc-label{display:none}
   .pc-sub{display:none}
-  .pc-price{font-size:13px;margin-top:auto}
-  .pc-arrow{width:32px;height:32px;align-self:flex-end}
+  .pc-price{
+    font-size:13px;padding:0 16px 14px;
+    position:relative;z-index:4;
+    text-shadow:0 1px 4px rgba(0,0,0,0.4);
+  }
+  .pc-arrow{width:32px;height:32px;position:absolute;bottom:14px;right:14px;z-index:4}
   .pc-arrow svg{width:13px;height:13px}
-  .pc-text{flex:1}
-  .pc-overlay .pc-arrow{margin-top:auto}
+  /* Stronger bottom gradient for readability */
+  .pc::after{
+    content:'';position:absolute;bottom:0;left:0;right:0;
+    height:50%;z-index:3;
+    background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 100%);
+    border-radius:0 0 16px 16px;pointer-events:none;
+  }
+  /* Push people images down so faces aren't under title */
+  .pc-person img{transform:translateY(12%);height:110%}
 
   /* Hero sub-cards — single column list rows (ForHers style) */
   .hero-sub-cards{
