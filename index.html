@@ -1432,6 +1432,104 @@ nav {
       right:8px !important;
     }
   }
+
+  /* ═══ HORMONES MOBILE FIX (match weight-loss Hers layout) ═══ */
+  @media(max-width:640px){
+    /* Section: flex column, reorder children */
+    #hormones.cond{
+      display:flex !important;
+      flex-direction:column !important;
+      min-height:auto !important;
+      padding-bottom:0 !important;
+    }
+
+    /* Headline area: tight top padding, order first */
+    #hormones .cond-text{
+      order:1 !important;
+      padding:24px 16px 12px !important;
+      z-index:6 !important;
+    }
+    #hormones .c-headline{
+      font-size:clamp(32px,9vw,48px) !important;
+      margin-bottom:16px !important;
+    }
+
+    /* Buttons: match Hers — 24px radius, compact */
+    #hormones .c-btns{
+      gap:8px !important;
+    }
+    #hormones .btn-w{
+      padding:11px 20px !important;
+      font-size:13px !important;
+      border-radius:24px !important;
+      white-space:nowrap !important;
+    }
+    #hormones .btn-o{
+      padding:11px 20px !important;
+      font-size:13px !important;
+      border-radius:24px !important;
+      white-space:nowrap !important;
+    }
+
+    /* Image: order 2, tall container, object-fit cover, mask fade */
+    #hormones .hormone-img-wrap{
+      order:2 !important;
+      position:relative !important;
+      width:100% !important;
+      height:55vh !important;
+      min-height:auto !important;
+      overflow:hidden !important;
+      z-index:2 !important;
+      pointer-events:auto !important;
+      -webkit-mask-image:linear-gradient(to bottom, black 55%, transparent 100%) !important;
+      mask-image:linear-gradient(to bottom, black 55%, transparent 100%) !important;
+    }
+    #hormones .hormone-people-img{
+      position:absolute !important;
+      inset:0 !important;
+      width:100% !important;
+      height:100% !important;
+      max-width:none !important;
+      object-fit:cover !important;
+      object-position:center top !important;
+      transform:none !important;
+      left:0 !important;
+      bottom:0 !important;
+      display:block !important;
+      opacity:1 !important;
+      filter:none !important;
+    }
+    /* Remove spotlight ::before on mobile */
+    #hormones .hormone-img-wrap::before{
+      display:none !important;
+    }
+
+    /* Cards: order 3, compact, single column */
+    #hormones .cond-cards{
+      order:3 !important;
+      grid-template-columns:1fr !important;
+      gap:8px !important;
+      padding:4px 16px 16px !important;
+      z-index:6 !important;
+    }
+    #hormones .cc{
+      padding:16px 18px !important;
+      background:rgba(255,255,255,0.16) !important;
+      backdrop-filter:blur(20px) !important;
+      -webkit-backdrop-filter:blur(20px) !important;
+    }
+
+    /* Hide dotted path on mobile */
+    #hormones .cond-path{
+      display:none !important;
+    }
+
+    /* Background stays behind everything */
+    #hormones .cond-bg{
+      order:0 !important;
+      z-index:0 !important;
+    }
+  }
 </style>
 
 </head>
