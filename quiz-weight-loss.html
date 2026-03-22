@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Weight Loss Assessment — Kingdom Longevity Labs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #C9A96E;
+  --gold-light: #E8D5B0;
+  --gold-bg: rgba(201,169,110,0.08);
+  --navy: #0B1F3A;
+  --navy-mid: #1A3355;
+  --body: #374151;
+  --muted: #6B7280;
+  --white: #FFFFFF;
+  --cream: #F8F4EE;
+  --cream-dark: #F0EBE3;
+  --stroke: rgba(11,31,58,0.08);
+  --r-pill: 9999px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(180deg, var(--cream) 0%, #F2EDE6 100%);
+  color: var(--navy);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── LAYOUT ── */
+.quiz-page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.quiz-header {
+  padding: 20px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quiz-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.quiz-logo span { color: var(--gold); }
+
+.quiz-header-link {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.quiz-header-link:hover { color: var(--navy); }
+
+/* ── PROGRESS BAR ── */
+.quiz-progress-wrap {
+  padding: 0 0 24px;
+}
+
+.quiz-progress-bar {
+  height: 3px;
+  background: rgba(201,169,110,0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 3px;
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── CONTENT AREA ── */
+.quiz-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── AVATAR ── */
+.quiz-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(201,169,110,0.25);
+}
+
+.quiz-avatar svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--white);
+}
+
+/* ── QUESTION ── */
+.quiz-question {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--navy);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+/* ── OPTIONS ── */
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border: 1.5px solid var(--stroke);
+  border-radius: 16px;
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 15px;
+  color: var(--navy);
+  line-height: 1.4;
+  user-select: none;
+  box-shadow: 0 1px 4px rgba(11,31,58,0.04);
+}
+
+.quiz-option:hover {
+  border-color: rgba(201,169,110,0.4);
+  box-shadow: 0 3px 12px rgba(201,169,110,0.1);
+  transform: translateY(-1px);
+}
+
+.quiz-option.selected {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(201,169,110,0.08), rgba(232,213,176,0.12));
+  box-shadow: 0 0 0 1.5px var(--gold), 0 3px 12px rgba(201,169,110,0.15);
+}
+
+.quiz-option:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Checkbox */
+.quiz-check {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,169,110,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-left: 14px;
+}
+
+.quiz-option.selected .quiz-check {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+.quiz-check svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--white);
+  stroke-width: 2.5;
+  fill: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.quiz-option.selected .quiz-check svg { opacity: 1; }
+
+/* ── CONTINUE BUTTON ── */
+.quiz-continue {
+  padding: 16px;
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(11,31,58,0.15);
+}
+
+.quiz-continue:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(11,31,58,0.2);
+}
+
+.quiz-continue:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.quiz-continue:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ── WHY WE ASK ── */
+.quiz-why {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.quiz-why-inner {
+  background: var(--gold-bg);
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 12px;
+  padding: 14px 18px;
+}
+
+.quiz-why-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.quiz-why-text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── INTERSTITIAL CARDS ── */
+.quiz-interstitial {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.interstitial-card {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+/* Social proof / before-after */
+.interstitial-proof {
+  background: var(--white);
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.interstitial-proof-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 20px;
+}
+
+.proof-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.proof-card {
+  background: var(--cream);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(201,169,110,0.12);
+}
+
+.proof-card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.proof-card-body {
+  padding: 12px;
+  text-align: center;
+}
+
+.proof-card-name {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.proof-card-result {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.3;
+}
+
+.proof-disclaimer {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Quote interstitial */
+.interstitial-quote {
+  background: linear-gradient(135deg, rgba(201,169,110,0.12), rgba(232,213,176,0.08));
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.quote-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(201,169,110,0.25);
+}
+
+.quote-avatar svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--white);
+}
+
+.quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--navy);
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.quote-author {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.quote-role {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Benefits card */
+.interstitial-benefits {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(201,169,110,0.15);
+}
+
+.benefits-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 16px;
+  background: var(--white);
+}
+
+.benefit-tag {
+  background: var(--gold-bg);
+  border: 1px solid rgba(201,169,110,0.12);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--navy);
+  text-align: center;
+  font-weight: 500;
+}
+
+.interstitial-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--navy);
+  line-height: 1.4;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.interstitial-text em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.interstitial-sub {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Next button (for interstitials) */
+.quiz-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: auto;
+  margin-bottom: 24px;
+  align-self: center;
+  box-shadow: 0 2px 8px rgba(11,31,58,0.15);
+}
+
+.quiz-next:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(11,31,58,0.2);
+}
+
+.quiz-next svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--white);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* ── FORM INPUTS ── */
+.quiz-input-group {
+  margin-bottom: 16px;
+}
+
+.quiz-input-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.quiz-input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1.5px solid rgba(201,169,110,0.25);
+  border-radius: 14px;
+  background: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--navy);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.quiz-input::placeholder { color: var(--muted); font-weight: 300; }
+.quiz-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
+}
+
+.quiz-select {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1.5px solid rgba(201,169,110,0.25);
+  border-radius: 14px;
+  background: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--navy);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+
+.quiz-select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
+}
+
+.quiz-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 20px 0;
+  font-size: 13px;
+  color: var(--body);
+  line-height: 1.5;
+}
+
+.quiz-consent input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin-top: 2px;
+  accent-color: var(--gold);
+}
+
+.quiz-consent a {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+/* ── SIGNUP STEP ── */
+.quiz-signup-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.quiz-signup-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.quiz-privacy-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.quiz-privacy-note svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--muted);
+  stroke-width: 2;
+  fill: none;
+}
+
+/* ── SUCCESS ── */
+.quiz-success {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 24px rgba(201,169,110,0.3);
+}
+
+.success-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--white);
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.success-msg {
+  font-size: 15px;
+  color: var(--body);
+  line-height: 1.6;
+  max-width: 340px;
+  margin-bottom: 32px;
+}
+
+.success-btn {
+  padding: 14px 32px;
+  border: 1px solid rgba(11,31,58,0.15);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.success-btn:hover { background: var(--white); }
+
+/* ── STEP VISIBILITY ── */
+.quiz-step { display: none; }
+.quiz-step.active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  animation: stepIn 0.3s ease-out;
+}
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── FOOTER ── */
+.quiz-footer {
+  text-align: center;
+  padding: 12px 0 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.quiz-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.quiz-footer a:hover { color: var(--navy); }
+</style>
+</head>
+<body>
+
+<div class="quiz-page">
+
+  <!-- HEADER -->
+  <div class="quiz-header">
+    <a href="/" class="quiz-logo">Kingdom <span>Longevity</span> Labs</a>
+    <a href="/" class="quiz-header-link">Back to site</a>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="quiz-progress-wrap">
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="quiz-content">
+
+    <!-- STEP 1: Weight loss goal -->
+    <div class="quiz-step active" data-step="1">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">Welcome, let's get started. What's your weight loss goal?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="1-15"><span>Losing 1-15 lbs</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="16-50"><span>Losing 16-50 lbs</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="51+"><span>Losing 51+ lbs</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="unsure"><span>Not sure, I just need to lose weight</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Motivation (multi-select) -->
+    <div class="quiz-step" data-step="2" data-multi="true">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">What's the main thing motivating you to lose weight?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="health"><span>Looking out for my future health</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="event"><span>An upcoming event</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="family"><span>Staying healthy for my family</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="confidence"><span>Gaining confidence</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="energy"><span>Improving my energy, strength, and mobility</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="feel-better"><span>Feeling better in my body</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+      <button type="button" class="quiz-continue" id="continueStep2" disabled>Continue</button>
+    </div>
+
+    <!-- STEP 3: Previous medication -->
+    <div class="quiz-step" data-step="3">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">Have you taken a weight loss medication before?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="no"><span>No, I have not</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="yes"><span>Yes</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="currently"><span>I am currently taking weight loss medication</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 4: Why now -->
+    <div class="quiz-step" data-step="4" data-multi="true">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">Why is now the right time to start treatment?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="prioritize"><span>I'm ready to prioritize myself</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="encouraged"><span>Someone encouraged me</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="other"><span>Something else</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+      <button type="button" class="quiz-continue" disabled>Continue</button>
+    </div>
+
+    <!-- STEP 5: Weight gain areas -->
+    <div class="quiz-step" data-step="5">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">Everyone's body is different. Do you typically notice weight gain in specific areas?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="waist"><span>Around the waist</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="hips"><span>Hips and thighs</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="all-over"><span>All over</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+      <div class="quiz-why">
+        <div class="quiz-why-inner">
+          <div class="quiz-why-title">Why we ask</div>
+          <div class="quiz-why-text">Where your body stores weight can help guide the right treatment approach for you.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6: Social proof interstitial -->
+    <div class="quiz-step" data-step="6" data-type="interstitial">
+      <div class="quiz-interstitial">
+        <div class="interstitial-proof">
+          <div class="interstitial-proof-title">Real people, real results</div>
+          <div class="proof-cards">
+            <div class="proof-card">
+              <img class="proof-card-img" src="assets/weightlossquizman.jpg" alt="Michael's weight loss results"/>
+              <div class="proof-card-body">
+                <div class="proof-card-name">Michael, 41</div>
+                <div class="proof-card-result">Lost 33 lbs in 7 months</div>
+              </div>
+            </div>
+            <div class="proof-card">
+              <img class="proof-card-img" src="assets/weightlossquizwoman.jpg" alt="Sarah's weight loss results"/>
+              <div class="proof-card-body">
+                <div class="proof-card-name">Sarah, 38</div>
+                <div class="proof-card-result">Lost 28 lbs in 5 months</div>
+              </div>
+            </div>
+          </div>
+          <p class="proof-disclaimer">Results vary. Individual results have not been independently verified.</p>
+        </div>
+        <button type="button" class="quiz-next" onclick="advanceStep()">Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 7: What's holding you back (multi-select) -->
+    <div class="quiz-step" data-step="7" data-multi="true">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">We know it's not just about willpower. What do you feel is holding you back the most?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="plateau"><span>Hitting a wall in my progress</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="stress"><span>Daily stress</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="postpartum"><span>Postpartum weight</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="metabolism"><span>Slow metabolism</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="genetics"><span>Genetics</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="hormones"><span>Hormone changes</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="other"><span>Something else</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+      <button type="button" class="quiz-continue" disabled>Continue</button>
+    </div>
+
+    <!-- STEP 8: What excites you -->
+    <div class="quiz-step" data-step="8" data-multi="true">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">That can definitely make progress tougher. What are you most looking forward to?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="medication"><span>Access to medication</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="providers"><span>Support from licensed providers</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="tracking"><span>Progress tracking tools</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="guidance"><span>Nutrition, activity, and sleep guidance</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="all"><span>All of the above</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+      <button type="button" class="quiz-continue" disabled>Continue</button>
+    </div>
+
+    <!-- STEP 9: Specific medication -->
+    <div class="quiz-step" data-step="9">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">Are you interested in a specific medication?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="no-preference"><span>No, I'd like a provider recommendation</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="yes-specific"><span>Yes, I have something in mind</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 9B: GLP branch (only shown if "yes-specific") -->
+    <div class="quiz-step" data-step="9b">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">Which medication are you interested in?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="glp1"><span>GLP-1 injections</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="glp2"><span>GLP-2 treatments</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="glp3"><span>GLP-3 treatments</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="not-sure"><span>Not sure</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 10: Doctor quote interstitial -->
+    <div class="quiz-step" data-step="10" data-type="interstitial">
+      <div class="quiz-interstitial">
+        <div class="interstitial-quote">
+          <img src="assets/KZcouch.png" alt="Kat and Zack Straughn" style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block;box-shadow:0 4px 16px rgba(201,169,110,0.25);"/>
+          <p class="quote-text">"Your body isn't broken. It just needs the right protocol. We built this so you can stop guessing and start seeing real results."</p>
+          <div class="quote-author">Kat and Zack Straughn</div>
+          <div class="quote-role">Founders, Kingdom Longevity Labs</div>
+        </div>
+        <button type="button" class="quiz-next" onclick="advanceStep()">Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 11: How many programs -->
+    <div class="quiz-step" data-step="11">
+      <div class="quiz-avatar"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/></svg></div>
+      <h1 class="quiz-question">How many weight loss programs have you tried?</h1>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="1-5"><span>1 - 5</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="6-10"><span>6 - 10</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="many"><span>More than I can remember</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="first"><span>This is my first time trying</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 12: Benefits interstitial -->
+    <div class="quiz-step" data-step="12" data-type="interstitial">
+      <div class="quiz-interstitial">
+        <div class="interstitial-benefits">
+          <img class="benefits-img" src="assets/weight-loss.jpg" alt="Benefits of weight loss"/>
+          <div class="benefits-grid">
+            <div class="benefit-tag">Improved mood</div>
+            <div class="benefit-tag">Increased energy</div>
+            <div class="benefit-tag">Lower blood pressure</div>
+            <div class="benefit-tag">Better sleep</div>
+          </div>
+        </div>
+        <div style="padding:20px 0;">
+          <p class="interstitial-text">Pairing the right treatment with ongoing support can <em>make all the difference</em></p>
+        </div>
+        <button type="button" class="quiz-next" onclick="advanceStep()">Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 13: State + consent -->
+    <div class="quiz-step" data-step="13">
+      <h1 class="quiz-question">Select the state you live in:</h1>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:20px;">This is where your medication will be shipped to, if prescribed.</p>
+      <div class="quiz-input-group">
+        <select class="quiz-select" id="stateSelect">
+          <option value="">State</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option>
+        </select>
+      </div>
+      <label class="quiz-consent">
+        <input type="checkbox" id="consentCheck"/>
+        <span>By clicking "Continue", I agree to the <a href="/privacy/">Terms and Conditions</a> and <a href="/privacy/">Telehealth Consent</a> and acknowledge the <a href="/privacy/">Privacy Policy</a>.</span>
+      </label>
+      <button type="button" class="quiz-continue" id="continueState" disabled>Continue</button>
+    </div>
+
+    <!-- STEP 14: Date of birth -->
+    <div class="quiz-step" data-step="14">
+      <h1 class="quiz-question">To verify eligibility, tell us your date of birth:</h1>
+      <div class="quiz-input-group">
+        <label class="quiz-input-label" for="dobInput">Date of birth</label>
+        <input class="quiz-input" type="text" id="dobInput" placeholder="MM-DD-YYYY" autocomplete="bday"/>
+      </div>
+      <button type="button" class="quiz-continue" id="continueDob" disabled>Continue</button>
+    </div>
+
+    <!-- STEP 15: Testimonial interstitial -->
+    <div class="quiz-step" data-step="15" data-type="interstitial">
+      <div class="quiz-interstitial">
+        <div class="interstitial-card" style="border-radius:20px;overflow:hidden;border:1px solid rgba(201,169,110,0.15);">
+          <img src="assets/hormones.jpg" alt="Weight loss support" style="width:100%;height:240px;object-fit:cover;display:block;"/>
+        </div>
+        <div style="padding:12px 0;">
+          <p class="interstitial-text">It's true, weight loss gets harder as you get older — <em>even if you're doing everything right.</em></p>
+          <p class="interstitial-sub">We can help change that.</p>
+        </div>
+        <button type="button" class="quiz-next" onclick="advanceStep()">Next <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 16: Name + email signup -->
+    <div class="quiz-step" data-step="16">
+      <h1 class="quiz-signup-title">Next up, your treatment match</h1>
+      <p class="quiz-signup-sub">Enter your info for a tailored recommendation.</p>
+      <form id="signupForm">
+        <div class="quiz-input-group">
+          <label class="quiz-input-label" for="firstName">First name</label>
+          <input class="quiz-input" type="text" id="firstName" placeholder="First name" required autocomplete="given-name"/>
+        </div>
+        <div class="quiz-input-group">
+          <label class="quiz-input-label" for="lastName">Last name</label>
+          <input class="quiz-input" type="text" id="lastName" placeholder="Last name" required autocomplete="family-name"/>
+        </div>
+        <div class="quiz-input-group">
+          <label class="quiz-input-label" for="emailInput">Email</label>
+          <input class="quiz-input" type="email" id="emailInput" placeholder="you@example.com" required autocomplete="email"/>
+        </div>
+        <button type="submit" class="quiz-continue">Continue</button>
+      </form>
+      <p class="quiz-privacy-note">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        <span>We take your privacy seriously with industry-leading encryption.</span>
+      </p>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="quiz-step" data-step="success">
+      <div class="quiz-success">
+        <div class="success-icon"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></div>
+        <h1 class="success-title">You're all set</h1>
+        <p class="success-msg">A member of our care team will be reaching out shortly with your personalized treatment recommendation.</p>
+        <a href="/" class="success-btn">Back to Kingdom Longevity Labs</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="quiz-footer">
+    <a href="/">Already have an account? Sign In</a>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  const answers = {};
+  let currentStep = '1';
+  const totalSteps = 16;
+
+  // Step order (main flow)
+  const stepOrder = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','success'];
+
+  function getProgress() {
+    const idx = stepOrder.indexOf(currentStep);
+    if (idx === -1) return 50; // branch step
+    return Math.round((idx / (stepOrder.length - 1)) * 100);
+  }
+
+  function updateProgress() {
+    document.getElementById('progressFill').style.width = getProgress() + '%';
+  }
+
+  // Option click handler
+  document.querySelectorAll('.quiz-step').forEach(step => {
+    const isMulti = step.dataset.multi === 'true';
+    const options = step.querySelectorAll('.quiz-option');
+    const continueBtn = step.querySelector('.quiz-continue');
+
+    options.forEach(opt => {
+      opt.addEventListener('click', function() {
+        const stepId = step.dataset.step;
+
+        if (isMulti) {
+          this.classList.toggle('selected');
+          answers[stepId] = Array.from(step.querySelectorAll('.quiz-option.selected'))
+            .map(o => o.dataset.value);
+          // Enable/disable continue button
+          if (continueBtn) {
+            continueBtn.disabled = answers[stepId].length === 0;
+          }
+        } else {
+          options.forEach(o => o.classList.remove('selected'));
+          this.classList.add('selected');
+          answers[stepId] = this.dataset.value;
+
+          // Handle branching: step 9 "yes-specific" → 9b, otherwise skip to 10
+          if (stepId === '9') {
+            if (this.dataset.value === 'yes-specific') {
+              setTimeout(() => goToStep('9b'), 350);
+              return;
+            }
+          }
+
+          // Step 9b routes back to main flow at step 10
+          if (stepId === '9b') {
+            setTimeout(() => goToStep('10'), 350);
+            return;
+          }
+
+          setTimeout(() => advanceStep(), 350);
+        }
+      });
+    });
+
+    // Continue button for multi-select steps
+    if (continueBtn && isMulti) {
+      continueBtn.addEventListener('click', () => advanceStep());
+    }
+  });
+
+  // State + consent validation
+  const stateSelect = document.getElementById('stateSelect');
+  const consentCheck = document.getElementById('consentCheck');
+  const continueState = document.getElementById('continueState');
+
+  function validateState() {
+    continueState.disabled = !(stateSelect.value && consentCheck.checked);
+  }
+  stateSelect.addEventListener('change', validateState);
+  consentCheck.addEventListener('change', validateState);
+  continueState.addEventListener('click', () => {
+    answers['state'] = stateSelect.value;
+    advanceStep();
+  });
+
+  // DOB validation
+  const dobInput = document.getElementById('dobInput');
+  const continueDob = document.getElementById('continueDob');
+
+  dobInput.addEventListener('input', () => {
+    continueDob.disabled = dobInput.value.trim().length < 8;
+  });
+  continueDob.addEventListener('click', () => {
+    answers['dob'] = dobInput.value;
+    advanceStep();
+  });
+
+  // Form submission
+  document.getElementById('signupForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = {
+      first_name: document.getElementById('firstName').value,
+      last_name: document.getElementById('lastName').value,
+      email: document.getElementById('emailInput').value,
+      quiz_answers: answers,
+      quiz_type: 'weight-loss',
+      client_slug: 'kingdom-longevity-labs',
+      submitted_at: new Date().toISOString()
+    };
+
+    fetch('https://api.plugandplaypeptides.com/api/quiz-submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    }).catch(() => {});
+    console.log('Weight loss quiz submission:', formData);
+
+    goToStep('success');
+  });
+
+  window.advanceStep = function() {
+    const idx = stepOrder.indexOf(currentStep);
+    if (idx < stepOrder.length - 1) {
+      goToStep(stepOrder[idx + 1]);
+    }
+  };
+
+  function goToStep(stepId) {
+    const current = document.querySelector('.quiz-step.active');
+    if (current) {
+      current.classList.remove('active');
+    }
+    currentStep = stepId;
+    const next = document.querySelector(`.quiz-step[data-step="${stepId}"]`);
+    if (next) {
+      next.classList.add('active');
+    }
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>

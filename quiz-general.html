@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KLL — General Health Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --gold: #C9A96E;
+  --gold-light: #E8D5B0;
+  --navy: #0B1F3A;
+  --navy-mid: #1A3355;
+  --body: #374151;
+  --muted: #6B7280;
+  --white: #FFFFFF;
+  --cream: #F8F4EE;
+  --stroke: rgba(11,31,58,0.09);
+  --r-card: 20px;
+  --r-pill: 9999px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: rgba(11,31,58,0.06);
+  color: var(--navy);
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── MODAL SHELL ── */
+.quiz-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11,31,58,0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.quiz-modal {
+  background: var(--cream);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow:
+    0 4px 16px rgba(11,31,58,0.06),
+    0 24px 80px rgba(11,31,58,0.16),
+    0 0 0 1px rgba(255,255,255,0.8) inset;
+  animation: modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hide scrollbar but keep functionality */
+.quiz-modal::-webkit-scrollbar { width: 0; }
+.quiz-modal { scrollbar-width: none; }
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── CLOSE BUTTON ── */
+.quiz-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(11,31,58,0.08);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s;
+}
+.quiz-close:hover { background: var(--white); }
+.quiz-close:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.quiz-close svg { width: 14px; height: 14px; stroke: var(--navy); stroke-width: 2; }
+
+/* ── PROGRESS ── */
+.quiz-progress {
+  text-align: center;
+  padding: 28px 28px 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.quiz-progress-bar {
+  height: 3px;
+  background: rgba(201,169,110,0.15);
+  border-radius: 3px;
+  margin: 14px 28px 0;
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 3px;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── QUESTION ── */
+.quiz-question {
+  padding: 16px 32px 8px;
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+/* ── OPTIONS ── */
+.quiz-options {
+  padding: 16px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border: 1.5px solid rgba(11,31,58,0.06);
+  border-radius: 16px;
+  background: var(--white);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 15px;
+  color: var(--navy);
+  line-height: 1.4;
+  user-select: none;
+  box-shadow: 0 1px 4px rgba(11,31,58,0.05);
+}
+
+.quiz-option:hover {
+  border-color: rgba(201,169,110,0.4);
+  background: var(--white);
+  box-shadow: 0 3px 12px rgba(201,169,110,0.12);
+  transform: translateY(-1px);
+}
+
+.quiz-option.selected {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(201,169,110,0.1), rgba(232,213,176,0.15));
+  box-shadow: 0 0 0 1.5px var(--gold), 0 3px 12px rgba(201,169,110,0.18);
+}
+
+.quiz-option:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Checkbox circle */
+.quiz-check {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,169,110,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  margin-left: 16px;
+}
+
+.quiz-option.selected .quiz-check {
+  border-color: var(--gold);
+  background: var(--gold);
+}
+
+.quiz-check svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--white);
+  stroke-width: 2.5;
+  fill: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.quiz-option.selected .quiz-check svg {
+  opacity: 1;
+}
+
+/* ── WHY WE ASK ── */
+.quiz-why {
+  padding: 0 32px 24px;
+}
+
+.quiz-why-inner {
+  background: rgba(201,169,110,0.08);
+  border: 1px solid rgba(201,169,110,0.15);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.quiz-why-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quiz-why-title::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: var(--gold);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61z'/%3E%3C/svg%3E");
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+.quiz-why-text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── LOADING STATE ── */
+.quiz-loading {
+  padding: 100px 32px;
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.quiz-loading.active { display: flex; }
+
+.quiz-loading-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: var(--navy);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-spinner {
+  width: 52px;
+  height: 52px;
+  position: relative;
+}
+
+.quiz-spinner svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--gold);
+  animation: spinPulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 2px 8px rgba(201,169,110,0.35));
+}
+
+@keyframes spinPulse {
+  0% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+  50% { transform: rotate(180deg) scale(1.15); opacity: 1; }
+  100% { transform: rotate(360deg) scale(1); opacity: 0.7; }
+}
+
+.quiz-loading-sub {
+  font-size: 13px;
+  color: var(--muted);
+  animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+/* ── RESULTS ── */
+.quiz-results {
+  padding: 28px 24px 32px;
+  display: none;
+}
+
+.quiz-results.active { display: block; }
+
+.quiz-results-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: 22px;
+  line-height: 1.3;
+}
+
+.quiz-results-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+/* Card: warm white background, gold-tinted border — matches ForHers */
+.result-card {
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(201,169,110,0.2);
+  box-shadow: 0 2px 8px rgba(11,31,58,0.06), 0 8px 24px rgba(11,31,58,0.04);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+}
+
+.result-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201,169,110,0.35);
+  box-shadow: 0 4px 12px rgba(201,169,110,0.1), 0 16px 40px rgba(11,31,58,0.08);
+}
+
+/* Image area with label overlay */
+.result-card-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.result-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.result-card:hover .result-card-img {
+  transform: scale(1.04);
+}
+
+/* Service name overlaid on top of image */
+.result-card-img-label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--white);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 2;
+  line-height: 1.2;
+}
+
+/* Gradient at top and bottom of image for label readability */
+.result-card-img-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 70px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.35), transparent);
+  z-index: 1;
+}
+
+.result-card-img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to top, rgba(255,255,255,0.6), transparent);
+  z-index: 1;
+}
+
+/* Body area: white, below image */
+.result-card-body {
+  padding: 16px 16px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-card-desc {
+  font-size: 13px;
+  color: var(--body);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.result-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.result-btn {
+  padding: 10px 18px;
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+  text-decoration: none;
+  text-align: center;
+}
+
+.result-btn:hover { transform: translateY(-1px); }
+.result-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.result-btn-primary {
+  background: var(--gold);
+  color: var(--white);
+  box-shadow: 0 2px 8px rgba(201,169,110,0.25);
+}
+
+.result-btn-primary:hover { box-shadow: 0 4px 16px rgba(201,169,110,0.35); }
+
+.result-btn-secondary {
+  background: transparent;
+  color: var(--navy);
+  border: 1px solid rgba(11,31,58,0.15);
+}
+
+.result-btn-secondary:hover { background: var(--cream); }
+
+.quiz-results-footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* ── INTAKE FORM ── */
+.quiz-intake {
+  padding: 40px 32px;
+  display: none;
+  animation: modalIn 0.3s ease-out;
+}
+
+.quiz-intake.active { display: block; }
+
+.quiz-intake-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.quiz-intake-sub {
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.quiz-intake-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.quiz-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.quiz-input-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.quiz-input {
+  padding: 14px 18px;
+  border: 1.5px solid rgba(201,169,110,0.25);
+  border-radius: 14px;
+  background: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--navy);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.quiz-input::placeholder {
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.quiz-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
+}
+
+.quiz-submit {
+  margin-top: 8px;
+  padding: 16px;
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--gold);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(201,169,110,0.25);
+}
+
+.quiz-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(201,169,110,0.35);
+}
+
+.quiz-submit:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
+.quiz-intake-legal {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ── SUCCESS STATE ── */
+.quiz-success {
+  padding: 60px 32px 48px;
+  display: none;
+  text-align: center;
+  animation: modalIn 0.35s ease-out;
+}
+
+.quiz-success.active { display: block; }
+
+.quiz-success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(201,169,110,0.3);
+}
+
+.quiz-success-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--white);
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.quiz-success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.quiz-success-msg {
+  font-size: 15px;
+  color: var(--body);
+  line-height: 1.6;
+  max-width: 360px;
+  margin: 0 auto 28px;
+}
+
+.quiz-success-close {
+  padding: 14px 32px;
+  border: 1px solid rgba(11,31,58,0.15);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quiz-success-close:hover {
+  background: var(--white);
+}
+
+/* ── STEP VISIBILITY ── */
+.quiz-step { display: none; }
+.quiz-step.active { display: block; }
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .quiz-modal {
+    max-height: 95dvh;
+    border-radius: 22px;
+  }
+  .quiz-question { font-size: 22px; padding: 12px 24px 8px; }
+  .quiz-options { padding: 12px 20px 20px; }
+  .quiz-option { padding: 16px 16px; font-size: 14px; }
+  .quiz-why { padding: 0 20px 20px; }
+  .quiz-progress-bar { margin: 12px 20px 0; }
+  .quiz-results { padding: 24px 16px; }
+  .quiz-results-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .result-card { border-radius: 14px; }
+  .result-card-img-wrap { height: 140px; }
+  .result-card-img-label { font-size: 16px; top: 10px; left: 10px; }
+  .result-card-body { padding: 10px 12px 14px; }
+  .result-card-desc { font-size: 11px; margin-bottom: 10px; }
+  .result-btn { padding: 7px 12px; font-size: 11px; }
+  .quiz-intake { padding: 32px 20px; }
+  .quiz-intake-title { font-size: 22px; }
+  .quiz-input { padding: 12px 16px; font-size: 14px; }
+  .quiz-success { padding: 48px 20px 40px; }
+  .quiz-success-title { font-size: 24px; }
+  .quiz-success-msg { font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="quiz-overlay" id="quizOverlay">
+  <div class="quiz-modal" role="dialog" aria-modal="true" aria-label="Health assessment quiz">
+
+    <!-- Close -->
+    <button class="quiz-close" id="quizClose" type="button" aria-label="Close quiz">
+      <svg viewBox="0 0 24 24" fill="none"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+
+    <!-- STEP 1 -->
+    <div class="quiz-step active" data-step="1">
+      <div class="quiz-progress">1 of 5</div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:20%"></div></div>
+      <h2 class="quiz-question">What matters most for your health right now?</h2>
+      <div class="quiz-options" data-multi="true">
+        <button type="button" class="quiz-option" data-value="weight" tabindex="0">
+          <span>Managing my weight or metabolism</span>
+          <span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+        </button>
+        <button type="button" class="quiz-option" data-value="hair" tabindex="0">
+          <span>Restoring or thickening my hair</span>
+          <span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+        </button>
+        <button type="button" class="quiz-option" data-value="energy" tabindex="0">
+          <span>Getting my energy and focus back</span>
+          <span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+        </button>
+        <button type="button" class="quiz-option" data-value="hormones" tabindex="0">
+          <span>Balancing my hormones</span>
+          <span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+        </button>
+        <button type="button" class="quiz-option" data-value="sexual" tabindex="0">
+          <span>Improving my sexual wellness</span>
+          <span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+        </button>
+        <button type="button" class="quiz-option" data-value="other" tabindex="0">
+          <span>Something else</span>
+          <span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="quiz-step" data-step="2">
+      <div class="quiz-progress">2 of 5</div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:40%"></div></div>
+      <h2 class="quiz-question">What age range best describes you?</h2>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="18-29" tabindex="0"><span>18 - 29</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="30-39" tabindex="0"><span>30 - 39</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="40-49" tabindex="0"><span>40 - 49</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="50-59" tabindex="0"><span>50 - 59</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="60+" tabindex="0"><span>60+</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+      <div class="quiz-why">
+        <div class="quiz-why-inner">
+          <div class="quiz-why-title">Why we ask</div>
+          <div class="quiz-why-text">Your age helps us recommend treatments that match where your body is right now.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="quiz-step" data-step="3">
+      <div class="quiz-progress">3 of 5</div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:60%"></div></div>
+      <h2 class="quiz-question">How would you describe your current healthcare?</h2>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="good" tabindex="0"><span>I see my doctor regularly and feel supported</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="overdue" tabindex="0"><span>I go sometimes, but my labs are overdue</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="rare" tabindex="0"><span>I rarely make it in, life gets in the way</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="frustrated" tabindex="0"><span>I go, but I leave without real answers</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="quiz-step" data-step="4">
+      <div class="quiz-progress">4 of 5</div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:80%"></div></div>
+      <h2 class="quiz-question">How soon are you looking to see changes?</h2>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="asap" tabindex="0"><span>As soon as possible</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="gradual" tabindex="0"><span>I want to ease into things</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="maintain" tabindex="0"><span>I want to maintain what I have</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="unsure" tabindex="0"><span>Still figuring out what's realistic</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+      <div class="quiz-why">
+        <div class="quiz-why-inner">
+          <div class="quiz-why-title">Why we ask</div>
+          <div class="quiz-why-text">This helps us match you with a treatment pace that fits your goals and lifestyle.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="quiz-step" data-step="5">
+      <div class="quiz-progress">5 of 5</div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" style="width:100%"></div></div>
+      <h2 class="quiz-question">Last one. What's driving you to look into this now?</h2>
+      <div class="quiz-options">
+        <button type="button" class="quiz-option" data-value="priority" tabindex="0"><span>I'm finally making myself a priority</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="delayed" tabindex="0"><span>I've waited too long already</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="symptoms" tabindex="0"><span>I'm dealing with specific symptoms</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+        <button type="button" class="quiz-option" data-value="browsing" tabindex="0"><span>Just exploring my options</span><span class="quiz-check"><svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg></span></button>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="quiz-loading" id="quizLoading">
+      <div class="quiz-loading-title">Reviewing your options</div>
+      <div class="quiz-spinner">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L9.5 9.5 2 12l7.5 2.5L12 22l2.5-7.5L22 12l-7.5-2.5z"/>
+        </svg>
+      </div>
+      <div class="quiz-loading-sub">Matching you with the right starting point</div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="quiz-results" id="quizResults">
+      <h2 class="quiz-results-title">Here's a good place to start based on what you shared</h2>
+      <div class="quiz-results-cards" id="resultsCards">
+        <!-- Populated by JS based on answers -->
+      </div>
+      <p class="quiz-results-footer">There's no wrong place to begin. Start your intake to explore these treatments and other options available to you.</p>
+    </div>
+
+    <!-- INTAKE FORM -->
+    <div class="quiz-intake" id="quizIntake">
+      <h2 class="quiz-intake-title">Let's get you started</h2>
+      <p class="quiz-intake-sub">Enter your info and a member of our care team will reach out with your next steps.</p>
+      <form class="quiz-intake-form" id="intakeForm">
+        <div class="quiz-input-group">
+          <label class="quiz-input-label" for="intakeFirst">First name</label>
+          <input class="quiz-input" type="text" id="intakeFirst" name="first_name" placeholder="First name" required autocomplete="given-name"/>
+        </div>
+        <div class="quiz-input-group">
+          <label class="quiz-input-label" for="intakeLast">Last name</label>
+          <input class="quiz-input" type="text" id="intakeLast" name="last_name" placeholder="Last name" required autocomplete="family-name"/>
+        </div>
+        <div class="quiz-input-group">
+          <label class="quiz-input-label" for="intakeEmail">Email</label>
+          <input class="quiz-input" type="email" id="intakeEmail" name="email" placeholder="you@example.com" required autocomplete="email"/>
+        </div>
+        <button type="submit" class="quiz-submit">Continue</button>
+      </form>
+      <p class="quiz-intake-legal">By continuing, you agree to receive communications from Kingdom Longevity Labs. We respect your privacy.</p>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="quiz-success" id="quizSuccess">
+      <div class="quiz-success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="4 12 10 18 20 6"/></svg>
+      </div>
+      <h2 class="quiz-success-title">You're all set</h2>
+      <p class="quiz-success-msg">A member of our care team will be reaching out shortly with your next steps. We look forward to working with you.</p>
+      <button type="button" class="quiz-success-close" id="successClose">Close</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  const answers = {};
+  let currentStep = 1;
+  const totalSteps = 5;
+
+  // Service recommendation data — local assets
+  const services = {
+    hormones: {
+      label: 'Hormone Optimization',
+      desc: 'Physician-guided hormone balancing tailored to your lab results and symptoms.',
+      cta: 'Get started',
+      section: '#hormones',
+      img: 'assets/hormones.jpg'
+    },
+    weight: {
+      label: 'Weight Loss',
+      desc: 'Doctor-trusted treatment plans with GLP-1 medications and ongoing support.',
+      cta: 'Get started',
+      section: '#weight-loss',
+      img: 'assets/weight-loss.jpg'
+    },
+    hair: {
+      label: 'Hair Restoration',
+      desc: 'Clinically backed treatments to slow thinning and support regrowth.',
+      cta: 'Get started',
+      section: '#hair',
+      img: 'assets/GreatHairManWoman.png'
+    },
+    sexual: {
+      label: 'Sexual Wellness',
+      desc: 'Private, physician-led treatment plans for sexual health concerns.',
+      cta: 'Get started',
+      section: '#sexual-health',
+      img: 'assets/CoupleEmbracing.png'
+    },
+    longevity: {
+      label: 'Longevity',
+      desc: 'Peptide therapies and anti-aging protocols built around your goals.',
+      cta: 'Get started',
+      section: '#longevity',
+      img: 'assets/fitcouple.png'
+    }
+  };
+
+  // Option click handler
+  document.querySelectorAll('.quiz-options').forEach(container => {
+    const isMulti = container.dataset.multi === 'true';
+    container.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.addEventListener('click', function() {
+        const step = this.closest('.quiz-step').dataset.step;
+
+        if (isMulti) {
+          this.classList.toggle('selected');
+          // Collect all selected values
+          answers[step] = Array.from(container.querySelectorAll('.quiz-option.selected'))
+            .map(o => o.dataset.value);
+        } else {
+          // Deselect siblings, select this
+          container.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+          this.classList.add('selected');
+          answers[step] = this.dataset.value;
+
+          // Auto-advance after brief delay on single-select
+          setTimeout(() => advanceStep(), 350);
+        }
+      });
+    });
+  });
+
+  // Step 1 needs a "Next" mechanism since it's multi-select
+  // Auto-advance when at least one is selected and user hasn't interacted for 1.5s
+  let multiTimer;
+  document.querySelector('[data-step="1"] .quiz-options').addEventListener('click', () => {
+    clearTimeout(multiTimer);
+    const selected = document.querySelectorAll('[data-step="1"] .quiz-option.selected');
+    if (selected.length > 0) {
+      multiTimer = setTimeout(() => advanceStep(), 1200);
+    }
+  });
+
+  function advanceStep() {
+    if (currentStep >= totalSteps) {
+      showLoading();
+      return;
+    }
+    const current = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+    current.classList.remove('active');
+    current.style.animation = 'none';
+    currentStep++;
+    const next = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
+    next.classList.add('active');
+    next.style.animation = 'modalIn 0.25s ease-out';
+  }
+
+  function showLoading() {
+    document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+    const loading = document.getElementById('quizLoading');
+    loading.classList.add('active');
+    loading.style.animation = 'modalIn 0.25s ease-out';
+
+    setTimeout(() => {
+      loading.classList.remove('active');
+      showResults();
+    }, 2000);
+  }
+
+  function showResults() {
+    const results = document.getElementById('quizResults');
+    const cardsContainer = document.getElementById('resultsCards');
+    results.classList.add('active');
+    results.style.animation = 'modalIn 0.3s ease-out';
+
+    // Determine recommendations based on step 1 answers
+    const concerns = answers['1'] || [];
+    let recommended = [];
+
+    // Map concerns to services
+    const concernMap = {
+      weight: 'weight',
+      hair: 'hair',
+      energy: 'longevity',
+      hormones: 'hormones',
+      sexual: 'sexual',
+      other: 'hormones' // Default to hormone optimization for "something else"
+    };
+
+    concerns.forEach(c => {
+      const svc = concernMap[c];
+      if (svc && !recommended.includes(svc)) {
+        recommended.push(svc);
+      }
+    });
+
+    // Default if nothing selected
+    if (recommended.length === 0) {
+      recommended = ['hormones', 'weight'];
+    }
+
+    // ALWAYS show exactly 2 cards. If only 1 selected, add Hormone Optimization as second.
+    if (recommended.length === 1) {
+      if (recommended[0] !== 'hormones') {
+        recommended.push('hormones');
+      } else {
+        recommended.push('weight');
+      }
+    }
+    recommended = recommended.slice(0, 2);
+
+    // Build cards — image on top with overlaid label, white body below (ForHers pattern)
+    cardsContainer.innerHTML = recommended.map(key => {
+      const svc = services[key];
+      return `
+        <div class="result-card">
+          <div class="result-card-img-wrap">
+            <img class="result-card-img" src="${svc.img}" alt="${svc.label}"/>
+            <span class="result-card-img-label">${svc.label}</span>
+          </div>
+          <div class="result-card-body">
+            <div class="result-card-desc">${svc.desc}</div>
+            <div class="result-card-actions">
+              <a href="${svc.section}" class="result-btn result-btn-primary">${svc.cta}</a>
+              <a href="${svc.section}" class="result-btn result-btn-secondary">Explore</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // "Get started" clicks from result cards → show intake form
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.result-btn-primary');
+    if (btn) {
+      e.preventDefault();
+      // Store which service they clicked
+      answers.selectedService = btn.closest('.result-card').querySelector('.result-card-img-label').textContent;
+      document.getElementById('quizResults').classList.remove('active');
+      const intake = document.getElementById('quizIntake');
+      intake.classList.add('active');
+      intake.style.animation = 'modalIn 0.3s ease-out';
+      // Focus first input
+      setTimeout(() => document.getElementById('intakeFirst').focus(), 300);
+    }
+  });
+
+  // Form submission
+  document.getElementById('intakeForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = {
+      first_name: document.getElementById('intakeFirst').value,
+      last_name: document.getElementById('intakeLast').value,
+      email: document.getElementById('intakeEmail').value,
+      quiz_answers: answers,
+      submitted_at: new Date().toISOString()
+    };
+
+    // Submit to API
+    fetch('https://api.plugandplaypeptides.com/api/quiz-submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    }).catch(() => {
+      // Silently fail — lead is still logged to console as backup
+    });
+    console.log('Quiz submission:', formData);
+
+    // Show success immediately (don't wait for API)
+    document.getElementById('quizIntake').classList.remove('active');
+    const success = document.getElementById('quizSuccess');
+    success.classList.add('active');
+    success.style.animation = 'modalIn 0.35s ease-out';
+  });
+
+  // Success close button
+  document.getElementById('successClose').addEventListener('click', () => {
+    document.getElementById('quizOverlay').style.display = 'none';
+  });
+
+  // Close
+  document.getElementById('quizClose').addEventListener('click', () => {
+    document.getElementById('quizOverlay').style.display = 'none';
+  });
+
+  // Close on overlay click
+  document.getElementById('quizOverlay').addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      document.getElementById('quizOverlay').style.display = 'none';
+    }
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.getElementById('quizOverlay').style.display = 'none';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
